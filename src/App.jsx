@@ -28,7 +28,6 @@ function App() {
             <Route path="/" element={<Home popular={popular}  nowPlaying={nowPlaying}  topRated={topRated} upcoming={upcomingMovie}/>} />
             <Route path="/movie/:id" element={<MovieDetail />} />
           </Routes>
-
         </div>
       </div>
     </Router>

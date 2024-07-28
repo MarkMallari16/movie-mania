@@ -31,7 +31,7 @@ const MovieDetail = () => {
                     width="100%"
                     height="100vh"
                     onEnded={() => setIsTrailerEnded(true)}
-                    className='absolute top-0 left-0 w-full h-full z-0' />
+                    className='absolute top-0 left-0 w-full h-full z-0 bg-cover' />
             )}
 
             <div className='bg-slate-900 bg-opacity-75 min-h-screen flex items-center p-10 lg:p-20 relative z-10'>
