@@ -2,11 +2,20 @@ import React from 'react'
 import MovieCard from '../components/MovieCard'
 import Navbar from '../components/Navbar'
 
-const Home = ({ popular, topRated, upcoming }) => {
+const Home = ({ popular, topRated, upcoming, nowPlaying }) => {
     return (
         <>
             <Navbar />
             <div className='mx-10'>
+                <h1 className='mt-10 mb-4 text-2xl text-white font-medium'>Now Playing</h1>
+                <div className='carousel rounded-box'>
+                    <div className='carousel-item space-x-6'>
+                        {nowPlaying && nowPlaying.results.map((playing, _) => (
+                            <MovieCard key={playing.id} id={playing.id} poster={playing.poster_path} title={playing.title} />
+                        ))}
+                    </div>
+                </div>
+
                 <h1 className='mt-10 mb-4 text-2xl text-white font-medium'>Popular</h1>
                 <div className='carousel rounded-box'>
                     <div className='carousel-item space-x-6'>

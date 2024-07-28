@@ -23,7 +23,6 @@ const MovieDetail = () => {
             backgroundSize: 'cover',
             backgroundPosition: 'center'
         }}>
-
             {!isTrailerEnded && trailerUrl && (
                 <ReactPlayer
                     url={trailerUrl}
