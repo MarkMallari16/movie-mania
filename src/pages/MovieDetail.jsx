@@ -18,12 +18,23 @@ const MovieDetail = () => {
     const backdropUrl = `https://image.tmdb.org/t/p/original${movieDetail.backdrop_path}`;
 
     return (
-        <div className='min-h-screen w-full text-white relative' style={{
-            backgroundImage: `url(${backdropUrl})`,
+        <div className={`min-h-screen w-full text-white relative ${isTrailerEnded && opacity-100} transition-all ease-in-out`} style={{
+            backgroundImage: `${isTrailerEnded} ? url(${backdropUrl}): none`,
             backgroundSize: 'cover',
             backgroundPosition: 'center'
         }}>
-           
+
+            {!isTrailerEnded && trailerUrl && (
+                <ReactPlayer
+                    url={trailerUrl}
+                    playing
+                    muted
+                    width="100%"
+                    height="100vh"
+                    onEnded={() => setIsTrailerEnded(true)}
+                    className='absolute top-0 left-0 w-full h-full z-0' />
+            )}
+
             <div className='bg-slate-900 bg-opacity-75 min-h-screen flex items-center p-10 lg:p-20 relative z-10'>
                 <div>
                     <h1 className='text-5xl lg:text-7xl font-bold'>{movieDetail.title}</h1>
