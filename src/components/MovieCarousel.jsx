@@ -1,10 +1,12 @@
 import React from 'react'
 import MovieCard from './MovieCard'
 import PropTypes from 'prop-types';
-const MovieCarousel = ({ carouselTitle, movies }) => {
+const MovieCarousel = ({ carouselTitle, icon, movies }) => {
     return (
         <>
-            <h1 className='mt-10 mb-4 text-2xl text-white font-medium'>{carouselTitle}</h1>
+            <h1 className='mt-10 mb-4 text-2xl text-white font-medium flex items-center gap-2'>
+                {icon}{ carouselTitle }
+            </h1>
             <div className='carousel rounded-box'>
                 <div className='carousel-item space-x-6'>
                     {movies && movies.results.map((movie, _) => (
