@@ -8,7 +8,7 @@ const MovieDetail = () => {
     const { data: movieDetail, loading: movieLoading } = useFetch(`https://api.themoviedb.org/3/movie/${id}?api_key=24ce4eec248652f741c228a1d8a1a21c`);
     const { data: videoData, loading: videoLoading } = useFetch(`https://api.themoviedb.org/3/movie/${id}/videos?api_key=24ce4eec248652f741c228a1d8a1a21c`);
 
-    const [isTrailerEnded, setIsTrailerEnded] = useState(false);
+    const [isTeaserEnded, setIsTeaserEnded] = useState(false);
     const [isHeartFill, setIsHeartFill] = useState(false);
     const [isDelayed, setIsDelayed] = useState(true);
 
@@ -22,20 +22,20 @@ const MovieDetail = () => {
 
     if (movieLoading || videoLoading) return <p>Loading...</p>;
 
-    const trailer = videoData?.results?.find(video => video.type === "Teaser" && video.site === "YouTube");
-    const trailerUrl = trailer ? `https://www.youtube.com/embed/${trailer.key}?autoplay=1&mute=1&loop=1&playlist=${trailer.key}&controls=0&showinfo=0&modestbranding=1&rel=0` : null;
+    const teaser = videoData?.results?.find(video => video.type === "Teaser" && video.site === "YouTube");
+    const teaserUrl = teaser ? `https://www.youtube.com/embed/${teaser.key}?autoplay=1&mute=1&loop=1&playlist=${teaser.key}&controls=0&showinfo=0&modestbranding=1&rel=0` : null;
 
     const backdropUrl = `https://image.tmdb.org/t/p/original${movieDetail.backdrop_path}`;
 
     return (
         <div className={`min-h-screen w-full  text-white relative  transition-all ease-in-out`} style={{
-            backgroundImage: trailerUrl === null || isDelayed || isTrailerEnded ? `url(${backdropUrl})` : 'none',
+            backgroundImage: teaserUrl === null || isDelayed || isTeaserEnded ? `url(${backdropUrl})` : 'none',
             backgroundSize: 'cover',
             backgroundPosition: 'center'
         }}>
             {!isDelayed && (
                 <ReactPlayer
-                    url={trailerUrl}
+                    url={teaserUrl}
                     playing
                     muted
                     width="100%"
