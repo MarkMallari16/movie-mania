@@ -25,8 +25,6 @@ MovieCarousel.propTypes = {
             PropTypes.shape({
                 id: PropTypes.number.isRequired,
                 poster_path: PropTypes.string.isRequired,
-                rate: PropTypes.number.isRequired,
-                releaseDate: PropTypes.number.isRequired,
                 title: PropTypes.string.isRequired
             })
         ).isRequired

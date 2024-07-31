@@ -6,7 +6,7 @@ import ReactPlayer from 'react-player';
 const MovieDetail = () => {
     const { id } = useParams();
     const { data: movieDetail, loading: movieLoading } = useFetch(`https://api.themoviedb.org/3/movie/${id}`);
-    const { data: casted, loading: castedLoading } = useFetch(`https://api.themoviedb.org/3/movie/${id}/credits`)
+    const { data: credits, loading: creditsLoading } = useFetch(`https://api.themoviedb.org/3/movie/${id}/credits`)
     const { data: videoData, loading: videoLoading } = useFetch(`https://api.themoviedb.org/3/movie/${id}/videos`);
 
     const [isTeaserEnded, setIsTeaserEnded] = useState(false);
@@ -21,12 +21,15 @@ const MovieDetail = () => {
         return () => clearTimeout(timer);
     }, [])
 
-    if (movieLoading || videoLoading || castedLoading) return <p>Loading...</p>;
-  
+    if (movieLoading || videoLoading || creditsLoading) return <p>Loading...</p>;
+
     const teaser = videoData?.results?.find(video => video.type === "Teaser" && video.site === "YouTube");
     const teaserUrl = teaser ? `https://www.youtube.com/embed/${teaser.key}?autoplay=1&mute=1&loop=1&playlist=${teaser.key}&controls=0&showinfo=0&modestbranding=1&rel=0` : null;
 
     const backdropUrl = `https://image.tmdb.org/t/p/original${movieDetail.backdrop_path}`;
+    const directors = credits.crew.find(person => person.job === "Director");
+
+
 
     return (
         <div className={`min-h-screen w-full  text-white relative  transition-all ease-in-out`} style={{
@@ -56,8 +59,15 @@ const MovieDetail = () => {
             </div>
             <div className='bg-slate-900 bg-opacity-75 min-h-screen flex items-center p-10 lg:p-20 relative z-10'>
                 <div>
-                    <h1 className='text-5xl lg:text-7xl font-bold'>{movieDetail.title}</h1>
-                    <div className='items-center flex gap-4 mt-4'>
+                    <div className='mb-2 flex gap-3'>
+                        {movieDetail.genres.map(detail => (
+                            <p className='bg-blue-500 p-2 rounded-lg text-sm' key={detail}>{detail.name}</p>
+                        ))}
+                    </div>
+
+                    <h1 className='text-5xl lg:text-8xl font-bold'>{movieDetail.title}</h1>
+
+                    <div className='items-center flex gap-4 mt-2'>
                         <div className='flex items-center gap-1'>
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="text-yellow-500 size-6">
                                 <path fillRule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clipRule="evenodd" />
@@ -77,7 +87,14 @@ const MovieDetail = () => {
                             <p>{movieDetail.runtime}m</p>
                         </div>
                     </div>
-                    <p className='mt-4 lg:w-full max-w-3xl'>{movieDetail.overview}</p>
+                    <div>
+                        <p className='mt-4 lg:w-full max-w-3xl'>{movieDetail.overview}</p>
+                    </div>
+                    <div className='mt-4'>
+
+                        <p>Director: {directors.name}</p>
+
+                    </div>
                     <div className='flex gap-3 mt-4'>
                         <button className='btn btn-primary'>
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-6">

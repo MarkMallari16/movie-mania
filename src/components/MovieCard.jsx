@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 const MovieCard = ({ id, poster, rate, releaseDate, title, }) => {
     const roundedRate = rate.toFixed(1)
-    
+
     return (
         <Link to={`/movie/${id}`}>
             <div >

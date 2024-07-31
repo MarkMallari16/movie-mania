@@ -50,16 +50,16 @@ const Home = ({ nowPlaying, popular, topRated, upcoming }) => {
                     <MovieCarousel key={index} carouselTitle={movie.title} icon={movie.icon} movies={movie.data} />
                 ))}
             </div>
-            <Footer/>
+            <Footer />
         </>
     )
 }
 
 Home.propTypes = {
-    nowPlaying: PropTypes.array.isRequired,
-    popular: PropTypes.array.isRequired,
-    topRated: PropTypes.array.isRequired,
-    upcoming: PropTypes.array.isRequired,
-}
+    nowPlaying: PropTypes.object.isRequired,
+    popular: PropTypes.object.isRequired,
+    topRated: PropTypes.object.isRequired,
+    upcoming: PropTypes.object.isRequired,
+};
 
 export default Home

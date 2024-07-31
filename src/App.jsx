@@ -17,8 +17,6 @@ function App() {
 
   const { data: nowPlaying, loading: loadingNowPlaying } = useFetch("https://api.themoviedb.org/3/movie/now_playing");
 
-
-
   if (loadingPopular || loadingNowPlaying || loadingTopRated || loadingUpcomingMovie ) return <p>Loading....</p>
 
   return (
