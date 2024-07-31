@@ -18,6 +18,7 @@ function App() {
   const { data: nowPlaying, loading: loadingNowPlaying } = useFetch("https://api.themoviedb.org/3/movie/now_playing?api_key=24ce4eec248652f741c228a1d8a1a21c");
 
 
+
   if (loadingPopular || loadingNowPlaying || loadingTopRated || loadingUpcomingMovie ) return <p>Loading....</p>
 
   return (

@@ -4,6 +4,8 @@ import Navbar from '../components/Navbar'
 import MovieCarousel from '../components/MovieCarousel'
 
 const Home = ({ nowPlaying, popular, topRated, upcoming }) => {
+
+
     const movieCarousels = [
         {
             title: "Now Playing",
