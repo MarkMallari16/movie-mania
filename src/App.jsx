@@ -8,14 +8,14 @@ import Home from './pages/Home';
 import MovieDetail from './pages/MovieDetail';
 function App() {
 
-  const { data: topRated, loading: loadingTopRated } = useFetch("https://api.themoviedb.org/3/movie/top_rated?api_key=24ce4eec248652f741c228a1d8a1a21c");
+  const { data: topRated, loading: loadingTopRated } = useFetch("https://api.themoviedb.org/3/movie/top_rated");
 
-  const { data: popular, loading: loadingPopular } = useFetch("https://api.themoviedb.org/3/movie/popular?api_key=24ce4eec248652f741c228a1d8a1a21c");
+  const { data: popular, loading: loadingPopular } = useFetch("https://api.themoviedb.org/3/movie/popular");
 
 
-  const { data: upcomingMovie, loading: loadingUpcomingMovie } = useFetch("https://api.themoviedb.org/3/movie/upcoming?api_key=24ce4eec248652f741c228a1d8a1a21c");
+  const { data: upcomingMovie, loading: loadingUpcomingMovie } = useFetch("https://api.themoviedb.org/3/movie/upcoming");
 
-  const { data: nowPlaying, loading: loadingNowPlaying } = useFetch("https://api.themoviedb.org/3/movie/now_playing?api_key=24ce4eec248652f741c228a1d8a1a21c");
+  const { data: nowPlaying, loading: loadingNowPlaying } = useFetch("https://api.themoviedb.org/3/movie/now_playing");
 
 
 

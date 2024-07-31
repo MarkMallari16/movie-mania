@@ -10,7 +10,8 @@ const useFetch = (url) => {
         const fetchData = async () => {
             setLoading(true);
             try {
-                const response = await fetch(url);
+                const response = await fetch(`${url}?api_key=24ce4eec248652f741c228a1d8a1a21c
+`);
                 if (!response.ok) {
                     throw new Error("Network response was not ok");
                 }
@@ -23,7 +24,7 @@ const useFetch = (url) => {
             }
         }
         fetchData();
-    },[])
+    }, [])
     return { data, loading };
 }
 

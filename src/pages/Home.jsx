@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Navbar from '../components/Navbar'
 import MovieCarousel from '../components/MovieCarousel'
+import Footer from '../components/Footer'
 
 const Home = ({ nowPlaying, popular, topRated, upcoming }) => {
 
@@ -49,6 +50,7 @@ const Home = ({ nowPlaying, popular, topRated, upcoming }) => {
                     <MovieCarousel key={index} carouselTitle={movie.title} icon={movie.icon} movies={movie.data} />
                 ))}
             </div>
+            <Footer/>
         </>
     )
 }

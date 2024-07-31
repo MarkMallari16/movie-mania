@@ -5,8 +5,9 @@ import ReactPlayer from 'react-player';
 
 const MovieDetail = () => {
     const { id } = useParams();
-    const { data: movieDetail, loading: movieLoading } = useFetch(`https://api.themoviedb.org/3/movie/${id}?api_key=24ce4eec248652f741c228a1d8a1a21c`);
-    const { data: videoData, loading: videoLoading } = useFetch(`https://api.themoviedb.org/3/movie/${id}/videos?api_key=24ce4eec248652f741c228a1d8a1a21c`);
+    const { data: movieDetail, loading: movieLoading } = useFetch(`https://api.themoviedb.org/3/movie/${id}`);
+    const { data: casted, loading: castedLoading } = useFetch(`https://api.themoviedb.org/3/movie/${id}/credits`)
+    const { data: videoData, loading: videoLoading } = useFetch(`https://api.themoviedb.org/3/movie/${id}/videos`);
 
     const [isTeaserEnded, setIsTeaserEnded] = useState(false);
     const [isHeartFill, setIsHeartFill] = useState(false);
@@ -20,8 +21,8 @@ const MovieDetail = () => {
         return () => clearTimeout(timer);
     }, [])
 
-    if (movieLoading || videoLoading) return <p>Loading...</p>;
-
+    if (movieLoading || videoLoading || castedLoading) return <p>Loading...</p>;
+  
     const teaser = videoData?.results?.find(video => video.type === "Teaser" && video.site === "YouTube");
     const teaserUrl = teaser ? `https://www.youtube.com/embed/${teaser.key}?autoplay=1&mute=1&loop=1&playlist=${teaser.key}&controls=0&showinfo=0&modestbranding=1&rel=0` : null;
 

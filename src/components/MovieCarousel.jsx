@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 const MovieCarousel = ({ carouselTitle, icon, movies }) => {
     return (
         <>
-            <h1 className='mt-10 mb-6 text-2xl text-white font-medium flex items-center gap-2'>
+            <h1 className='mt-10 mb-6 text-2xl text-white font-bold flex items-center gap-2'>
                 {icon}{carouselTitle}
             </h1>
             <div className="gap-6 flex carousel carousel-end rounded-box w-full">
@@ -26,6 +26,7 @@ MovieCarousel.propTypes = {
                 id: PropTypes.number.isRequired,
                 poster_path: PropTypes.string.isRequired,
                 rate: PropTypes.number.isRequired,
+                releaseDate: PropTypes.number.isRequired,
                 title: PropTypes.string.isRequired
             })
         ).isRequired
