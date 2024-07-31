@@ -65,7 +65,7 @@ const MovieDetail = () => {
                         ))}
                     </div>
 
-                    <h1 className='text-5xl lg:text-8xl font-bold'>{movieDetail.title}</h1>
+                    <h1 className='text-5xl lg:text-7xl font-bold'>{movieDetail.title}</h1>
 
                     <div className='items-center flex gap-4 mt-2'>
                         <div className='flex items-center gap-1'>
@@ -90,9 +90,9 @@ const MovieDetail = () => {
                     <div>
                         <p className='mt-4 lg:w-full max-w-3xl'>{movieDetail.overview}</p>
                     </div>
-                    <div className='mt-4'>
+                    <div className='mt-6'>
 
-                        <p>Director: {directors.name}</p>
+                        <p>Director: <span className='text-slate-400 font-medium'>{directors.name}</span></p>
 
                     </div>
                     <div className='flex gap-3 mt-4'>
