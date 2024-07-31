@@ -6,7 +6,7 @@ const MovieCard = ({ id, poster, rate, releaseDate, title, }) => {
     return (
         <Link to={`/movie/${id}`}>
             <div className='w-full'>
-                <img src={`https://image.tmdb.org/t/p/w200${poster}`} alt={title} className='rounded-lg bg-slate-900 hover:opacity-75 transition-all ease-in-out' />
+                <img src={`https://image.tmdb.org/t/p/w200${poster}`} alt={title} className='w-full rounded-lg bg-slate-900 transition-all ease-in-out' />
             </div>
             <div className='mt-3 flex justify-between'>
                 <div className='flex gap-1'>
