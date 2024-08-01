@@ -4,6 +4,9 @@ export default {
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
+  daisyui: {
+    theme: ["black"]
+  },
   theme: {
     extend: {},
   },
@@ -11,4 +14,3 @@ export default {
     require('daisyui'),
   ],
 }
-
