@@ -3,11 +3,13 @@ import PropTypes from 'prop-types'
 import Navbar from '../components/Navbar'
 import MovieCarousel from '../components/MovieCarousel'
 import Footer from '../components/Footer'
+import { Link } from 'react-router-dom'
 
 const Home = ({ nowPlaying, popular, topRated, upcoming }) => {
 
 
     const movieCarousels = [
+
         {
             title: "Now Playing",
             icon: <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-6">
@@ -42,9 +44,22 @@ const Home = ({ nowPlaying, popular, topRated, upcoming }) => {
         }
 
     ]
+
     return (
         <>
             <Navbar />
+            <div className='mt-10 mx-10 '>
+                <h1 className='mb-6 text-2xl font-bold text-white'>Featured Movies</h1>
+                <div className='grid grid-cols-3  gap-5'>
+                    {nowPlaying.results.slice(0, 6).map(nowPlay => (
+                        <Link to={`movie/${nowPlay.id}`}>
+                            <div key={nowPlay.id}>
+                                <img src={`https://image.tmdb.org/t/p/w200${nowPlay.backdrop_path}`} alt={nowPlay.title} className='w-full rounded-lg aspect-auto' />
+                            </div>
+                        </Link>
+                    ))}
+                </div>
+            </div>
             <div className='mx-10'>
                 {movieCarousels.map((movie, index) => (
                     <MovieCarousel key={index} carouselTitle={movie.title} icon={movie.icon} movies={movie.data} />
@@ -60,6 +75,7 @@ Home.propTypes = {
     popular: PropTypes.object.isRequired,
     topRated: PropTypes.object.isRequired,
     upcoming: PropTypes.object.isRequired,
+    movies: PropTypes.object.isRequired
 };
 
 export default Home
