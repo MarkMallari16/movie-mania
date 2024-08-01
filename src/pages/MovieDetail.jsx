@@ -23,13 +23,13 @@ const MovieDetail = () => {
     if (movieLoading || videoLoading || creditsLoading || movieImagesLoading) return <p>Loading...</p>;
 
     const teaser = videoData?.results?.find(video => video.type === "Teaser" && video.site === "YouTube");
-    const teaserUrl = teaser ? `https://www.youtube.com/embed/${teaser.key}?autoplay=1&mute=1&loop=1&playlist=${teaser.key}&controls=0&showinfo=0&modestbranding=1&rel=0` : null;
+    const teaserUrl = teaser ? `https://www.youtube.com/watch?v=${teaser.key}` : null;
 
     const backdropUrl = `https://image.tmdb.org/t/p/original${movieDetail.backdrop_path}`;
     const directors = credits.crew.find(person => person.job === "Director");
     const characters = credits.cast.slice(0, 5);
 
-    console.log(movieImages)
+    console.log(teaserUrl)
     return (
         <>
             <div className={`min-h-screen w-full  text-white relative  transition-all ease-in-out`} style={{
@@ -46,7 +46,7 @@ const MovieDetail = () => {
                         height="100vh"
 
                         onEnded={() => setIsTeaserEnded(true)}
-                        className='absolute top-0 left-0 w-full h-full z-0 bg-cover' />
+                        className='absolute top-0 left-0  h-full z-0 bg-cover' />
                 )}
 
                 <div className='absolute z-20 left-10 top-6'>
@@ -94,7 +94,7 @@ const MovieDetail = () => {
                         <div className='mt-6'>
                             <p>Director: {directors.name}</p>
                         </div>
-                        <div className='flex gap-3 mt-4'>
+                        <div className='flex gap-3 mt-6'>
                             <button className='btn btn-primary'>
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-6">
                                     <path fillRule="evenodd" d="M4.5 5.653c0-1.427 1.529-2.33 2.779-1.643l11.54 6.347c1.295.712 1.295 2.573 0 3.286L7.28 19.99c-1.25.687-2.779-.217-2.779-1.643V5.653Z" clipRule="evenodd" />
@@ -115,19 +115,19 @@ const MovieDetail = () => {
 
                         <div className='mt-10 flex gap-3'>
                             {movieImages.backdrops.slice(0, 3).map(movie => (
-                                <img src={`https://image.tmdb.org/t/p/w200${movie.file_path}`} className='w-full rounded-lg' />
+                                <img key={movie.id} src={`https://image.tmdb.org/t/p/w200${movie.file_path}`} className=' bg-slate-900 opacity-55 w-32 lg:w-full rounded-lg' />
                             ))}
                         </div>
                     </div>
                 </div>
             </div>
-           
+
             <div className='mx-16 mt-6'>
                 <h1 className='text-4xl text-white'>Casts</h1>
                 <div className='mt-8 flex flex-wrap justify-center gap-4'>
                     {
                         characters.map(char => (
-                            <div key={char.id}>
+                            <div key={char.id} >
                                 <img src={`https://image.tmdb.org/t/p/w200${char.profile_path}`} alt={char.name} className='rounded-lg' />
                                 <p className='mt-2 text-white w-52'>{char.character}</p>
                             </div>
