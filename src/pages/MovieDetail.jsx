@@ -115,7 +115,7 @@ const MovieDetail = () => {
 
                         <div className='mt-10 flex gap-3'>
                             {movieImages.backdrops.slice(0, 3).map(movie => (
-                                <img key={movie.id} src={`https://image.tmdb.org/t/p/w200${movie.file_path}`} className=' bg-slate-900 opacity-55 w-32 lg:w-full rounded-lg' />
+                                <img key={movie.id} src={`https://image.tmdb.org/t/p/w200${movie.file_path}`} className=' bg-slate-900 opacity-55 hover:opacity-100 hover:scale-105 transition-all ease-in-out w-32 lg:w-full rounded-lg' />
                             ))}
                         </div>
                     </div>
