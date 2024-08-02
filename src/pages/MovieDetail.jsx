@@ -158,11 +158,14 @@ const MovieDetail = () => {
                     ))}
 
                 </div>
-                <h1 className='mt-10 text-3xl text-white font-bold'>Casts</h1>
-                <div className='mt-4 flex flex-wrap justify-center gap-4'>
+                <h1 className='my-10 text-3xl text-white font-bold'>Casts</h1>
+                <div className='flex flex-wrap justify-center gap-4'>
                     <CharacterComponent characters={characters} />
                 </div>
+
+                <h1 className='mt-10 text-3xl text-white font-bold'>Similar Movies</h1>
             </div>
+           
         </>
     );
 };
