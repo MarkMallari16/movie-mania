@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import useFetch from '../hooks/useFetch';
 import ReactPlayer from 'react-player';
+import CharacterComponent from '../components/CharacterComponent';
 
 const MovieDetail = () => {
     const { id } = useParams();
@@ -21,15 +22,19 @@ const MovieDetail = () => {
     }, [])
 
     if (movieLoading || videoLoading || creditsLoading || movieImagesLoading) return <p>Loading...</p>;
-
+    console.log(videoData)
     const teaser = videoData?.results?.find(video => video.type === "Teaser" && video.site === "YouTube");
     const teaserUrl = teaser ? `https://www.youtube.com/watch?v=${teaser.key}` : null;
 
+
+    const videos = videoData.results.filter(video => video.site === "YouTube" && video.type === 'Teaser' || video.type === "Trailer").slice(0, 8);
+    console.log(videos)
+
     const backdropUrl = `https://image.tmdb.org/t/p/original${movieDetail.backdrop_path}`;
     const directors = credits.crew.find(person => person.job === "Director");
-    const characters = credits.cast.slice(0, 5);
+    const characters = credits.cast.slice(0, 6);
 
-    console.log(teaserUrl)
+
     return (
         <>
             <div className={`min-h-screen w-full  text-white relative  transition-all ease-in-out`} style={{
@@ -113,26 +118,49 @@ const MovieDetail = () => {
                             </button>
                         </div>
 
-                        <div className='mt-10 flex gap-3'>
+                        {/*
+                          <div className='mt-10 flex gap-3'>
                             {movieImages.backdrops.slice(0, 3).map(movie => (
                                 <img key={movie.id} src={`https://image.tmdb.org/t/p/w200${movie.file_path}`} className=' bg-slate-900 opacity-55 hover:opacity-100 hover:scale-105 transition-all ease-in-out w-32 lg:w-full rounded-lg' />
                             ))}
                         </div>
+                        */}
+
                     </div>
+
+
                 </div>
+
+
             </div>
 
-            <div className='mx-16 mt-6'>
-                <h1 className='text-3xl text-white'>Casts</h1>
-                <div className='mt-8 flex flex-wrap justify-center gap-4'>
-                    {
-                        characters.map(char => (
-                            <div key={char.id} >
-                                <img src={`https://image.tmdb.org/t/p/w200${char.profile_path}`} alt={char.name} className='rounded-lg' />
-                                <p className='mt-2 text-white w-52'>{char.character}</p>
-                            </div>
-                        ))
-                    }
+            <div className='mx-20 mt-6'>
+                <h1 className='mt-10 text-3xl text-white font-bold'>Trailers & Clips</h1>
+                <div className='carousel carousel-center flex gap-8  rounded-box mt-10 [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-200px),transparent_100%)]'>
+                    {videos.map(video => (
+                        <div
+                            key={video.id}
+                            style={{
+                                width: '60vw',
+                                height: '40vh',
+                                borderRadius: '10px',
+                                overflow: 'hidden'
+                            }}
+                            className='carousel-item'
+                        >
+                            <ReactPlayer
+                                url={`https://www.youtube.com/watch?v=${video.key}`}
+                                muted
+                                width="100%"
+                                height="100%"
+                            />
+                        </div>
+                    ))}
+
+                </div>
+                <h1 className='mt-10 text-3xl text-white font-bold'>Casts</h1>
+                <div className='mt-4 flex flex-wrap justify-center gap-4'>
+                    <CharacterComponent characters={characters} />
                 </div>
             </div>
         </>
