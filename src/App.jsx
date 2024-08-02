@@ -6,6 +6,7 @@ import useFetch from './hooks/useFetch'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import MovieDetail from './pages/MovieDetail';
+import Navbar from './components/Navbar';
 function App() {
 
   const { data: topRated, loading: loadingTopRated } = useFetch("https://api.themoviedb.org/3/movie/top_rated");
@@ -27,6 +28,7 @@ function App() {
 
   return (
     <Router>
+      
       <div className='min-h-screen bg-slate-900'>
         <div>
           <Routes>
