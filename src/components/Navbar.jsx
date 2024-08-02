@@ -65,7 +65,7 @@ const Navbar = () => {
             <dialog id="my_modal_2" className="modal" ref={modalRef}>
                 <div className="modal-box">
                     <input type="text" className='input input-bordered w-full' placeholder='Search here...' />
-                    <button className='btn btn-error' onClick={handleCloseSearchModal}>Close</button>
+                    <button className='mt-4 btn btn-error' onClick={handleCloseSearchModal}>Close</button>
                 </div>
             </dialog>
         </div>
