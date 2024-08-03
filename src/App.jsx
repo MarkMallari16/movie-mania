@@ -21,8 +21,8 @@ function App() {
 
   const { data: popularTvShows, loading: loadingPopularTvShows } = useFetch("https://api.themoviedb.org/3/tv/popular")
 
-  console.log(popularTvShows)
-  if (loadingPopular || loadingNowPlaying || loadingTopRated || loadingUpcomingMovie)
+
+  if (loadingPopular || loadingNowPlaying || loadingTopRated || loadingUpcomingMovie || loadingPopularTvShows)
     return <div className='min-h-screen grid place-items-center bg-slate-900'>
       <span className="loading loading-dots loading-lg text-white"></span>
     </div>

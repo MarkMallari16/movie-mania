@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 const Card = ({ id, poster, rate, releaseDate, title, type }) => {
     const roundedRate = rate.toFixed(1)
     const linkPath = type === "movie" ? `/movie/${id}` : `/tv/${id}`;
-    console.log(type)
+  
     return (
         <Link to={linkPath}>
             <div >
