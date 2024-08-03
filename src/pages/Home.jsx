@@ -94,11 +94,37 @@ const Home = ({ nowPlaying, popular, topRated, upcoming, popularTvShows }) => {
                     </div>
                 </div>
             </div>
+
+            <div className='grid grid-cols-10 grid-rows-10 gap-6 mx-10 mt-10 h-auto'>
+                {nowPlaying.results.slice(0, 1).map(nowPlay => (
+                    <div key={nowPlay.id} className='relative bg-slate-900 h-full   col-span-6 row-span-4  hover:opacity-50 transition-all ease-in-out'>
+                        <Link to={`movie/${nowPlay.id}`}>
+                            <div key={nowPlay.id} >
+                                <img src={`https://image.tmdb.org/t/p/w500${nowPlay.backdrop_path}`} alt={nowPlay.title} className='w-full h-full rounded-lg aspect-auto bg-cover' />
+                            </div>
+                            <img src={`https://image.tmdb.org/t/p/w500${nowPlay.poster_path}`} alt={nowPlay.title}  className=' absolute inset-14 w-60 rounded-lg'/>
+                        </Link>
+                     
+                    </div>
+                ))}
+                {nowPlaying.results.slice(1, 7).map(nowPlay => (
+                    <div key={nowPlay.id} className='bg-slate-900 col-span-2 row-span-1 hover:opacity-50 transition-all ease-in-out'>
+                        <Link to={`movie/${nowPlay.id}`}>
+                            <div key={nowPlay.id} >
+                                <img src={`https://image.tmdb.org/t/p/w500${nowPlay.backdrop_path}`} alt={nowPlay.title} className='w-full rounded-lg aspect-auto bg-cover' />
+                            </div>
+                        </Link>
+                    </div>
+                ))}
+
+            </div>
             <div className='mx-10'>
                 {Carousels.map((movie, index) => (
                     <Carousel key={index} carouselTitle={movie.title} icon={movie.icon} movies={movie.data} />
                 ))}
             </div>
+
+
             <Footer />
         </>
     )
