@@ -22,17 +22,10 @@ const Navbar = () => {
             <div className='flex justify-between w-full mx-5'>
                 <div>
                     <div className="btn btn-ghost text-3xl ">
-                        <img src={Logo} alt="MovieMania" />
+                        <img src={Logo} alt="MovieMania" className='w-full' />
                     </div>
                 </div>
-                {/**<div >
-                    <div className={` p-3 rounded-lg absolute `}>
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-6">
-                            <path fillRule="evenodd" d="M10.5 3.75a6.75 6.75 0 1 0 0 13.5 6.75 6.75 0 0 0 0-13.5ZM2.25 10.5a8.25 8.25 0 1 1 14.59 5.28l4.69 4.69a.75.75 0 1 1-1.06 1.06l-4.69-4.69A8.25 8.25 0 0 1 2.25 10.5Z" clipRule="evenodd" />
-                        </svg>
-                    </div>
-                    <input type="text" placeholder="Type here" className={`input input-bordered w-96 pl-12`} />
-                </div> */}
+             
                 <div className='flex items-center'>
                     <ul className="menu menu-horizontal px-1 text-white">
                         <li>
@@ -63,7 +56,7 @@ const Navbar = () => {
                 </div>
             </div>
             <dialog id="my_modal_2" className="modal" ref={modalRef}>
-                <div className="modal-box">
+                <div className="modal-box ">
                     <input type="text" className='input input-bordered w-full' placeholder='Search here...' />
                     <button className='mt-4 btn btn-error' onClick={handleCloseSearchModal}>Close</button>
                 </div>

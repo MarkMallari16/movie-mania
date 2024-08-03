@@ -1,14 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Navbar from '../components/Navbar'
-import MovieCarousel from '../components/MovieCarousel'
+import Carousel from '../components/Carousel'
 import Footer from '../components/Footer'
 import { Link } from 'react-router-dom'
 
-const Home = ({ nowPlaying, popular, topRated, upcoming }) => {
+const Home = ({ nowPlaying, popular, topRated, upcoming, popularTvShows }) => {
 
 
-    const movieCarousels = [
+    const Carousels = [
 
         {
             title: "Now Playing",
@@ -41,6 +41,15 @@ const Home = ({ nowPlaying, popular, topRated, upcoming }) => {
             </svg>
             ,
             data: upcoming,
+        },
+        {
+            title: "Popular TV Shows",
+            icon: <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 20.25h12m-7.5-3v3m3-3v3m-10.125-3h17.25c.621 0 1.125-.504 1.125-1.125V4.875c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125Z" />
+            </svg>
+
+            ,
+            data: popularTvShows,
         }
 
     ]
@@ -61,7 +70,7 @@ const Home = ({ nowPlaying, popular, topRated, upcoming }) => {
                 <div className='grid grid-cols-3  gap-5'>
 
                     {nowPlaying.results.slice(0, 6).map(nowPlay => (
-                        <div className='bg-slate-900 hover:opacity-50 transition-all ease-in-out'>
+                        <div key={nowPlay.id} className='bg-slate-900 hover:opacity-50 transition-all ease-in-out'>
                             <Link to={`movie/${nowPlay.id}`}>
                                 <div key={nowPlay.id} >
                                     <img src={`https://image.tmdb.org/t/p/w500${nowPlay.backdrop_path}`} alt={nowPlay.title} className='w-full rounded-lg aspect-auto bg-cover' />
@@ -73,8 +82,8 @@ const Home = ({ nowPlaying, popular, topRated, upcoming }) => {
                 </div>
             </div>
             <div className='mx-10'>
-                {movieCarousels.map((movie, index) => (
-                    <MovieCarousel key={index} carouselTitle={movie.title} icon={movie.icon} movies={movie.data} />
+                {Carousels.map((movie, index) => (
+                    <Carousel key={index} carouselTitle={movie.title} icon={movie.icon} movies={movie.data} />
                 ))}
             </div>
             <Footer />

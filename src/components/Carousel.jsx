@@ -1,7 +1,7 @@
 import React from 'react'
 import MovieCard from './MovieCard'
 import PropTypes from 'prop-types';
-const MovieCarousel = ({ carouselTitle, icon, movies }) => {
+const Carousel = ({ carouselTitle, icon, movies }) => {
     return (
         <>
             <h1 className='mt-10 mb-6 text-2xl text-white font-bold flex items-center gap-2'>
@@ -18,7 +18,7 @@ const MovieCarousel = ({ carouselTitle, icon, movies }) => {
         </>
     )
 }
-MovieCarousel.propTypes = {
+Carousel.propTypes = {
     carouselTitle: PropTypes.string.isRequired,
     movies: PropTypes.shape({
         results: PropTypes.arrayOf(
@@ -31,4 +31,4 @@ MovieCarousel.propTypes = {
     }).isRequired
 }
 
-export default MovieCarousel
+export default Carousel

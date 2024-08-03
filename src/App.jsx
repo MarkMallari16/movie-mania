@@ -18,9 +18,9 @@ function App() {
 
   const { data: nowPlaying, loading: loadingNowPlaying } = useFetch("https://api.themoviedb.org/3/movie/now_playing");
 
+  const { data: popularTvShows, loading: loadingPopularTvShows } = useFetch("https://api.themoviedb.org/3/tv/popular")
 
-
-
+  console.log(popularTvShows)
   if (loadingPopular || loadingNowPlaying || loadingTopRated || loadingUpcomingMovie)
     return <div className='min-h-screen grid place-items-center bg-slate-900'>
       <span className="loading loading-dots loading-lg text-white"></span>
@@ -28,11 +28,11 @@ function App() {
 
   return (
     <Router>
-      
+
       <div className='min-h-screen bg-slate-900'>
         <div>
           <Routes>
-            <Route path="/" element={<Home popular={popular} nowPlaying={nowPlaying} topRated={topRated} upcoming={upcomingMovie} />} />
+            <Route path="/" element={<Home popular={popular} nowPlaying={nowPlaying} topRated={topRated} upcoming={upcomingMovie} popularTvShows={popularTvShows} />} />
             <Route path="/movie/:id" element={<MovieDetail />} />
           </Routes>
         </div>
