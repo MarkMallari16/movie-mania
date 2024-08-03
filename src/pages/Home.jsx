@@ -68,7 +68,6 @@ const Home = ({ allMovies, nowPlaying, popular, topRated, upcoming, popularTvSho
                     </svg>
                     Featured Movies
                 </h1>
-
                 {/**
                   <div className='grid grid-cols-3  gap-5'>
 
@@ -84,9 +83,7 @@ const Home = ({ allMovies, nowPlaying, popular, topRated, upcoming, popularTvSho
 
                 </div>
                 */}
-
             </div>
-
             <div className='grid grid-cols-10  grid-rows-3 gap-5 mx-10 mt-10'>
                 {allMovies.results.slice(0, 1).map(nowPlay => (
                     <div key={nowPlay.id} className='relative bg-slate-900 col-span-6 row-span-4 hover:opacity-50 transition-all ease-in-out'>

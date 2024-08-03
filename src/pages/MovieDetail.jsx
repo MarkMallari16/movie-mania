@@ -27,7 +27,6 @@ const MovieDetail = () => {
         return () => clearTimeout(timer);
     }, [])
 
-
     if (movieLoading || videoLoading || creditsLoading || loadingSimilarMovies) return <p>Loading...</p>;
     console.log(videoData)
     const teaser = videoData?.results?.find(video => video.type === "Teaser" && video.site === "YouTube");
@@ -40,6 +39,7 @@ const MovieDetail = () => {
     const backdropUrl = `https://image.tmdb.org/t/p/original${movieDetail.backdrop_path}`;
     const directors = credits.crew.find(person => person.job === "Director");
     const characters = credits.cast.slice(0, 6);
+    
     return (
         <>
             <div className={`min-h-screen w-full  text-white relative  transition-all ease-in-out`} style={{
