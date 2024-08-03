@@ -65,9 +65,9 @@ const Home = ({ nowPlaying, popular, topRated, upcoming, popularTvShows }) => {
 
                     Featured Movies
                 </h1>
-                <h1 className='mb-6 text-2xl font-bold text-white'>
-                </h1>
-                <div className='grid grid-cols-3  gap-5'>
+
+                {/**
+                  <div className='grid grid-cols-3  gap-5'>
 
                     {nowPlaying.results.slice(0, 6).map(nowPlay => (
                         <div key={nowPlay.id} className='bg-slate-900 hover:opacity-50 transition-all ease-in-out'>
@@ -79,6 +79,19 @@ const Home = ({ nowPlaying, popular, topRated, upcoming, popularTvShows }) => {
                         </div>
                     ))}
 
+                </div>
+                */}
+                <div>
+                    <div className='grid w-full h-full grid-cols-10 grid-rows-3 justify-center items-center gap-5'>
+                        <div className='h-full w-full lg:p-10 col-span-4 row-span-3 bg-white rounded-lg font-black text-2xl'>Popular Movies</div>
+                        <div className='h-full w-full lg:p-10 col-span-4 row-span-1 bg-white rounded-lg font-black text-2xl'>Top Rated Movies</div>
+                        <div className='h-full w-full lg:p-10 col-span-2 row-span-1 bg-white rounded-lg font-black text-2xl'>Now Playing</div>
+                        <div className='h-full w-full lg:p-10 col-span-3 row-span-2 bg-white rounded-lg font-black text-2xl'>Popular TV Shows</div>
+                        <div className='h-full w-full lg:p-10 col-span-3 row-span-2 bg-white rounded-lg font-black text-2xl'>Top Rated TV Shows</div>
+                        <div className='h-full w-full lg:p-10 col-span-4 row-span-1 bg-white rounded-lg font-black text-2xl'>Movies</div>
+                        <div className='h-full w-full lg:p-10 col-span-6 row-span-1 bg-white rounded-lg font-black text-2xl'>Movies</div>
+
+                    </div>
                 </div>
             </div>
             <div className='mx-10'>
