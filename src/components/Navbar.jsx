@@ -22,7 +22,7 @@ const Navbar = () => {
                         <img src={Logo} alt="MovieMania" className='w-full' />
                     </div>
                 </div>
-             
+
                 <div className='flex items-center'>
                     <ul className="menu menu-horizontal px-1 text-white">
                         <li>
@@ -53,9 +53,17 @@ const Navbar = () => {
                 </div>
             </div>
             <dialog id="my_modal_2" className="modal" ref={modalRef}>
-                <div className="modal-box ">
-                    <input type="text" className='input input-bordered w-full' placeholder='Search here...' />
-                    <button className='mt-4 btn btn-error' onClick={handleCloseSearchModal}>Close</button>
+                <div className="modal-box bg-slate-900">
+                    <div className='flex justify-end text-white cursor-pointer' onClick={handleCloseSearchModal}>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-6">
+                            <path fillRule="evenodd" d="M5.47 5.47a.75.75 0 0 1 1.06 0L12 10.94l5.47-5.47a.75.75 0 1 1 1.06 1.06L13.06 12l5.47 5.47a.75.75 0 1 1-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 0 1-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 0 1 0-1.06Z" clipRule="evenodd" />
+                        </svg>
+                    </div>
+
+                    <input type="text" className='mt-6 input input-bordered w-full' placeholder='Search here...' />
+                    <div className='flex gap-3'>
+                        <button className='mt-4 btn btn-primary' onClick={handleCloseSearchModal}>Search</button>
+                    </div>
                 </div>
             </dialog>
         </div>

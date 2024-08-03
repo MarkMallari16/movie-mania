@@ -129,7 +129,7 @@ const MovieDetail = () => {
             </div>
 
             <div className='mx-20 mt-6'>
-                <h1 className='mt-10 text-3xl text-white font-bold'>Trailers & Clips</h1>
+                <h1 className='mt-10 text-xl text-white font-bold'>Trailers & Clips</h1>
                 <div className='carousel carousel-center flex gap-8  rounded-box mt-10 [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-200px),transparent_100%)]'>
                     {videos.map(video => (
                         <div
@@ -153,12 +153,12 @@ const MovieDetail = () => {
                     ))}
 
                 </div>
-                <h1 className='my-10 text-3xl text-white font-bold'>Casts</h1>
+                <h1 className='my-10 text-xl text-white font-bold'>Casts</h1>
                 <div className='flex flex-wrap justify-center gap-4'>
                     <CharacterComponent characters={characters} />
                 </div>
 
-                <h1 className='my-10 text-3xl text-white font-bold'>Similar Movies</h1>
+                <h1 className='my-10 text-xl text-white font-bold'>Similar Movies</h1>
 
                 <div className="gap-6 flex carousel carousel-end rounded-box w-full [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-200px),transparent_100%)]">
                     <div className="carousel-item space-x-5">
