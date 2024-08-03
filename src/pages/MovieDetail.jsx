@@ -3,7 +3,9 @@ import { Link, useParams } from 'react-router-dom';
 import useFetch from '../hooks/useFetch';
 import ReactPlayer from 'react-player';
 import CharacterComponent from '../components/CharacterComponent';
-import Navbar from '../components/Navbar';
+import Card from '../components/Card';
+
+
 
 const MovieDetail = () => {
     const { id } = useParams();
@@ -11,6 +13,8 @@ const MovieDetail = () => {
     const { data: credits, loading: creditsLoading } = useFetch(`https://api.themoviedb.org/3/movie/${id}/credits`);
     const { data: videoData, loading: videoLoading } = useFetch(`https://api.themoviedb.org/3/movie/${id}/videos`);
     const { data: movieImages, loading: movieImagesLoading } = useFetch(`https://api.themoviedb.org/3/movie/${id}/images`);
+    const { data: similarMovies, loading: loadingSimilarMovies } = useFetch(`https://api.themoviedb.org/3/movie/${id}/similar
+`)
     const [isTeaserEnded, setIsTeaserEnded] = useState(false);
     const [isHeartFill, setIsHeartFill] = useState(false);
     const [isDelayed, setIsDelayed] = useState(true);
@@ -22,7 +26,7 @@ const MovieDetail = () => {
         return () => clearTimeout(timer);
     }, [])
 
-    if (movieLoading || videoLoading || creditsLoading || movieImagesLoading) return <p>Loading...</p>;
+    if (movieLoading || videoLoading || creditsLoading || movieImagesLoading || loadingSimilarMovies) return <p>Loading...</p>;
     console.log(videoData)
     const teaser = videoData?.results?.find(video => video.type === "Teaser" && video.site === "YouTube");
     const teaserUrl = teaser ? `https://www.youtube.com/watch?v=${teaser.key}` : null;
@@ -35,7 +39,7 @@ const MovieDetail = () => {
     const directors = credits.crew.find(person => person.job === "Director");
     const characters = credits.cast.slice(0, 6);
 
-
+    console.log(similarMovies)
     return (
         <>
             <div className={`min-h-screen w-full  text-white relative  transition-all ease-in-out`} style={{
@@ -43,7 +47,7 @@ const MovieDetail = () => {
                 backgroundSize: 'cover',
                 backgroundPosition: 'center'
             }}>
-            
+
                 {!isDelayed && (
                     <ReactPlayer
                         url={teaserUrl}
@@ -55,7 +59,7 @@ const MovieDetail = () => {
                         onEnded={() => setIsTeaserEnded(true)}
                         className='absolute top-0 left-0  h-full z-0' />
                 )}
-               
+
                 <div className='absolute z-20 left-10 top-6'>
 
                     <Link to='/' className='btn'>
@@ -68,9 +72,9 @@ const MovieDetail = () => {
                 <div className='bg-slate-900 bg-opacity-75 min-h-screen flex items-center p-10 lg:p-20 relative z-10 '
                 >
                     <div className='mt-10'>
-                        <div className='mb-2 flex gap-3'>
+                        <div className='mb-2 flex gap-2'>
                             {movieDetail.genres.map(detail => (
-                                <p className='bg-slate-800 p-2 rounded-lg text-sm' key={detail}>{detail.name}</p>
+                                <p className='font-medium p-2 rounded-lg text-sm' key={detail}>{detail.name}</p>
                             ))}
                         </div>
 
@@ -167,9 +171,24 @@ const MovieDetail = () => {
                     <CharacterComponent characters={characters} />
                 </div>
 
-                <h1 className='mt-10 text-3xl text-white font-bold'>Similar Movies</h1>
+                <h1 className='my-10 text-3xl text-white font-bold'>Similar Movies</h1>
+
+                <div className=" gap-6 flex  carousel carousel-end rounded-box w-full [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-200px),transparent_100%)]">
+                    <div className="carousel-item space-x-5 ">
+                        {similarMovies.results.map(similar => (
+                            <Card
+                                key={similar.id}
+                                id={similar.id}
+                                poster={similar.poster_path}
+                                rate={similar.vote_average}
+                                releaseDate={new Date(similar.release_date).getFullYear()}
+                                title={similar.title}
+                            />
+                        ))}
+                    </div>
+                </div>
             </div>
-           
+
         </>
     );
 };

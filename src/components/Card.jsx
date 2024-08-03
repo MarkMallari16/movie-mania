@@ -1,11 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const MovieCard = ({ id, poster, rate, releaseDate, title, }) => {
+const Card = ({ id, poster, rate, releaseDate, title, type }) => {
     const roundedRate = rate.toFixed(1)
-
+    const linkPath = type === "movie" ? `/movie/${id}` : `/tv/${id}`;
+    console.log(type)
     return (
-        <Link to={`/movie/${id}`}>
+        <Link to={linkPath}>
             <div >
                 <div className='w-full hover:scale-105 transition-all ease-in-out'>
                     <img src={`https://image.tmdb.org/t/p/w200${poster}`} alt={title} className='w-full rounded-lg bg-slate-900 ' />
@@ -29,4 +30,4 @@ const MovieCard = ({ id, poster, rate, releaseDate, title, }) => {
     )
 }
 
-export default MovieCard
+export default Card

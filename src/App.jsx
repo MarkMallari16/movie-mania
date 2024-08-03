@@ -6,6 +6,7 @@ import useFetch from './hooks/useFetch'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import MovieDetail from './pages/MovieDetail';
+import Details from './components/Details';
 
 function App() {
 
@@ -34,6 +35,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home popular={popular} nowPlaying={nowPlaying} topRated={topRated} upcoming={upcomingMovie} popularTvShows={popularTvShows} />} />
             <Route path="/movie/:id" element={<MovieDetail />} />
+            <Route path="/tv/:id" element={<Details />} />
           </Routes>
         </div>
       </div>
