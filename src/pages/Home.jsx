@@ -5,7 +5,7 @@ import Carousel from '../components/Carousel'
 import Footer from '../components/Footer'
 import { Link } from 'react-router-dom'
 
-const Home = ({ nowPlaying, popular, topRated, upcoming, popularTvShows }) => {
+const Home = ({ allMovies, nowPlaying, popular, topRated, upcoming, popularTvShows }) => {
 
 
     const CarouselsData = [
@@ -66,7 +66,6 @@ const Home = ({ nowPlaying, popular, topRated, upcoming, popularTvShows }) => {
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-6">
                         <path fillRule="evenodd" d="M8.603 3.799A4.49 4.49 0 0 1 12 2.25c1.357 0 2.573.6 3.397 1.549a4.49 4.49 0 0 1 3.498 1.307 4.491 4.491 0 0 1 1.307 3.497A4.49 4.49 0 0 1 21.75 12a4.49 4.49 0 0 1-1.549 3.397 4.491 4.491 0 0 1-1.307 3.497 4.491 4.491 0 0 1-3.497 1.307A4.49 4.49 0 0 1 12 21.75a4.49 4.49 0 0 1-3.397-1.549 4.49 4.49 0 0 1-3.498-1.306 4.491 4.491 0 0 1-1.307-3.498A4.49 4.49 0 0 1 2.25 12c0-1.357.6-2.573 1.549-3.397a4.49 4.49 0 0 1 1.307-3.497 4.49 4.49 0 0 1 3.497-1.307Zm7.007 6.387a.75.75 0 1 0-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 0 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.14-.094l3.75-5.25Z" clipRule="evenodd" />
                     </svg>
-
                     Featured Movies
                 </h1>
 
@@ -85,46 +84,33 @@ const Home = ({ nowPlaying, popular, topRated, upcoming, popularTvShows }) => {
 
                 </div>
                 */}
-                <div>
-                    <div className='grid w-full h-full grid-cols-10 grid-rows-3 justify-center items-center gap-5'>
-                        <div className='h-full w-full lg:p-10 col-span-4 row-span-3 bg-slate-800 rounded-lg font-black text-xl ring-1 ring-slate-700 ring-inset text-white'>Popular Movies</div>
-                        <div className='h-full w-full lg:p-10 col-span-4 row-span-1 bg-slate-800 rounded-lg font-black text-xl ring-1 ring-slate-700 ring-inset text-white'>Top Rated Movies</div>
-                        <div className='h-full w-full lg:p-10 col-span-2 row-span-1 bg-slate-800 rounded-lg font-black text-xl ring-1 ring-slate-700 ring-inset text-white'>Now Playing</div>
-                        <div className='h-full w-full lg:p-10 col-span-3 row-span-2 bg-slate-800 rounded-lg font-black text-xl ring-1 ring-slate-700 ring-inset text-white'>Popular TV Shows</div>
-                        <div className='h-full w-full lg:p-10 col-span-3 row-span-2 bg-slate-800 rounded-lg font-black text-xl ring-1 ring-slate-700 ring-inset text-white'>Top Rated TV Shows</div>
-                        <div className='h-full w-full lg:p-10 col-span-5 row-span-1 bg-slate-800 rounded-lg font-black text-xl ring-1 ring-slate-700 ring-inset text-white'>Movies</div>
-                        <div className='h-full w-full lg:p-10 col-span-5 row-span-1 bg-slate-800 rounded-lg font-black text-xl ring-1 ring-slate-700 ring-inset text-white'>Movies</div>
 
-                    </div>
-                </div>
             </div>
 
-            <div className='grid grid-cols-10 grid-rows-4 gap-6 mx-10 mt-10'>
-                {nowPlaying.results.slice(0, 1).map(nowPlay => (
-                    <div key={nowPlay.id} className='relative bg-slate-900 h-full   col-span-6 row-span-4  hover:opacity-50 transition-all ease-in-out'>
+            <div className='grid grid-cols-10  grid-rows-2 gap-6 mx-10 mt-10'>
+                {allMovies.results.slice(0, 1).map(nowPlay => (
+                    <div key={nowPlay.id} className='relative bg-slate-900 col-span-6 row-span-2 hover:opacity-50 transition-all ease-in-out'>
                         <Link to={`movie/${nowPlay.id}`}>
-                            <div key={nowPlay.id} >
+                            <div key={nowPlay.id}>
                                 <img src={`https://image.tmdb.org/t/p/w500${nowPlay.backdrop_path}`} alt={nowPlay.title} className='w-full h-full rounded-lg aspect-auto bg-cover' />
                             </div>
-                            <img src={`https://image.tmdb.org/t/p/w500${nowPlay.poster_path}`} alt={nowPlay.title} className=' absolute inset-14 w-60 rounded-lg' />
+                            <img src={`https://image.tmdb.org/t/p/w500${nowPlay.poster_path}`} alt={nowPlay.title} className='absolute inset-14 w-60 rounded-lg' />
                         </Link>
-
                     </div>
                 ))}
-                {nowPlaying.results.slice(1, 7).map(nowPlay => (
+                {allMovies.results.slice(1, 5).map(nowPlay => (
                     <div key={nowPlay.id} className='bg-slate-900 col-span-2 row-span-1 hover:opacity-50 transition-all ease-in-out'>
                         <Link to={`movie/${nowPlay.id}`}>
-                            <div key={nowPlay.id} >
+                            <div key={nowPlay.id}>
                                 <img src={`https://image.tmdb.org/t/p/w500${nowPlay.backdrop_path}`} alt={nowPlay.title} className='w-full rounded-lg aspect-auto bg-cover' />
                             </div>
                         </Link>
                     </div>
                 ))}
-
             </div>
             <div className='mx-10'>
                 {CarouselsData.map((datas, index) => (
-                    <Carousel key={index} carouselTitle={datas.title} icon={datas.icon} datas={datas.data} type={datas.type}/>
+                    <Carousel key={index} carouselTitle={datas.title} icon={datas.icon} datas={datas.data} type={datas.type} />
                 ))}
             </div>
 

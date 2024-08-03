@@ -28,7 +28,7 @@ const MovieDetail = () => {
     }, [])
 
 
-    if (movieLoading || videoLoading || creditsLoading ||  loadingSimilarMovies) return <p>Loading...</p>;
+    if (movieLoading || videoLoading || creditsLoading || loadingSimilarMovies) return <p>Loading...</p>;
     console.log(videoData)
     const teaser = videoData?.results?.find(video => video.type === "Teaser" && video.site === "YouTube");
     const teaserUrl = teaser ? `https://www.youtube.com/watch?v=${teaser.key}` : null;
@@ -163,6 +163,7 @@ const MovieDetail = () => {
                 <div className="gap-6 flex carousel carousel-end rounded-box w-full [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-200px),transparent_100%)]">
                     <div className="carousel-item space-x-5">
                         {similarMovies.results.map(similar => (
+
                             <Card
                                 key={similar.id}
                                 id={similar.id}
@@ -172,6 +173,7 @@ const MovieDetail = () => {
                                 title={similar.title}
                                 type="movie"
                             />
+
                         ))}
                     </div>
                 </div>
