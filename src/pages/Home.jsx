@@ -83,13 +83,13 @@ const Home = ({ nowPlaying, popular, topRated, upcoming, popularTvShows }) => {
                 */}
                 <div>
                     <div className='grid w-full h-full grid-cols-10 grid-rows-3 justify-center items-center gap-5'>
-                        <div className='h-full w-full lg:p-10 col-span-4 row-span-3 bg-white rounded-lg font-black text-2xl'>Popular Movies</div>
-                        <div className='h-full w-full lg:p-10 col-span-4 row-span-1 bg-white rounded-lg font-black text-2xl'>Top Rated Movies</div>
-                        <div className='h-full w-full lg:p-10 col-span-2 row-span-1 bg-white rounded-lg font-black text-2xl'>Now Playing</div>
-                        <div className='h-full w-full lg:p-10 col-span-3 row-span-2 bg-white rounded-lg font-black text-2xl'>Popular TV Shows</div>
-                        <div className='h-full w-full lg:p-10 col-span-3 row-span-2 bg-white rounded-lg font-black text-2xl'>Top Rated TV Shows</div>
-                        <div className='h-full w-full lg:p-10 col-span-4 row-span-1 bg-white rounded-lg font-black text-2xl'>Movies</div>
-                        <div className='h-full w-full lg:p-10 col-span-6 row-span-1 bg-white rounded-lg font-black text-2xl'>Movies</div>
+                        <div className='h-full w-full lg:p-10 col-span-4 row-span-3 bg-slate-800 rounded-lg font-black text-xl ring-1 ring-slate-700 ring-inset text-white'>Popular Movies</div>
+                        <div className='h-full w-full lg:p-10 col-span-4 row-span-1 bg-slate-800 rounded-lg font-black text-xl ring-1 ring-slate-700 ring-inset text-white'>Top Rated Movies</div>
+                        <div className='h-full w-full lg:p-10 col-span-2 row-span-1 bg-slate-800 rounded-lg font-black text-xl ring-1 ring-slate-700 ring-inset text-white'>Now Playing</div>
+                        <div className='h-full w-full lg:p-10 col-span-3 row-span-2 bg-slate-800 rounded-lg font-black text-xl ring-1 ring-slate-700 ring-inset text-white'>Popular TV Shows</div>
+                        <div className='h-full w-full lg:p-10 col-span-3 row-span-2 bg-slate-800 rounded-lg font-black text-xl ring-1 ring-slate-700 ring-inset text-white'>Top Rated TV Shows</div>
+                        <div className='h-full w-full lg:p-10 col-span-4 row-span-1 bg-slate-800 rounded-lg font-black text-xl ring-1 ring-slate-700 ring-inset text-white'>Movies</div>
+                        <div className='h-full w-full lg:p-10 col-span-6 row-span-1 bg-slate-800 rounded-lg font-black text-xl ring-1 ring-slate-700 ring-inset text-white'>Movies</div>
 
                     </div>
                 </div>

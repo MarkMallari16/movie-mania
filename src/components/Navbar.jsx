@@ -14,9 +14,6 @@ const Navbar = () => {
         }
     }
 
-
-
-
     return (
         <div className="navbar pt-4" >
             <div className='flex justify-between w-full mx-5'>
