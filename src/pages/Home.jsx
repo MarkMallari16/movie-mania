@@ -62,20 +62,20 @@ const Home = ({ allMovies, nowPlaying, popular, topRated, upcoming, popularTvSho
         <>
             <Navbar />
             <div className='mt-10 mx-10 '>
-                <h1 className='mt-10 mb-6 text-2xl text-white font-bold flex items-center gap-2'>
+                <h1 className='mt-10 mb-3 text-2xl text-white font-bold flex items-center gap-2'>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-6">
                         <path fillRule="evenodd" d="M8.603 3.799A4.49 4.49 0 0 1 12 2.25c1.357 0 2.573.6 3.397 1.549a4.49 4.49 0 0 1 3.498 1.307 4.491 4.491 0 0 1 1.307 3.497A4.49 4.49 0 0 1 21.75 12a4.49 4.49 0 0 1-1.549 3.397 4.491 4.491 0 0 1-1.307 3.497 4.491 4.491 0 0 1-3.497 1.307A4.49 4.49 0 0 1 12 21.75a4.49 4.49 0 0 1-3.397-1.549 4.49 4.49 0 0 1-3.498-1.306 4.491 4.491 0 0 1-1.307-3.498A4.49 4.49 0 0 1 2.25 12c0-1.357.6-2.573 1.549-3.397a4.49 4.49 0 0 1 1.307-3.497 4.49 4.49 0 0 1 3.497-1.307Zm7.007 6.387a.75.75 0 1 0-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 0 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.14-.094l3.75-5.25Z" clipRule="evenodd" />
                     </svg>
-                    Featured Movies
+                    Recommended for you
                 </h1>
                 
             </div>
-            <div className='grid grid-cols-10  grid-rows-3 gap-5 mx-10 mt-10'>
+            <div className='grid grid-cols-10  grid-rows-3 gap-5 mx-10 mt-6'>
                 {allMovies.results.slice(0, 1).map(nowPlay => (
                     <div key={nowPlay.id} className='relative bg-slate-900 col-span-6 row-span-4 hover:opacity-50 transition-all ease-in-out'>
                         <Link to={`movie/${nowPlay.id}`}>
                             <div key={nowPlay.id}>
-                                <img src={`https://image.tmdb.org/t/p/w500${nowPlay.backdrop_path}`} alt={nowPlay.title} className='w-full h-full rounded-lg aspect-auto bg-cover opacity-50' />
+                                <img src={`https://image.tmdb.org/t/p/w500${nowPlay.backdrop_path}`} alt={nowPlay.title} className='w-full lg:h-[68vh] rounded-lg aspect-auto bg-cover opacity-50' />
                             </div>
                             <div className='absolute inset-14 '>
                                 <div className='flex items-center gap-5 '>
@@ -100,8 +100,8 @@ const Home = ({ allMovies, nowPlaying, popular, topRated, upcoming, popularTvSho
                         <Link to={`movie/${nowPlay.id}`}>
                             <div key={nowPlay.id} className=' rounded-lg overflow-hidden'>
                                 <img src={`https://image.tmdb.org/t/p/w500${nowPlay.backdrop_path}`} alt={nowPlay.title} className='w-fullaspect-auto bg-cover opacity-50' />
-                                <div className='absolute bottom-0 pl-4 py-1 w-full'>
-                                    <p className=' backdrop-blur-sm text-white  w-full h-10'>{nowPlay.title}</p>
+                                <div className='absolute bottom-0 right-0   w-full'>
+                                    <p className=' backdrop-blur-sm text-white py-2 pl-4 w-full h-10'>{nowPlay.title}</p>
                                 </div>
                             </div>
                         </Link>
