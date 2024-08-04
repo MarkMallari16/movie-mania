@@ -39,7 +39,8 @@ const MovieDetail = () => {
     const backdropUrl = `https://image.tmdb.org/t/p/original${movieDetail.backdrop_path}`;
     const directors = credits.crew.find(person => person.job === "Director");
     const characters = credits.cast.slice(0, 6);
-    
+
+
     return (
         <>
             <div className={`min-h-screen w-full  text-white relative  transition-all ease-in-out`} style={{
@@ -163,7 +164,6 @@ const MovieDetail = () => {
                 <div className="gap-6 flex carousel carousel-end rounded-box w-full [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-200px),transparent_100%)]">
                     <div className="carousel-item space-x-5">
                         {similarMovies.results.map(similar => (
-
                             <Card
                                 key={similar.id}
                                 id={similar.id}
@@ -173,7 +173,6 @@ const MovieDetail = () => {
                                 title={similar.title}
                                 type="movie"
                             />
-
                         ))}
                     </div>
                 </div>
