@@ -112,10 +112,10 @@ const Home = ({ allMovies, nowPlaying, popular, topRated, upcoming, popularTvSho
                 {allMovies.results.slice(1, 7).map(nowPlay => (
                     <div key={nowPlay.id} className='relative bg-slate-900 col-span-2 row-span-1 hover:opacity-50 transition-all ease-in-out'>
                         <Link to={`movie/${nowPlay.id}`}>
-                            <div key={nowPlay.id} >
-                                <img src={`https://image.tmdb.org/t/p/w500${nowPlay.backdrop_path}`} alt={nowPlay.title} className='w-full rounded-lg aspect-auto bg-cover opacity-50' />
-                                <div>
-                                    <p className='absolute bottom-0 pl-4  text-white backdrop-blur-md w-full h-10'>{nowPlay.title}</p>
+                            <div key={nowPlay.id} className=' rounded-lg overflow-hidden'>
+                                <img src={`https://image.tmdb.org/t/p/w500${nowPlay.backdrop_path}`} alt={nowPlay.title} className='w-fullaspect-auto bg-cover opacity-50' />
+                                <div className='absolute bottom-0 pl-4 py-1 w-full'>
+                                    <p className=' backdrop-blur-sm text-white  w-full h-10'>{nowPlay.title}</p>
                                 </div>
                             </div>
                         </Link>
