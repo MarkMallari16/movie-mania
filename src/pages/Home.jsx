@@ -68,21 +68,7 @@ const Home = ({ allMovies, nowPlaying, popular, topRated, upcoming, popularTvSho
                     </svg>
                     Featured Movies
                 </h1>
-                {/**
-                  <div className='grid grid-cols-3  gap-5'>
-
-                    {nowPlaying.results.slice(0, 6).map(nowPlay => (
-                        <div key={nowPlay.id} className='bg-slate-900 hover:opacity-50 transition-all ease-in-out'>
-                            <Link to={`movie/${nowPlay.id}`}>
-                                <div key={nowPlay.id} >
-                                    <img src={`https://image.tmdb.org/t/p/w500${nowPlay.backdrop_path}`} alt={nowPlay.title} className='w-full rounded-lg aspect-auto bg-cover' />
-                                </div>
-                            </Link>
-                        </div>
-                    ))}
-
-                </div>
-                */}
+                
             </div>
             <div className='grid grid-cols-10  grid-rows-3 gap-5 mx-10 mt-10'>
                 {allMovies.results.slice(0, 1).map(nowPlay => (
