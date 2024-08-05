@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Carousel from '../components/Carousel'
-import Footer from '../components/Footer'
+
 import { Link } from 'react-router-dom'
 
 const Home = ({ allMovies, nowPlaying, popular, topRated, upcoming }) => {
@@ -121,9 +121,6 @@ const Home = ({ allMovies, nowPlaying, popular, topRated, upcoming }) => {
                     <Carousel key={index} carouselTitle={datas.title} icon={datas.icon} datas={datas.data} type={datas.type} />
                 ))}
             </div>
-
-
-            <Footer />
         </>
     )
 }
