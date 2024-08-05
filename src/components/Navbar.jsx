@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react'
 import Logo from '../assets/logo1.png'
 import useFetch from '../hooks/useFetch';
+import { Link } from 'react-router-dom';
 const Navbar = () => {
     const modalRef = useRef(null);
     const [query, setQuery] = useState("");
@@ -39,14 +40,14 @@ const Navbar = () => {
                 <div className='flex items-center'>
                     <ul className="menu menu-horizontal px-1 text-white uppercase font-medium">
                         <li>
-                            <a>Movies</a>
+                            <Link>Movies</Link>
                         </li>
                        
                         <li>
-                            <a>Popular</a>
+                            <Link to='/movies/popular'>Popular</Link>
                         </li>
                         <li>
-                            <a>Top Rated</a>
+                            <Link>Top Rated</Link>
                         </li>
                     </ul>
                 </div>
