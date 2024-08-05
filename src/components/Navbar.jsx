@@ -1,7 +1,13 @@
 import React, { useRef, useState } from 'react'
 import Logo from '../assets/logo1.png'
+import useFetch from '../hooks/useFetch';
 const Navbar = () => {
     const modalRef = useRef(null);
+    const [query, setQuery] = useState("");
+
+
+    const [searchUrl, setSearchUrl] = useState("");
+    const { data, loading } = useFetch(searchUrl);
 
     const handleOpenSearchModal = () => {
         if (modalRef.current) {
@@ -14,11 +20,18 @@ const Navbar = () => {
         }
     }
 
+    const handleSearchInputOpen = () => {
+        setIsSearchInputOpen(!isSearchInputOpen);
+    }
+    const handleSearch = () => {
+        const url = `https://api.themoviedb.org/3/search/movie?query=${query}`
+        setSearchUrl(url);
+    }
     return (
         <div className="navbar pt-4" >
             <div className='flex justify-between w-full mx-5'>
                 <div>
-                    <div className="btn btn-ghost text-3xl ">
+                    <div>
                         <img src={Logo} alt="MovieMania" className='w-full' />
                     </div>
                 </div>
@@ -28,12 +41,7 @@ const Navbar = () => {
                         <li>
                             <a>Movies</a>
                         </li>
-                        <li>
-                            <a>TV</a>
-                        </li>
-                        <li>
-                            <a>Series</a>
-                        </li>
+                       
                         <li>
                             <a>Popular</a>
                         </li>
@@ -54,13 +62,24 @@ const Navbar = () => {
             </div>
             <dialog id="my_modal_2" className="modal" ref={modalRef}>
                 <div className="modal-box bg-slate-900">
-                 
 
-                    <input type="text" className='mt-6 input input-bordered w-full' placeholder='Search here...' />
+
+                    <input type="text" value={query} onChange={(e) => setQuery(e.target.value)} className='mt-6 input input-bordered w-full' placeholder='Search here...' />
                     <div className='flex gap-3'>
-                        <button className='mt-4 btn btn-secondary' onClick={handleCloseSearchModal}>Search</button>
+                        <button className='mt-4 btn btn-secondary' onClick={handleSearch}>Search</button>
                         <button className='mt-4 btn ' onClick={handleCloseSearchModal}>Close</button>
                     </div>
+
+                    {loading && <p>Loading...</p>}
+                    {data && data.results && (
+                        <div>
+                            {data.results.map((movie) => (
+                                <div key={movie.id} className='text-white'>
+                                    {movie.title}
+                                </div>
+                            ))}
+                        </div>
+                    )}
                 </div>
             </dialog>
         </div>

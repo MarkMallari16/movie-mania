@@ -4,6 +4,7 @@ import useFetch from '../hooks/useFetch';
 import ReactPlayer from 'react-player';
 import CharacterComponent from '../components/CharacterComponent';
 import Card from '../components/Card';
+import TrailerAndClipsComponent from '../components/TrailerAndClipsComponent';
 
 
 
@@ -41,8 +42,6 @@ const MovieDetail = () => {
     const backdropUrl = `https://image.tmdb.org/t/p/original${movieDetail.backdrop_path}`;
     const directors = credits.crew.find(person => person.job === "Director");
     const characters = credits.cast.slice(0, 6);
-    const starring = credits.crew;
-
     return (
         <>
             <div className={`min-h-screen w-full  text-white relative  transition-all ease-in-out`} style={{
@@ -145,29 +144,9 @@ const MovieDetail = () => {
 
             <div className='mx-10 mt-6'>
                 <h1 className='mt-10 text-xl text-white font-bold'>Trailers & Clips</h1>
-                <div className='carousel carousel-center flex gap-8  rounded-box mt-10 [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-200px),transparent_100%)]'>
-                    {videos.map(video => (
-                        <div
-                            key={video.id}
-                            style={{
-                                width: '60vw',
-                                height: '40vh',
-                                borderRadius: '10px',
-                                overflow: 'hidden'
-                            }}
-                            className='carousel-item'
-                        >
-                            <ReactPlayer
-                                url={`https://www.youtube.com/watch?v=${video.key}`}
-                                muted
-                                controls
-                                width="100%"
-                                height="100%"
-                            />
-                        </div>
-                    ))}
 
-                </div>
+                <TrailerAndClipsComponent videos={videos} />
+                 
                 <h1 className='my-10 text-xl text-white font-bold'>Casts</h1>
                 <div className='flex flex-wrap justify-center gap-4'>
                     <CharacterComponent characters={characters} />
