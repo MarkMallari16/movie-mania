@@ -8,6 +8,7 @@ import Home from './pages/Home';
 import MovieDetail from './pages/MovieDetail';
 import Details from './components/Details';
 import PopularMovies from './components/PopularMovies';
+import Navbar from './components/Navbar';
 
 function App() {
   const { data: allMovies, loading: loadingAllMovies } = useFetch("https://api.themoviedb.org/3/discover/movie")
@@ -30,7 +31,7 @@ function App() {
 
   return (
     <Router>
-
+    <Navbar />
       <div className='min-h-screen bg-slate-900'>
         <div>
           <Routes>

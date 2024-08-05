@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Navbar from '../components/Navbar'
 import Carousel from '../components/Carousel'
 import Footer from '../components/Footer'
 import { Link } from 'react-router-dom'
@@ -52,7 +51,7 @@ const Home = ({ allMovies, nowPlaying, popular, topRated, upcoming }) => {
 
     return (
         <>
-            <Navbar />
+         
             <div className='mt-10 mx-10 '>
                 <h1 className='mt-10 mb-3 text-2xl text-white font-bold flex items-center gap-2'>
 

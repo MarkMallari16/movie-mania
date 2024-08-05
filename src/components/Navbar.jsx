@@ -46,7 +46,7 @@ const Navbar = () => {
                         </div>
 
 
-                        <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
+                        <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-50 w-52 p-2 shadow">
                             <li><a href="/profile">View Profile</a></li>
                             <li><a href="/settings">Settings</a></li>
                             <li><a href="/logout">Logout</a></li>
