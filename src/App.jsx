@@ -9,6 +9,9 @@ import MovieDetail from './pages/MovieDetail';
 import Details from './components/Details';
 import PopularMovies from './components/PopularMovies';
 import Navbar from './components/Navbar';
+import TopRatedMovies from './components/TopRatedMovies';
+import UpcomingMovies from './components/UpcomingMovies';
+import Footer from './components/Footer';
 
 function App() {
   const { data: allMovies, loading: loadingAllMovies } = useFetch("https://api.themoviedb.org/3/discover/movie")
@@ -24,24 +27,28 @@ function App() {
 
 
 
-  if (loadingAllMovies || loadingPopular || loadingNowPlaying || loadingTopRated || loadingUpcomingMovie )
+  if (loadingAllMovies || loadingPopular || loadingNowPlaying || loadingTopRated || loadingUpcomingMovie)
     return <div className='min-h-screen grid place-items-center bg-slate-900'>
       <span className="loading loading-dots loading-lg text-white"></span>
     </div>
 
   return (
     <Router>
-    <Navbar />
+      <Navbar />
       <div className='min-h-screen bg-slate-900'>
         <div>
           <Routes>
-            <Route path="/" element={<Home allMovies={allMovies} popular={popular} nowPlaying={nowPlaying} topRated={topRated} upcoming={upcomingMovie}/>} />
-            <Route path="/movies/popular" element={<PopularMovies />} />
+            <Route path="/" element={<Home allMovies={allMovies} popular={popular} nowPlaying={nowPlaying} topRated={topRated} upcoming={upcomingMovie} />} />
+            <Route path="/movies/popular" element={<PopularMovies popular={popular} />} />
+            <Route path="/movies/toprated" element={<TopRatedMovies topRated={topRated} />} />
+            <Route path="/movies/upcoming" element={<UpcomingMovies upcoming={upcomingMovie}/>} />
+
             <Route path="/movie/:id" element={<MovieDetail />} />
             <Route path="/tv/:id" element={<Details />} />
           </Routes>
         </div>
       </div>
+      <Footer/>
     </Router>
   )
 }
