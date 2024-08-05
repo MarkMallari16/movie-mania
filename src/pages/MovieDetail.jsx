@@ -27,19 +27,21 @@ const MovieDetail = () => {
         return () => clearTimeout(timer);
     }, [])
 
-    if (movieLoading || videoLoading || creditsLoading || loadingSimilarMovies) return <p>Loading...</p>;
-    console.log(videoData)
+    if (movieLoading || videoLoading || creditsLoading || loadingSimilarMovies)
+        return <div className='min-h-screen grid place-items-center bg-slate-900'>
+            <span className="loading loading-dots loading-lg text-white"></span>
+        </div>;
+
     const teaser = videoData?.results?.find(video => video.type === "Teaser" && video.site === "YouTube");
     const teaserUrl = teaser ? `https://www.youtube.com/watch?v=${teaser.key}` : null;
 
 
     const videos = videoData.results.filter(video => video.site === "YouTube" && video.type === 'Teaser' || video.type === "Trailer").slice(0, 8);
-    console.log(videos)
 
     const backdropUrl = `https://image.tmdb.org/t/p/original${movieDetail.backdrop_path}`;
     const directors = credits.crew.find(person => person.job === "Director");
     const characters = credits.cast.slice(0, 6);
-
+    const starring = credits.crew;
 
     return (
         <>
@@ -62,7 +64,7 @@ const MovieDetail = () => {
                 )}
 
                 <div className='absolute z-20 left-10 top-6'>
-                    <Link to='/' className='btn btn-square btn-primary'>
+                    <Link to='/' className='btn btn-ghost'>
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-6">
                             <path fillRule="evenodd" d="M11.03 3.97a.75.75 0 0 1 0 1.06l-6.22 6.22H21a.75.75 0 0 1 0 1.5H4.81l6.22 6.22a.75.75 0 1 1-1.06 1.06l-7.5-7.5a.75.75 0 0 1 0-1.06l7.5-7.5a.75.75 0 0 1 1.06 0Z" clipRule="evenodd" />
                         </svg>
@@ -114,7 +116,10 @@ const MovieDetail = () => {
                             <p className='mt-4 lg:w-full max-w-3xl'>{movieDetail.overview}</p>
                         </div>
                         <div className='mt-6'>
-                            <p>Director: {directors.name}</p>
+                            <p><span className='text-slate-300 font-medium'>Starring:</span>  {characters.map(character => character.name).join(" , ")}</p>
+                        </div>
+                        <div className='mt-2'>
+                            <p><span className='text-slate-300 font-medium'>Director:</span> {directors.name}</p>
                         </div>
                         <div className='flex gap-3 mt-6'>
                             <button className='btn btn-secondary'>
@@ -138,7 +143,7 @@ const MovieDetail = () => {
                 </div>
             </div>
 
-            <div className='mx-20 mt-6'>
+            <div className='mx-10 mt-6'>
                 <h1 className='mt-10 text-xl text-white font-bold'>Trailers & Clips</h1>
                 <div className='carousel carousel-center flex gap-8  rounded-box mt-10 [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-200px),transparent_100%)]'>
                     {videos.map(video => (

@@ -20,10 +20,9 @@ function App() {
 
   const { data: nowPlaying, loading: loadingNowPlaying } = useFetch("https://api.themoviedb.org/3/movie/now_playing");
 
-  const { data: popularTvShows, loading: loadingPopularTvShows } = useFetch("https://api.themoviedb.org/3/tv/popular")
 
-  console.log(allMovies)
-  if (loadingAllMovies || loadingPopular || loadingNowPlaying || loadingTopRated || loadingUpcomingMovie || loadingPopularTvShows)
+
+  if (loadingAllMovies || loadingPopular || loadingNowPlaying || loadingTopRated || loadingUpcomingMovie )
     return <div className='min-h-screen grid place-items-center bg-slate-900'>
       <span className="loading loading-dots loading-lg text-white"></span>
     </div>
@@ -34,7 +33,7 @@ function App() {
       <div className='min-h-screen bg-slate-900'>
         <div>
           <Routes>
-            <Route path="/" element={<Home allMovies={allMovies} popular={popular} nowPlaying={nowPlaying} topRated={topRated} upcoming={upcomingMovie} popularTvShows={popularTvShows} />} />
+            <Route path="/" element={<Home allMovies={allMovies} popular={popular} nowPlaying={nowPlaying} topRated={topRated} upcoming={upcomingMovie}/>} />
             <Route path="/movie/:id" element={<MovieDetail />} />
             <Route path="/tv/:id" element={<Details />} />
           </Routes>

@@ -5,7 +5,7 @@ import Carousel from '../components/Carousel'
 import Footer from '../components/Footer'
 import { Link } from 'react-router-dom'
 
-const Home = ({ allMovies, nowPlaying, popular, topRated, upcoming, popularTvShows }) => {
+const Home = ({ allMovies, nowPlaying, popular, topRated, upcoming}) => {
 
 
     const CarouselsData = [
@@ -46,15 +46,7 @@ const Home = ({ allMovies, nowPlaying, popular, topRated, upcoming, popularTvSho
             type: "movie",
             data: upcoming,
         },
-        {
-            title: "Popular TV Shows",
-            icon: <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M6 20.25h12m-7.5-3v3m3-3v3m-10.125-3h17.25c.621 0 1.125-.504 1.125-1.125V4.875c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125Z" />
-            </svg>
-            ,
-            type: "tv",
-            data: popularTvShows,
-        }
+      
 
     ]
 
@@ -125,7 +117,6 @@ Home.propTypes = {
     popular: PropTypes.object.isRequired,
     topRated: PropTypes.object.isRequired,
     upcoming: PropTypes.object.isRequired,
-    movies: PropTypes.object.isRequired
 };
 
 export default Home
