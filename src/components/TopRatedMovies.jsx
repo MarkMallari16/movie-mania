@@ -7,8 +7,8 @@ const TopRatedMovies = ({ topRated }) => {
             <h1 className='my-8 text-2xl text-white font-medium'>Top Rated  Movies</h1>
             <div className='rounded-box flex flex-wrap gap-8 justify-center'>
                 {topRated.results.map(topRatedMovie => (
-                    <Link to={`/movie/${topRatedMovie.id}`}>
-                        <div className="card bg-base-100 w-60 hover:scale-105 transition-all ease-in-out" key={topRatedMovie.id}>
+                    <Link to={`/movie/${topRatedMovie.id}`} key={topRatedMovie.id}>
+                        <div className="card bg-base-100 w-60 hover:scale-105 transition-all ease-in-out" >
                             <figure>
                                 <img
                                     src={`https://image.tmdb.org/t/p/w500${topRatedMovie.poster_path}`}

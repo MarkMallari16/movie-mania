@@ -1,15 +1,17 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import PopularMoviesCarousel from './PopularMoviesCarousel'
 
-const PopularMovies = ({ popular, id }) => {
+const PopularMovies = ({ popular }) => {
     return (
 
         <div className='mx-20'>
+            <PopularMoviesCarousel popular={popular}/>
             <h1 className='my-8 text-2xl text-white font-medium'>Popular Movies</h1>
             <div className='rounded-box flex flex-wrap gap-10 justify-center'>
                 {popular.results.map(popularMovie => (
-                    <Link to={`/movie/${popularMovie.id}`} >
-                        <div className="card bg-base-100 w-60 hover:scale-105 transition-all ease-in-out" key={popularMovie.id}>
+                    <Link to={`/movie/${popularMovie.id}`} key={popularMovie.id} >
+                        <div className="card bg-base-100 w-60 hover:scale-105 transition-all ease-in-out" >
                             <figure>
                                 <img
                                     src={`https://image.tmdb.org/t/p/w500${popularMovie.poster_path}`}

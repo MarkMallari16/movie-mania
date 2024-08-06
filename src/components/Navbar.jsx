@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import Logo from '../assets/logo1.png'
 import { Link } from 'react-router-dom';
 import Profile from '../assets/profile.jpg'
@@ -12,6 +12,25 @@ const Navbar = () => {
     const clearQuery = () => {
         setQuery("")
     }
+    console.log(query)
+    useEffect(() => {
+        if (query) {
+            const API_KEY = "api_key=24ce4eec248652f741c228a1d8a1a21c";
+            const fetchResults = async () => {
+                try {
+                    const response = await fetch(`https://api.themoviedb.org/3/search/movie?${API_KEY}&query=${encodeURIComponent(query)}`);
+                    const data = await response.json();
+
+                    setResults(data.results);
+                } catch (error) {
+                    console.error("Error fetching search results: ", error)
+                }
+            }
+            fetchResults();
+        } else {
+            setResults([])
+        }
+    }, [query])
     const NAV_LINKS = [
         {
             icon: <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-6">
@@ -85,8 +104,6 @@ const Navbar = () => {
                         </ul>
                     </div>
                 </div>
-
-
             </div>
         </div>
     )

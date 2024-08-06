@@ -7,8 +7,8 @@ const UpcomingMovies = ({ upcoming }) => {
             <h1 className='my-8 text-2xl text-white font-medium'>Upcoming Movies</h1>
             <div className='rounded-box flex flex-wrap gap-8 justify-center'>
                 {upcoming.results.map(upcomingMovie => (
-                    <Link to={`/movie/${upcomingMovie.id}`}>
-                        <div className="card bg-base-100 w-60 hover:scale-105 transition-all ease-in-out" key={upcomingMovie.id}>
+                    <Link to={`/movie/${upcomingMovie.id}`} key={upcomingMovie.id}>
+                        <div className="card bg-base-100 w-60 hover:scale-105 transition-all ease-in-out">
                             <figure>
                                 <img
                                     src={`https://image.tmdb.org/t/p/w500${upcomingMovie.poster_path}`}
