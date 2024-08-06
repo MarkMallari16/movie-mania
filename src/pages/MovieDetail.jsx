@@ -54,6 +54,8 @@ const MovieDetail = () => {
             trailerModalRef.current.close();
         }
     }
+
+    console.log(trailerModalRef)
     return (
         <>
             <div className={`min-h-screen w-full  text-white relative  transition-all ease-in-out`} style={{
@@ -188,10 +190,7 @@ const MovieDetail = () => {
                     <h3 className="font-bold text-lg">Hello!</h3>
                     <p className="py-4">Press ESC key or click the button below to close</p>
                     <div className="modal-action">
-                        <form method="dialog">
-                            {/* if there is a button in form, it will close the modal */}
-                            <button className="btn">Close</button>
-                        </form>
+                        <button className="btn" onClick={handleTrailerModalClose}>Close</button>
                     </div>
                 </div>
             </dialog>
