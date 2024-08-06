@@ -12,7 +12,7 @@ const Carousel = ({ carouselTitle, icon, datas, type }) => {
             <div className="gap-6 flex carousel carousel-end rounded-box w-full [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-200px),transparent_100%)]">
                 <div className="carousel-item space-x-5 ">
 
-                    {datas && datas.results.map((data, _) => (
+                    {datas && datas.results.slice(0, 16).map((data, _) => (
                         <Card key={data.id} id={data.id} poster={data.poster_path} rate={data.vote_average} releaseDate={new Date(data.release_date).getFullYear()} title={data.title} type={type} />
                     ))}
                 </div>
