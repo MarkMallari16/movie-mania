@@ -15,7 +15,7 @@ const Navbar = () => {
     }
 
     return (
-        <div className="navbar py-4 bg-base-200" >
+        <div className="navbar py-4 bg-base-200 sticky top-0 z-50" >
             <div className='flex justify-between w-full mx-5'>
                 <div>
                     <Link to='/'>

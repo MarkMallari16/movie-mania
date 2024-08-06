@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import useFetch from '../hooks/useFetch';
 import ReactPlayer from 'react-player';
@@ -16,6 +16,7 @@ const MovieDetail = () => {
 
     const { data: similarMovies, loading: loadingSimilarMovies } = useFetch(`https://api.themoviedb.org/3/movie/${id}/similar`);
 
+    const trailerModalRef = useRef(null);
 
     const [isTeaserEnded, setIsTeaserEnded] = useState(false);
     const [isHeartFill, setIsHeartFill] = useState(false);
@@ -42,6 +43,17 @@ const MovieDetail = () => {
     const backdropUrl = `https://image.tmdb.org/t/p/original${movieDetail.backdrop_path}`;
     const directors = credits.crew.find(person => person.job === "Director");
     const characters = credits.cast.slice(0, 6);
+
+    const handleTrailerModalOpen = () => {
+        if (trailerModalRef.current) {
+            trailerModalRef.current.showModal();
+        }
+    }
+    const handleTrailerModalClose = () => {
+        if (trailerModalRef.current) {
+            trailerModalRef.current.close();
+        }
+    }
     return (
         <>
             <div className={`min-h-screen w-full  text-white relative  transition-all ease-in-out`} style={{
@@ -121,7 +133,7 @@ const MovieDetail = () => {
                             <p><span className='text-slate-300 font-medium'>Director:</span> {directors.name}</p>
                         </div>
                         <div className='flex gap-3 mt-6'>
-                            <button className='btn btn-secondary'>
+                            <button className='btn btn-secondary' onClick={handleTrailerModalOpen}>
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-6">
                                     <path fillRule="evenodd" d="M4.5 5.653c0-1.427 1.529-2.33 2.779-1.643l11.54 6.347c1.295.712 1.295 2.573 0 3.286L7.28 19.99c-1.25.687-2.779-.217-2.779-1.643V5.653Z" clipRule="evenodd" />
                                 </svg>
@@ -146,7 +158,7 @@ const MovieDetail = () => {
                 <h1 className='mt-10 text-xl text-white font-bold'>Trailers & Clips</h1>
 
                 <TrailerAndClipsComponent videos={videos} />
-                 
+
                 <h1 className='my-10 text-xl text-white font-bold'>Casts</h1>
                 <div className='flex flex-wrap justify-center gap-4'>
                     <CharacterComponent characters={characters} />
@@ -171,6 +183,18 @@ const MovieDetail = () => {
                 </div>
             </div>
 
+            <dialog className="modal" ref={trailerModalRef}>
+                <div className="modal-box">
+                    <h3 className="font-bold text-lg">Hello!</h3>
+                    <p className="py-4">Press ESC key or click the button below to close</p>
+                    <div className="modal-action">
+                        <form method="dialog">
+                            {/* if there is a button in form, it will close the modal */}
+                            <button className="btn">Close</button>
+                        </form>
+                    </div>
+                </div>
+            </dialog>
         </>
     );
 };
