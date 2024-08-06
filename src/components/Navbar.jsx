@@ -15,10 +15,11 @@ const Navbar = () => {
     console.log(query)
     useEffect(() => {
         if (query) {
-            const API_KEY = "api_key=24ce4eec248652f741c228a1d8a1a21c";
+            const API_KEY = "24ce4eec248652f741c228a1d8a1a21c";
+            const URL = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${encodeURIComponent(query)}`
             const fetchResults = async () => {
                 try {
-                    const response = await fetch(`https://api.themoviedb.org/3/search/movie?${API_KEY}&query=${encodeURIComponent(query)}`);
+                    const response = await fetch(URL);
                     const data = await response.json();
 
                     setResults(data.results);
