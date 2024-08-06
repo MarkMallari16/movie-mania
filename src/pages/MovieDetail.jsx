@@ -39,7 +39,8 @@ const MovieDetail = () => {
 
 
     const videos = videoData.results.filter(video => video.site === "YouTube" && video.type === 'Teaser' || video.type === "Trailer").slice(0, 8);
-
+    const videoTrailer = videoData?.results?.find(video => video.type === "Trailer" && video.site === "YouTube");
+    const videoTrailerUrl = videoTrailer ? `https://www.youtube.com/watch?v=${videoTrailer.key}` : null
     const backdropUrl = `https://image.tmdb.org/t/p/original${movieDetail.backdrop_path}`;
     const directors = credits.crew.find(person => person.job === "Director");
     const characters = credits.cast.slice(0, 6);
@@ -55,7 +56,7 @@ const MovieDetail = () => {
         }
     }
 
-    console.log(trailerModalRef)
+
     return (
         <>
             <div className={`min-h-screen w-full  text-white relative  transition-all ease-in-out`} style={{
@@ -184,14 +185,25 @@ const MovieDetail = () => {
                     </div>
                 </div>
             </div>
-
-            <dialog className="modal" ref={trailerModalRef}>
+            {/*Modal*/}
+            <dialog className="modal w-full" ref={trailerModalRef}>
                 <div className="modal-box">
-                    <h3 className="font-bold text-lg">Hello!</h3>
-                    <p className="py-4">Press ESC key or click the button below to close</p>
-                    <div className="modal-action">
-                        <button className="btn" onClick={handleTrailerModalClose}>Close</button>
+                    <div className='flex justify-end cursor-pointer mb-2 hover:bg-base-200' onClick={handleTrailerModalClose}>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-6">
+                            <path fillRule="evenodd" d="M5.47 5.47a.75.75 0 0 1 1.06 0L12 10.94l5.47-5.47a.75.75 0 1 1 1.06 1.06L13.06 12l5.47 5.47a.75.75 0 1 1-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 0 1-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 0 1 0-1.06Z" clipRule="evenodd" />
+                        </svg>
                     </div>
+                    <div className='overflow-hidden rounded-lg'>
+                        <ReactPlayer
+                            url={videoTrailerUrl}
+                            playing
+                            muted
+                            controls
+                            width="100%"
+                            height="50vh"
+                        />
+                    </div>
+
                 </div>
             </dialog>
         </>
