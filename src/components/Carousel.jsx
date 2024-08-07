@@ -2,8 +2,6 @@ import React from 'react'
 import Card from './Card'
 import PropTypes from 'prop-types';
 const Carousel = ({ carouselTitle, icon, datas, type }) => {
-
-
     return (
         <>
             <h1 className='mt-10 mb-6 text-2xl text-white font-bold flex items-center gap-2'>
