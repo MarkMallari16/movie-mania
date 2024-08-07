@@ -1,6 +1,6 @@
 import React from 'react'
-import MovieCarousel from './MovieCarousel'
-import MovieMediumCard from './MovieMediumCard'
+import MovieCarousel from '../components/MovieCarousel'
+import MovieMediumCard from '../components/MovieMediumCard'
 
 const UpcomingMovies = ({ upcoming }) => {
     return (

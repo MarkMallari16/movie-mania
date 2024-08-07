@@ -1,7 +1,7 @@
 import React from 'react'
 
-import MovieMediumCard from './MovieMediumCard'
-import MovieCarousel from './MovieCarousel'
+import MovieMediumCard from '../components/MovieMediumCard'
+import MovieCarousel from '../components/MovieCarousel'
 
 const PopularMovies = ({ popular }) => {
     return (

@@ -56,7 +56,6 @@ const MovieDetail = () => {
         }
     }
 
-
     return (
         <>
             <div className={`min-h-screen w-full  text-white relative  transition-all ease-in-out`} style={{
@@ -132,9 +131,11 @@ const MovieDetail = () => {
                         <div className='mt-6'>
                             <p><span className='text-slate-300 font-medium'>Starring:</span>  {characters.map(character => character.name).join(" , ")}</p>
                         </div>
+                        
                         <div className='mt-2'>
                             <p><span className='text-slate-300 font-medium'>Director:</span> {directors.name}</p>
                         </div>
+
                         <div className='flex gap-3 mt-6'>
                             <button className='btn btn-secondary' onClick={handleTrailerModalOpen}>
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-6">

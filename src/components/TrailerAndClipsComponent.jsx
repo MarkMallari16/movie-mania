@@ -4,7 +4,7 @@ import ReactPlayer from 'react-player'
 const TrailerAndClipsComponent = ({ videos }) => {
     console.log(videos)
     return (
-        <div className='carousel carousel-center flex justify-center gap-8  rounded-box mt-10 [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-200px),transparent_100%)]'>
+        <div className='carousel carousel-center flex justify-center gap-8  rounded-box mt-10'>
             {videos.map(video => (
                 <div
                     key={video.id}

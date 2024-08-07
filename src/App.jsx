@@ -7,10 +7,10 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import MovieDetail from './pages/MovieDetail';
 import Details from './components/Details';
-import PopularMovies from './components/PopularMovies';
+import PopularMovies from './pages/PopularMovies';
 import Navbar from './components/Navbar';
-import TopRatedMovies from './components/TopRatedMovies';
-import UpcomingMovies from './components/UpcomingMovies';
+import TopRatedMovies from './pages/TopRatedMovies';
+import UpcomingMovies from './pages/UpcomingMovies';
 import Footer from './components/Footer';
 
 function App() {
