@@ -1,9 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const MovieMediumCard = ({ popularMovieId, poster_path, title, vote_average, overview }) => {
+const MovieMediumCard = ({ movieId, poster_path, title, vote_average, overview }) => {
     return (
-        <Link to={`/movie/${popularMovieId}`}  >
+        <Link to={`/movie/${movieId}`}  >
             <div className="card bg-base-100 w-60 hover:scale-105 transition-all ease-in-out" >
                 <figure>
                     <img
