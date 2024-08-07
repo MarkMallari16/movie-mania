@@ -3,7 +3,7 @@ import { Link, useParams } from 'react-router-dom';
 import useFetch from '../hooks/useFetch';
 import ReactPlayer from 'react-player';
 import CharacterComponent from '../components/CharacterComponent';
-import Card from '../components/Card';
+import MovieSmallCard from '../components/MovieSmallCard';
 import TrailerAndClipsComponent from '../components/TrailerAndClipsComponent';
 
 
@@ -131,7 +131,7 @@ const MovieDetail = () => {
                         <div className='mt-6'>
                             <p><span className='text-slate-300 font-medium'>Starring:</span>  {characters.map(character => character.name).join(" , ")}</p>
                         </div>
-                        
+
                         <div className='mt-2'>
                             <p><span className='text-slate-300 font-medium'>Director:</span> {directors.name}</p>
                         </div>
@@ -173,7 +173,7 @@ const MovieDetail = () => {
                 <div className="gap-6 flex carousel carousel-end rounded-box w-full [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-200px),transparent_100%)]">
                     <div className="carousel-item space-x-5">
                         {similarMovies.results.map(similar => (
-                            <Card
+                            <MovieSmallCard
                                 key={similar.id}
                                 id={similar.id}
                                 poster={similar.poster_path}

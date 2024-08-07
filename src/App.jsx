@@ -6,7 +6,6 @@ import useFetch from './hooks/useFetch'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import MovieDetail from './pages/MovieDetail';
-import Details from './components/Details';
 import PopularMovies from './pages/PopularMovies';
 import Navbar from './components/Navbar';
 import TopRatedMovies from './pages/TopRatedMovies';
@@ -19,7 +18,6 @@ function App() {
   const { data: topRated, loading: loadingTopRated } = useFetch("https://api.themoviedb.org/3/movie/top_rated");
 
   const { data: popular, loading: loadingPopular } = useFetch("https://api.themoviedb.org/3/movie/popular");
-
 
   const { data: upcomingMovie, loading: loadingUpcomingMovie } = useFetch("https://api.themoviedb.org/3/movie/upcoming");
 
@@ -46,7 +44,7 @@ function App() {
             <Route path="/movies/upcoming" element={<UpcomingMovies upcoming={upcomingMovie} />} />
 
             <Route path="/movie/:id" element={<MovieDetail />} />
-            <Route path="/tv/:id" element={<Details />} />
+        
           </Routes>
         </div>
       </div>

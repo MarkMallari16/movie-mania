@@ -12,7 +12,7 @@ const Navbar = () => {
     const clearQuery = () => {
         setQuery("")
     }
-    console.log(query)
+
     useEffect(() => {
         if (query) {
             const API_KEY = "24ce4eec248652f741c228a1d8a1a21c";
@@ -26,6 +26,7 @@ const Navbar = () => {
                 } catch (error) {
                     console.error("Error fetching search results: ", error)
                 }
+                console.log(data)
             }
             fetchResults();
         } else {

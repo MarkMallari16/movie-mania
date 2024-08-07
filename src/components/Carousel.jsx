@@ -1,6 +1,6 @@
 import React from 'react'
-import Card from './Card'
 import PropTypes from 'prop-types';
+import MovieSmallCard from './MovieSmallCard';
 const Carousel = ({ carouselTitle, icon, datas, type }) => {
     return (
         <>
@@ -11,7 +11,7 @@ const Carousel = ({ carouselTitle, icon, datas, type }) => {
                 <div className="carousel-item space-x-5 ">
 
                     {datas && datas.results.slice(0, 16).map((data, _) => (
-                        <Card key={data.id} id={data.id} poster={data.poster_path} rate={data.vote_average} releaseDate={new Date(data.release_date).getFullYear()} title={data.title} type={type} />
+                        <MovieSmallCard key={data.id} id={data.id} poster={data.poster_path} rate={data.vote_average} releaseDate={new Date(data.release_date).getFullYear()} title={data.title} type={type} />
                     ))}
                 </div>
             </div>

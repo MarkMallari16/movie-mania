@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const Card = ({ id, poster, rate, releaseDate, title, type }) => {
+const MovieSmallCard = ({ id, poster, rate, releaseDate, title, type }) => {
     const roundedRate = rate.toFixed(1)
     const linkPath = type === "movie" ? `/movie/${id}` : `/tv/${id}`;
 
@@ -30,4 +30,4 @@ const Card = ({ id, poster, rate, releaseDate, title, type }) => {
     )
 }
 
-export default Card
+export default MovieSmallCard
