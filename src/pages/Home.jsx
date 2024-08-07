@@ -51,12 +51,10 @@ const Home = ({ allMovies, nowPlaying, popular, topRated, upcoming }) => {
 
     return (
         <>
-
             <div className='mt-10 mx-10 '>
                 <h1 className='mt-10 mb-3 text-2xl text-white font-bold flex items-center gap-2'>
                     Recommend for you
                 </h1>
-
             </div>
             <div className='grid grid-cols-1 lg:grid-cols-10  lg:grid-rows-3 gap-5 mx-10 mt-6'>
                 {allMovies.results?.[0] && (
