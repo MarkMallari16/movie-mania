@@ -49,7 +49,6 @@ const Navbar = () => {
                 } catch (error) {
                     console.error("Error fetching search results: ", error)
                 }
-                console.log(data)
             }
             fetchResults();
         } else {
@@ -58,8 +57,8 @@ const Navbar = () => {
     }, [query])
 
     return (
-        <div className="navbar py-4 bg-base-200 sticky top-0 z-50" >
-            <div className='flex justify-between w-full mx-5'>
+        <div className="hidden sm:block navbar py-4 bg-base-200 lg:sticky lg:top-0 lg:z-50" >
+            <div className='flex justify-between w-full '>
                 <div>
                     <Link to='/'>
                         <div>
@@ -95,7 +94,7 @@ const Navbar = () => {
 
                         <div tabIndex={0} role="button" className="avatar online">
                             <div className="w-12 rounded-full object-cover">
-                                <img src={Profile} />
+                                <img src={Profile} alt='Profile'/>
                             </div>
                         </div>
 
