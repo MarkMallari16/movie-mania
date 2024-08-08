@@ -3,7 +3,7 @@
 
 import './App.css'
 import useFetch from './hooks/useFetch'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Home from './pages/Home';
 import MovieDetail from './pages/MovieDetail';
 import PopularMovies from './pages/PopularMovies';
@@ -46,7 +46,7 @@ function App() {
             <Route path="/movies/upcoming" element={<UpcomingMovies upcoming={upcomingMovie} />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/movie/:id" element={<MovieDetail />} />
-           
+            <Route path="*" element={<Navigate to="/"/>} />
           </Routes>
         </div>
       </div>
