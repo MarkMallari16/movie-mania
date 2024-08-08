@@ -11,6 +11,7 @@ import Navbar from './components/Navbar';
 import TopRatedMovies from './pages/TopRatedMovies';
 import UpcomingMovies from './pages/UpcomingMovies';
 import Footer from './components/Footer';
+import BottomNav from './components/BottomNav';
 
 function App() {
   const { data: allMovies, loading: loadingAllMovies } = useFetch("https://api.themoviedb.org/3/discover/movie")
@@ -48,6 +49,7 @@ function App() {
           </Routes>
         </div>
       </div>
+      <BottomNav/>
       <Footer />
     </Router>
   )
