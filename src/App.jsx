@@ -13,8 +13,10 @@ import UpcomingMovies from './pages/UpcomingMovies';
 import Footer from './components/Footer';
 import BottomNav from './components/BottomNav';
 import Profile from './pages/Profile';
+import SearchResultComponent from './components/SearchResultComponent';
 
 function App() {
+  
   const { data: allMovies, loading: loadingAllMovies } = useFetch("https://api.themoviedb.org/3/discover/movie")
 
   const { data: topRated, loading: loadingTopRated } = useFetch("https://api.themoviedb.org/3/movie/top_rated");
@@ -46,7 +48,8 @@ function App() {
             <Route path="/movies/upcoming" element={<UpcomingMovies upcoming={upcomingMovie} />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/movie/:id" element={<MovieDetail />} />
-            <Route path="*" element={<Navigate to="/"/>} />
+            <Route path='/search' element={<SearchResultComponent />} />
+            <Route path="*" element={<Navigate to="/" />} />
           </Routes>
         </div>
       </div>
