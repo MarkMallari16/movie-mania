@@ -3,10 +3,9 @@ import { Link } from 'react-router-dom'
 
 const MovieSmallCard = ({ id, poster, rate, releaseDate, title, type }) => {
     const roundedRate = rate.toFixed(1)
-    const linkPath = type === "movie" ? `/movie/${id}` : `/tv/${id}`;
 
     return (
-        <Link to={linkPath}>
+        <Link to={`/movie/${id}`}>
             <div>
                 <div className='w-full overflow-hidden hover:scale-105 transition-all ease-in-out rounded-lg'>
                     <img src={`https://image.tmdb.org/t/p/w200${poster}`} alt={title} className='w-full  bg-slate-900 ' />

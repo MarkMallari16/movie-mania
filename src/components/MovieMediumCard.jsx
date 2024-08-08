@@ -21,7 +21,7 @@ const MovieMediumCard = ({ movieId, poster_path, title, vote_average, overview }
                         </div>
 
                     </div>
-                    <p className='mt-2'>{overview.length > 10 ? `${overview.slice(0, 32)}...view more` : overview}</p>
+                    <p className='mt-2'>{overview.length > 10 ? `${overview.slice(0, 32)}...` : overview}</p>
                 </div>
             </div>
         </Link>

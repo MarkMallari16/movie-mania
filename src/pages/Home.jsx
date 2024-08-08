@@ -5,8 +5,6 @@ import Carousel from '../components/Carousel'
 import { Link } from 'react-router-dom'
 
 const Home = ({ allMovies, nowPlaying, popular, topRated, upcoming }) => {
-
-
     const CarouselsData = [
 
         {
@@ -56,16 +54,16 @@ const Home = ({ allMovies, nowPlaying, popular, topRated, upcoming }) => {
                     Recommend for you
                 </h1>
             </div>
-            <div className='grid grid-cols-1 lg:grid-cols-10  lg:grid-rows-3 gap-5 mx-10 mt-6'>
+            <div className='grid grid-cols-1 lg:grid-cols-10 grid-rows-1  lg:grid-rows-3 gap-5 mx-10 mt-6'>
                 {allMovies.results?.[0] && (
                     <div key={allMovies.results[0].id} className='relative bg-slate-900 col-span-6 row-span-4 hover:opacity-50 transition-all ease-in-out'>
                         <Link to={`movie/${allMovies.results[0].id}`}>
                             <div key={allMovies.results[0].id}>
                                 <img src={`https://image.tmdb.org/t/p/w500${allMovies.results[0].backdrop_path}`} alt={allMovies.results[0].title} className='w-full lg:h-[68vh] rounded-lg aspect-auto bg-cover opacity-50' />
                             </div>
-                            <div className='absolute inset-14 '>
+                            <div className='absolute inset-16 '>
                                 <div className='flex items-center gap-5 '>
-                                    <img src={`https://image.tmdb.org/t/p/w500${allMovies.results[0].poster_path}`} alt={allMovies.results[0].title} className='w-60 rounded-lg' />
+                                    <img src={`https://image.tmdb.org/t/p/w500${allMovies.results[0].poster_path}`} alt={allMovies.results[0].title} className='w-60 rounded-lg hidden lg:block' />
                                     <div>
                                         <p className='text-4xl font-medium text-white'>{allMovies.results[0].title}</p>
                                         <div className='mt-3 flex gap-2'>
@@ -74,14 +72,14 @@ const Home = ({ allMovies, nowPlaying, popular, topRated, upcoming }) => {
                                             </svg>
                                             <p className='text-white'>{allMovies.results[0].vote_average.toFixed(1)}+</p>
                                         </div>
-                                        <div className='mt-3 flex gap-2'>
-                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-6">
+                                        <div className='mt-3 hidden lg:flex lg:gap-2 '>
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-6 text-white">
                                                 <path fillRule="evenodd" d="M6.75 2.25A.75.75 0 0 1 7.5 3v1.5h9V3A.75.75 0 0 1 18 3v1.5h.75a3 3 0 0 1 3 3v11.25a3 3 0 0 1-3 3H5.25a3 3 0 0 1-3-3V7.5a3 3 0 0 1 3-3H6V3a.75.75 0 0 1 .75-.75Zm13.5 9a1.5 1.5 0 0 0-1.5-1.5H5.25a1.5 1.5 0 0 0-1.5 1.5v7.5a1.5 1.5 0 0 0 1.5 1.5h13.5a1.5 1.5 0 0 0 1.5-1.5v-7.5Z" clipRule="evenodd" />
                                             </svg>
                                             <p className='text-white'>Year: {new Date(allMovies.results[0].release_date).getFullYear()}</p>
                                         </div>
-                                        <div className='mt-3 flex gap-2'>
-                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-6">
+                                        <div className='mt-3 hidden lg:flex lg:gap-2 '>
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-6 text-white">
                                                 <path fillRule="evenodd" d="M9 4.5a.75.75 0 0 1 .721.544l.813 2.846a3.75 3.75 0 0 0 2.576 2.576l2.846.813a.75.75 0 0 1 0 1.442l-2.846.813a3.75 3.75 0 0 0-2.576 2.576l-.813 2.846a.75.75 0 0 1-1.442 0l-.813-2.846a3.75 3.75 0 0 0-2.576-2.576l-2.846-.813a.75.75 0 0 1 0-1.442l2.846-.813A3.75 3.75 0 0 0 7.466 7.89l.813-2.846A.75.75 0 0 1 9 4.5ZM18 1.5a.75.75 0 0 1 .728.568l.258 1.036c.236.94.97 1.674 1.91 1.91l1.036.258a.75.75 0 0 1 0 1.456l-1.036.258c-.94.236-1.674.97-1.91 1.91l-.258 1.036a.75.75 0 0 1-1.456 0l-.258-1.036a2.625 2.625 0 0 0-1.91-1.91l-1.036-.258a.75.75 0 0 1 0-1.456l1.036-.258a2.625 2.625 0 0 0 1.91-1.91l.258-1.036A.75.75 0 0 1 18 1.5ZM16.5 15a.75.75 0 0 1 .712.513l.394 1.183c.15.447.5.799.948.948l1.183.395a.75.75 0 0 1 0 1.422l-1.183.395c-.447.15-.799.5-.948.948l-.395 1.183a.75.75 0 0 1-1.422 0l-.395-1.183a1.5 1.5 0 0 0-.948-.948l-1.183-.395a.75.75 0 0 1 0-1.422l1.183-.395c.447-.15.799-.5.948-.948l.395-1.183A.75.75 0 0 1 16.5 15Z" clipRule="evenodd" />
                                             </svg>
 
@@ -95,11 +93,11 @@ const Home = ({ allMovies, nowPlaying, popular, topRated, upcoming }) => {
                     </div>
                 )}
                 {allMovies.results.slice(1, 7).map(nowPlay => (
-                    <div key={nowPlay.id} className='relative bg-slate-900 col-span-2 row-span-1 hover:opacity-50 transition-all ease-in-out'>
+                    <div key={nowPlay.id} className='relative bg-slate-900 col-span-1 lg:col-span-2 lg:row-span-1 hover:opacity-50 transition-all ease-in-out'>
                         <Link to={`movie/${nowPlay.id}`}>
                             <div key={nowPlay.id} className=' rounded-lg overflow-hidden'>
                                 <img src={`https://image.tmdb.org/t/p/w500${nowPlay.backdrop_path}`} alt={nowPlay.title} className='w-fullaspect-auto bg-cover opacity-50' />
-                                <div className='absolute bottom-0 right-0 flex w-full'>
+                                <div className='hidden absolute bottom-0 right-0 lg:flex w-full'>
                                     <p className=' backdrop-blur-sm text-white py-2 pl-4 w-full h-10'>{nowPlay.title}</p>
                                     <div className='flex gap-1 items-center pe-4'>
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-5 text-yellow-500">

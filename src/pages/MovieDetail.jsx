@@ -26,7 +26,7 @@ const MovieDetail = () => {
     })
 
     const { isTeaserEnded, isHeartFill, isDelayed, isTrailerPlaying } = state;
-
+  
     useEffect(() => {
         const timer = setTimeout(() => {
             setState(prevState => ({ ...prevState, isDelayed: false }))
@@ -62,7 +62,7 @@ const MovieDetail = () => {
             trailerModalRef.current.close();
         }
     }
-    console.log(isTrailerPlaying)
+
     return (
         <>
             <div className={`min-h-screen w-full  text-white relative  transition-all ease-in-out`} style={{
@@ -212,7 +212,6 @@ const MovieDetail = () => {
                             height="50vh"
                         />
                     </div>
-
                 </div>
             </dialog>
         </>
