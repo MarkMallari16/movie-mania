@@ -58,7 +58,7 @@ const Navbar = () => {
 
     return (
         <div className="hidden sm:block navbar py-4 bg-base-200 lg:sticky lg:top-0 lg:z-50" >
-            <div className='flex justify-between w-full '>
+            <div className='flex justify-between w-full px-5'>
                 <div>
                     <Link to='/'>
                         <div>
