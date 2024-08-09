@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Link, useLocation, useParams } from 'react-router-dom';
+import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import useFetch from '../hooks/useFetch';
 import ReactPlayer from 'react-player';
 import CharacterComponent from '../components/CharacterComponent';
@@ -14,6 +14,9 @@ const MovieDetail = () => {
     const { data: videoData, loading: videoLoading, refetch: refetchVideos } = useFetch(`https://api.themoviedb.org/3/movie/${id}/videos`);
 
     const { data: similarMovies, loading: loadingSimilarMovies, refetch: refetchSimilarMovies } = useFetch(`https://api.themoviedb.org/3/movie/${id}/similar`);
+
+    const navigate = useNavigate();
+    const location = useLocation();
 
     const trailerModalRef = useRef(null);
 
@@ -39,7 +42,7 @@ const MovieDetail = () => {
         refetchVideos();
         refetchSimilarMovies();
     }, [id, refetchMovie, refetchCredits, refetchVideos, refetchSimilarMovies])
-    
+
     if (movieLoading || videoLoading || creditsLoading || loadingSimilarMovies)
         return <div className='min-h-screen grid place-items-center bg-slate-900'>
             <span className="loading loading-dots loading-lg text-white"></span>
@@ -90,11 +93,11 @@ const MovieDetail = () => {
                 )}
 
                 <div className='absolute z-20 left-10 top-8  lg:top-20'>
-                    <Link to={'/'} className='btn btn-ghost'>
+                    <button onClick={() => navigate(-1)} className='btn btn-ghost'>
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-6">
                             <path fillRule="evenodd" d="M11.03 3.97a.75.75 0 0 1 0 1.06l-6.22 6.22H21a.75.75 0 0 1 0 1.5H4.81l6.22 6.22a.75.75 0 1 1-1.06 1.06l-7.5-7.5a.75.75 0 0 1 0-1.06l7.5-7.5a.75.75 0 0 1 1.06 0Z" clipRule="evenodd" />
                         </svg>
-                    </Link>
+                    </button>
                 </div>
                 <div className='bg-slate-900 bg-opacity-75 min-h-screen flex items-center p-10 lg:p-20 relative z-10 '
                 >
