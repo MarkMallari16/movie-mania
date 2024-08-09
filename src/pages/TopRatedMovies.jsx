@@ -4,7 +4,7 @@ import MovieMediumCard from '../components/MovieMediumCard'
 
 const TopRatedMovies = ({ topRated }) => {
     return (
-        <div className='mx-20'>
+        <div className='mx-20 mt-28'>
             <MovieCarousel movieData={topRated} />
             <h1 className='my-8 text-2xl text-white font-medium'>Top Rated  Movies</h1>
             <div className='rounded-box flex flex-wrap gap-8 justify-center'>

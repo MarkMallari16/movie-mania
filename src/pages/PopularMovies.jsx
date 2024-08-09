@@ -5,7 +5,7 @@ import MovieCarousel from '../components/MovieCarousel'
 
 const PopularMovies = ({ popular }) => {
     return (
-        <div className='mx-20'>
+        <div className='mx-20 mt-28'>
             <MovieCarousel movieData={popular} />
             <h1 className='my-8 text-2xl text-white font-medium'>Popular Movies</h1>
             <div className='rounded-box flex flex-wrap gap-10 justify-center'>

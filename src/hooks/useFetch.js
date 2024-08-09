@@ -6,7 +6,6 @@ const useFetch = (url) => {
     const [data, setData] = useState(null);
     const [loading, setLoading] = useState(true);
     const fetchData = (useCallback(async () => {
-
         if (!url) return;
         setLoading(true);
         try {
@@ -22,6 +21,7 @@ const useFetch = (url) => {
             setLoading(false)
         }
     }, [url]))
+
     useEffect(() => {
         fetchData();
     }, [fetchData])
