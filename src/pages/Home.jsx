@@ -57,12 +57,11 @@ const Home = ({ allMovies, nowPlaying, popular, topRated, upcoming }) => {
             <div className='grid grid-cols-1 lg:grid-cols-10 grid-rows-1  lg:grid-rows-3 gap-5 mx-10 mt-6'>
                 {allMovies.results?.[0] && (
                     <div key={allMovies.results[0].id} className='relative bg-slate-900 col-span-6 row-span-4  transition-all ease-in-out'>
-
                         <div key={allMovies.results[0].id}>
                             <img src={`https://image.tmdb.org/t/p/w500${allMovies.results[0].backdrop_path}`} alt={allMovies.results[0].title} className='w-full lg:h-[68vh] rounded-lg aspect-auto bg-cover opacity-50' />
                         </div>
                         <div className='absolute inset-16 '>
-                            <div className='flex items-center gap-5 '>
+                            <div className='flex items-center gap-8 '>
                                 <img src={`https://image.tmdb.org/t/p/w500${allMovies.results[0].poster_path}`} alt={allMovies.results[0].title} className='w-60 rounded-lg hidden lg:block' />
                                 <div>
                                     <p className='text-4xl font-medium text-white'>{allMovies.results[0].title}</p>

@@ -7,7 +7,7 @@ const MovieSmallCard = ({ id, poster, rate, releaseDate, title, type }) => {
     return (
         <Link to={`/movie/${id}`}>
             <div>
-                <div className='w-full overflow-hidden hover:scale-105 transition-all ease-in-out rounded-lg'>
+                <div className='w-full overflow-hidden  hover:scale-105 transition-all ease-in-out rounded-3xl'>
                     <img src={`https://image.tmdb.org/t/p/w200${poster}`} alt={title} className='w-full  bg-slate-900 ' />
                 </div>
                 <div className='mt-3 flex justify-between'>

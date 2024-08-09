@@ -171,9 +171,11 @@ const MovieDetail = () => {
             </div>
 
             <div className='mx-10'>
-                <h1 className='mt-10 text-xl text-white font-bold'>Trailers & Clips</h1>
+                {videos.length > 0 && <div>
+                    <h1 className='mt-10 text-xl text-white font-bold'>Trailers & Clips</h1>
 
-                <TrailerAndClipsComponent videos={videos} />
+                    <TrailerAndClipsComponent videos={videos} />
+                </div>}
 
                 {/** <h1 className='my-10 text-xl text-white font-bold'>Casts</h1>
                 <div className='flex flex-wrap justify-center gap-4'>

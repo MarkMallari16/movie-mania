@@ -1,16 +1,16 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const MovieMediumCard = ({ movieId, poster_path, title, vote_average, overview }) => {
+const MovieMediumCard = ({ movieId, poster_path, title, vote_average }) => {
     return (
         <Link to={`/movie/${movieId}`}  >
-            <div className="card bg-base-100 w-60 hover:scale-105 transition-all ease-in-out" >
+            <div className="card bg-base-100 w-60 " >
                 <figure>
                     <img
                         src={`https://image.tmdb.org/t/p/w500${poster_path}`}
                         alt={title} className='rounded-lg' />
                 </figure>
-                <div className="py-5">
+                <div className="py-4">
                     <div className='flex justify-between'>
                         <h2 className="card-title">{title}</h2>
                         <div className='flex items-center gap-2'>
@@ -21,7 +21,7 @@ const MovieMediumCard = ({ movieId, poster_path, title, vote_average, overview }
                         </div>
 
                     </div>
-                    <p className='mt-2'>{overview.length > 10 ? `${overview.slice(0, 32)}...` : overview}</p>
+
                 </div>
             </div>
         </Link>

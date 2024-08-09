@@ -9,7 +9,7 @@ const UpcomingMovies = ({ upcoming }) => {
         <div className='mx-20'>
             <MovieCarousel movieData={upcoming} />
             <h1 className='my-8 text-2xl text-white font-medium'>Upcoming Movies</h1>
-            <div className='rounded-box flex flex-wrap gap-8 justify-center'>
+            <div className='rounded-box flex justify-center flex-wrap gap-10'>
                 {upcoming.results.map(upcomingMovie => (
                     <MovieMediumCard key={upcomingMovie.id} movieId={upcomingMovie?.id} poster_path={upcomingMovie.poster_path} title={upcomingMovie.title} vote_average={upcomingMovie.vote_average} overview={upcomingMovie.overview} />
                 ))}
