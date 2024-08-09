@@ -12,7 +12,7 @@ const Footer = () => {
             </aside>
             <nav>
                 <h6 className="footer-title">Movies</h6>
-                <a className="link link-hover">Now Playing</a>
+                <Link to='/' className="link link-hover">Now Playing</Link>
                 <Link to='/movies/popular' className="link link-hover">Popular</Link>
                 <Link to='/movies/toprated' className="link link-hover">Top Rated</Link>
                 <Link to='/movies/upcoming' className="link link-hover">Upcoming</Link>

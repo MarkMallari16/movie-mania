@@ -26,7 +26,7 @@ const MovieDetail = () => {
     })
 
     const { isTeaserEnded, isHeartFill, isDelayed, isTrailerPlaying } = state;
-  
+
     useEffect(() => {
         const timer = setTimeout(() => {
             setState(prevState => ({ ...prevState, isDelayed: false }))
@@ -170,10 +170,10 @@ const MovieDetail = () => {
 
                 <TrailerAndClipsComponent videos={videos} />
 
-                <h1 className='my-10 text-xl text-white font-bold'>Casts</h1>
+                {/** <h1 className='my-10 text-xl text-white font-bold'>Casts</h1>
                 <div className='flex flex-wrap justify-center gap-4'>
                     <CharacterComponent characters={characters} />
-                </div>
+                </div> */}
 
                 <h1 className='my-10 text-xl text-white font-bold'>Similar Movies</h1>
 
@@ -194,10 +194,10 @@ const MovieDetail = () => {
                 </div>
             </div>
             {/*Modal*/}
-            <dialog className="modal w-full" ref={trailerModalRef}>
-                <div className="modal-box">
-                    <div className='flex justify-between  mb-5 ' >
-                        <p className='text-xl'>Trailer</p>
+            <dialog className="modal w-full h-full" ref={trailerModalRef}>
+                <div className="modal-box relative">
+                    <div className='flex justify-between mb-5 absolute right-6' >
+                       
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-6 cursor-pointer" onClick={handleTrailerModalClose}>
                             <path fillRule="evenodd" d="M5.47 5.47a.75.75 0 0 1 1.06 0L12 10.94l5.47-5.47a.75.75 0 1 1 1.06 1.06L13.06 12l5.47 5.47a.75.75 0 1 1-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 0 1-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 0 1 0-1.06Z" clipRule="evenodd" />
                         </svg>
@@ -206,10 +206,10 @@ const MovieDetail = () => {
                         <ReactPlayer
                             url={videoTrailerUrl}
                             playing={isTrailerPlaying}
-                            muted
+                           
                             controls
                             width="100%"
-                            height="50vh"
+                            height="60vh"
                         />
                     </div>
                 </div>
