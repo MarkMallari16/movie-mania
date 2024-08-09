@@ -101,7 +101,7 @@ const Navbar = () => {
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="absolute inset-3 size-6 ">
                         <path fillRule="evenodd" d="M10.5 3.75a6.75 6.75 0 1 0 0 13.5 6.75 6.75 0 0 0 0-13.5ZM2.25 10.5a8.25 8.25 0 1 1 14.59 5.28l4.69 4.69a.75.75 0 1 1-1.06 1.06l-4.69-4.69A8.25 8.25 0 0 1 2.25 10.5Z" clipRule="evenodd" />
                     </svg>
-                    <input type="text" value={query} onChange={handleQueryChange} onKeyDown={handleSearchEnter} className='input input-bordered bg-none w-full pl-12' placeholder='Search movies here...' />
+                    <input type="text" value={query} onChange={handleQueryChange} onKeyDown={handleSearchEnter} className='input input-ghost bg-none w-full pl-12' placeholder='Search movies here...' />
                     {query &&
                         <div>
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className=" absolute size-6 top-3 end-4 cursor-pointer bg-base-300 rounded-lg " onClick={clearQuery} data-tip="clear">
@@ -132,10 +132,10 @@ const Navbar = () => {
 
 
                         <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-50 w-52 p-2 shadow">
-                            <li><Link href="/favorite">Favorite Movie</Link></li>
-                            <li><Link href="/profile">View Profile</Link></li>
-                            <li><Link href="/settings">Settings</Link></li>
-                            <li><Link href="/logout">Logout</Link></li>
+                            <li><Link to="/favorite">Favorite Movie</Link></li>
+                            <li><Link to="/profile">View Profile</Link></li>
+                            <li><Link to="/settings">Settings</Link></li>
+                            <li><Link to="/logout">Logout</Link></li>
                         </ul>
                     </div>
                 </div>

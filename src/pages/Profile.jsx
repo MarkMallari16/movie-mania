@@ -2,7 +2,7 @@ import React from 'react'
 import ProfilePicture from '../assets/profile.jpg'
 const Profile = () => {
   return (
-    <div className='mx-20 mt-10 bg-base-200 p-10 rounded-lg'>
+    <div className='mx-20 mt-28 bg-base-200 p-10 rounded-lg'>
       <div className='flex  items-center gap-5'>
         <img src={ProfilePicture} alt="profile" className='w-52 rounded-full' />
         <div>

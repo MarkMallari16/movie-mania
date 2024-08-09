@@ -1,11 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useLocation, useParams } from 'react-router-dom';
 import useFetch from '../hooks/useFetch';
 import ReactPlayer from 'react-player';
 import CharacterComponent from '../components/CharacterComponent';
 import MovieSmallCard from '../components/MovieSmallCard';
 import TrailerAndClipsComponent from '../components/TrailerAndClipsComponent';
-
 
 
 const MovieDetail = () => {
@@ -26,6 +25,8 @@ const MovieDetail = () => {
     })
 
     const { isTeaserEnded, isHeartFill, isDelayed, isTrailerPlaying } = state;
+    const location = useLocation();
+
 
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -90,7 +91,7 @@ const MovieDetail = () => {
                 )}
 
                 <div className='absolute z-20 left-10 top-8  lg:top-20'>
-                    <Link to='/' className='btn btn-ghost'>
+                    <Link to={'/'} className='btn btn-ghost'>
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-6">
                             <path fillRule="evenodd" d="M11.03 3.97a.75.75 0 0 1 0 1.06l-6.22 6.22H21a.75.75 0 0 1 0 1.5H4.81l6.22 6.22a.75.75 0 1 1-1.06 1.06l-7.5-7.5a.75.75 0 0 1 0-1.06l7.5-7.5a.75.75 0 0 1 1.06 0Z" clipRule="evenodd" />
                         </svg>
