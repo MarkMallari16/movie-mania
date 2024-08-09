@@ -67,6 +67,7 @@ const Navbar = () => {
             }
         }
     }
+    
     useEffect(() => {
         if (query) {
             const API_KEY = "24ce4eec248652f741c228a1d8a1a21c";
@@ -90,7 +91,7 @@ const Navbar = () => {
 
     return (
         <div className={`lg:fixed ${isScrolling && 'backdrop-blur-sm'} transition-all ease-in-out top-0 hidden sm:block navbar py-4 z-50`} >
-            <div className='flex justify-between w-full px-5'>
+            <div className='flex justify-between w-full px-10'>
                 <div>
                     <Link to='/'>
                         <div>
