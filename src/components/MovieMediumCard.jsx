@@ -4,11 +4,11 @@ import { Link } from 'react-router-dom'
 const MovieMediumCard = ({ movieId, poster_path, title, vote_average }) => {
     return (
         <Link to={`/movie/${movieId}`}  >
-            <div className="card bg-base-100 w-60 " >
+            <div className="card bg-base-100 w-60 overflow-hidden rounded-3xl" >
                 <figure>
                     <img
                         src={`https://image.tmdb.org/t/p/w500${poster_path}`}
-                        alt={title} className='rounded-lg' />
+                        alt={title} className='hover:scale-110 hover:opacity-75 transition-all ease-in-out' />
                 </figure>
                 <div className="py-4">
                     <div className='flex justify-between'>
