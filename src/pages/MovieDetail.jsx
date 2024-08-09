@@ -10,11 +10,11 @@ import TrailerAndClipsComponent from '../components/TrailerAndClipsComponent';
 
 const MovieDetail = () => {
     const { id } = useParams();
-    const { data: movieDetail, loading: movieLoading } = useFetch(`https://api.themoviedb.org/3/movie/${id}`);
-    const { data: credits, loading: creditsLoading } = useFetch(`https://api.themoviedb.org/3/movie/${id}/credits`);
-    const { data: videoData, loading: videoLoading } = useFetch(`https://api.themoviedb.org/3/movie/${id}/videos`);
+    const { data: movieDetail, loading: movieLoading, refetch: refetchMovie } = useFetch(`https://api.themoviedb.org/3/movie/${id}`);
+    const { data: credits, loading: creditsLoading, refetch: refetchCredits } = useFetch(`https://api.themoviedb.org/3/movie/${id}/credits`);
+    const { data: videoData, loading: videoLoading, refetch: refetchVideos } = useFetch(`https://api.themoviedb.org/3/movie/${id}/videos`);
 
-    const { data: similarMovies, loading: loadingSimilarMovies } = useFetch(`https://api.themoviedb.org/3/movie/${id}/similar`);
+    const { data: similarMovies, loading: loadingSimilarMovies, refetch: refetchSimilarMovies } = useFetch(`https://api.themoviedb.org/3/movie/${id}/similar`);
 
     const trailerModalRef = useRef(null);
 
@@ -34,6 +34,12 @@ const MovieDetail = () => {
         return () => clearTimeout(timer);
     }, [])
 
+    useEffect(() => {
+        refetchMovie();
+        refetchCredits();
+        refetchVideos();
+        refetchSimilarMovies();
+    }, [id, refetchMovie, refetchCredits, refetchVideos, refetchSimilarMovies])
     if (movieLoading || videoLoading || creditsLoading || loadingSimilarMovies)
         return <div className='min-h-screen grid place-items-center bg-slate-900'>
             <span className="loading loading-dots loading-lg text-white"></span>
@@ -194,10 +200,10 @@ const MovieDetail = () => {
                 </div>
             </div>
             {/*Modal*/}
-            <dialog className="modal w-full h-full" ref={trailerModalRef}>
-                <div className="modal-box relative">
-                    <div className='flex justify-between mb-5 absolute right-6' >
-                       
+            <dialog className="modal" ref={trailerModalRef}>
+                <div className="modal-box relative max-w-7xl p-0">
+                    <div className='flex justify-between p-4' >
+                        <h2 className='text-xl font-medium'>Official Trailer</h2>
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-6 cursor-pointer" onClick={handleTrailerModalClose}>
                             <path fillRule="evenodd" d="M5.47 5.47a.75.75 0 0 1 1.06 0L12 10.94l5.47-5.47a.75.75 0 1 1 1.06 1.06L13.06 12l5.47 5.47a.75.75 0 1 1-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 0 1-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 0 1 0-1.06Z" clipRule="evenodd" />
                         </svg>
@@ -206,10 +212,10 @@ const MovieDetail = () => {
                         <ReactPlayer
                             url={videoTrailerUrl}
                             playing={isTrailerPlaying}
-                           
+
                             controls
                             width="100%"
-                            height="60vh"
+                            height="70vh"
                         />
                     </div>
                 </div>
