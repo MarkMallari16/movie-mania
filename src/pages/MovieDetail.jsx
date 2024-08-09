@@ -89,7 +89,7 @@ const MovieDetail = () => {
                         className='absolute top-0 left-0  h-full z-0' />
                 )}
 
-                <div className='absolute z-20 left-10 top-20'>
+                <div className='absolute z-20 left-10 top-8  lg:top-20'>
                     <Link to='/' className='btn btn-ghost'>
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-6">
                             <path fillRule="evenodd" d="M11.03 3.97a.75.75 0 0 1 0 1.06l-6.22 6.22H21a.75.75 0 0 1 0 1.5H4.81l6.22 6.22a.75.75 0 1 1-1.06 1.06l-7.5-7.5a.75.75 0 0 1 0-1.06l7.5-7.5a.75.75 0 0 1 1.06 0Z" clipRule="evenodd" />
@@ -139,7 +139,7 @@ const MovieDetail = () => {
                             </div>
                         </div>
                         <div>
-                            <p className='mt-4 lg:w-full max-w-3xl'>{movieDetail.overview}</p>
+                            <p className='mt-6 lg:w-full max-w-4xl leading-8'>{movieDetail.overview}</p>
                         </div>
                         <div className='mt-6'>
                             <p><span className='text-slate-300 font-medium'>Starring:</span>  {characters.map(character => character.name).join(" , ")}</p>
@@ -171,7 +171,7 @@ const MovieDetail = () => {
                 </div>
             </div>
 
-            <div className='mx-10 mt-6'>
+            <div className='mx-10'>
                 <h1 className='mt-10 text-xl text-white font-bold'>Trailers & Clips</h1>
 
                 <TrailerAndClipsComponent videos={videos} />
@@ -181,23 +181,27 @@ const MovieDetail = () => {
                     <CharacterComponent characters={characters} />
                 </div> */}
 
-                <h1 className='my-10 text-xl text-white font-bold'>Similar Movies</h1>
+                {similarMovies.results.length > 0 && (
+                    <>
+                        <h1 className='my-10 text-xl text-white font-bold'>Similar Movies</h1>
 
-                <div className="gap-6 flex carousel carousel-end rounded-box w-full [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-200px),transparent_100%)]">
-                    <div className="carousel-item space-x-5">
-                        {similarMovies.results.map(similar => (
-                            <MovieSmallCard
-                                key={similar.id}
-                                id={similar.id}
-                                poster={similar.poster_path}
-                                rate={similar.vote_average}
-                                releaseDate={new Date(similar.release_date).getFullYear()}
-                                title={similar.title}
-                                type="movie"
-                            />
-                        ))}
-                    </div>
-                </div>
+                        <div className="gap-6 flex carousel carousel-end rounded-box w-full [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-200px),transparent_100%)]">
+                            <div className="carousel-item space-x-5">
+                                {similarMovies.results.map(similar => (
+                                    <MovieSmallCard
+                                        key={similar.id}
+                                        id={similar.id}
+                                        poster={similar.poster_path}
+                                        rate={similar.vote_average}
+                                        releaseDate={new Date(similar.release_date).getFullYear()}
+                                        title={similar.title}
+                                        type="movie"
+                                    />
+                                ))}
+                            </div>
+                        </div>
+                    </>
+                )}
             </div>
             {/*Modal*/}
             <dialog className="modal" ref={trailerModalRef}>

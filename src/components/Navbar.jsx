@@ -39,12 +39,9 @@ export const NAV_LINKS = [
 const Navbar = () => {
     const [query, setQuery] = useState("");
     const [searchResults, setSearchResults] = useState([]);
-
-
     const [isScrolling, setIsScrolling] = useState(false);
 
     const navigate = useNavigate();
-
 
     useEffect(() => {
         const handleScroll = () => {
@@ -90,7 +87,7 @@ const Navbar = () => {
     }, [query])
 
     return (
-        <div className={`lg:fixed ${isScrolling && 'backdrop-blur-sm'} top-0 hidden sm:block navbar py-4 z-50`} >
+        <div className={`lg:fixed ${isScrolling && 'backdrop-blur-sm'} transition-all ease-in-out top-0 hidden sm:block navbar py-4 z-50`} >
             <div className='flex justify-between w-full px-5'>
                 <div>
                     <Link to='/'>
@@ -135,10 +132,10 @@ const Navbar = () => {
 
 
                         <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-50 w-52 p-2 shadow">
-                            <li><a href="/favorite">Favorite Movie</a></li>
-                            <li><a href="/profile">View Profile</a></li>
-                            <li><a href="/settings">Settings</a></li>
-                            <li><a href="/logout">Logout</a></li>
+                            <li><Link href="/favorite">Favorite Movie</Link></li>
+                            <li><Link href="/profile">View Profile</Link></li>
+                            <li><Link href="/settings">Settings</Link></li>
+                            <li><Link href="/logout">Logout</Link></li>
                         </ul>
                     </div>
                 </div>
