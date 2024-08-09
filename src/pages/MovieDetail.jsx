@@ -25,8 +25,6 @@ const MovieDetail = () => {
     })
 
     const { isTeaserEnded, isHeartFill, isDelayed, isTrailerPlaying } = state;
-    const location = useLocation();
-
 
     useEffect(() => {
         const timer = setTimeout(() => {

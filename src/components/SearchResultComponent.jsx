@@ -1,5 +1,5 @@
 import React from 'react'
-import { useLocation } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import MovieSmallCard from './MovieSmallCard';
 import SearchNotFound from '../assets/searchNotFound.svg'
 
@@ -22,6 +22,7 @@ const SearchResultComponent = () => {
                     <div>
                         <img src={SearchNotFound} alt="Not Found Illustrator" className='w-80' />
                         <p className='mt-4 text-2xl text-center'>Oppss! Movie Not Found</p>
+                        <Link to='/' className='btn btn-secondary mt-4 w-full'>Back to Home</Link>
                     </div>
                 </div>
             }
