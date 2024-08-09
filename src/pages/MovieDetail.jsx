@@ -39,6 +39,7 @@ const MovieDetail = () => {
         refetchVideos();
         refetchSimilarMovies();
     }, [id, refetchMovie, refetchCredits, refetchVideos, refetchSimilarMovies])
+    
     if (movieLoading || videoLoading || creditsLoading || loadingSimilarMovies)
         return <div className='min-h-screen grid place-items-center bg-slate-900'>
             <span className="loading loading-dots loading-lg text-white"></span>
