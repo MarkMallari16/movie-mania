@@ -8,7 +8,7 @@ const MovieMediumCard = ({ movieId, poster_path, title, vote_average }) => {
                 <figure>
                     <img
                         src={`https://image.tmdb.org/t/p/w500${poster_path}`}
-                        alt={title} className='hover:scale-110 hover:opacity-75 transition-all ease-in-out' />
+                        alt={title} className='hover:scale-110 hover:opacity-75 transition-all ease-in-out duration-200' />
                 </figure>
                 <div className="py-4">
                     <div className='flex justify-between'>
