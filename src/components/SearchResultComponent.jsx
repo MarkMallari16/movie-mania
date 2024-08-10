@@ -1,7 +1,9 @@
-import React from 'react'
-import { Link, useLocation } from 'react-router-dom'
-import MovieSmallCard from './MovieSmallCard';
-import SearchNotFound from '../assets/searchNotFound.svg'
+import React, { Suspense } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import SearchNotFound from '../assets/searchNotFound.svg';
+import LazyLoadingCard from './LazyLoadingCard';
+
+const MovieSmallCard = React.lazy(() => import("../components/MovieSmallCard"));
 
 const SearchResultComponent = () => {
     const location = useLocation();
@@ -14,7 +16,9 @@ const SearchResultComponent = () => {
 
                 <div className='mt-6 grid grid-cols-1 lg:grid-cols-6 gap-10'>
                     {searchResults.map(result => (
-                        <MovieSmallCard id={result.id} poster={result.poster_path} rate={result.vote_average} releaseDate={new Date(result.release_date).getFullYear()} title={result.title} />
+                        <Suspense fallback={<LazyLoadingCard />}>
+                            <MovieSmallCard id={result.id} poster={result.poster_path} rate={result.vote_average} releaseDate={new Date(result.release_date).getFullYear()} title={result.title} />
+                        </Suspense>
                     ))}
                 </div>
                 :
