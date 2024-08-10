@@ -1,7 +1,8 @@
-import React, { Suspense } from 'react'
+import React, { Suspense, lazy } from 'react'
 import LazyLoadingCard from './LazyLoadingCard';
 
-const MovieMediumCard = React.lazy(() => import('../components/MovieMediumCard'));
+const MovieMediumCard = lazy(() => import('../components/MovieMediumCard'));
+
 const MovieList = ({ movies }) => {
     return (
         <>

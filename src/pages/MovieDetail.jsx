@@ -74,6 +74,7 @@ const MovieDetail = () => {
         visible: { opacity: 1 },
         hidden: { opacity: 0 }
     }
+
     return (
         <>
             <div className={`min-h-screen w-full  text-white relative  transition-all ease-in-out`} style={{
@@ -82,7 +83,7 @@ const MovieDetail = () => {
                 backgroundPosition: 'center'
             }}>
 
-                {!isDelayed && (
+                {(!isDelayed && !isTeaserEnded) && (
                     <ReactPlayer
                         url={teaserUrl}
                         playing
@@ -173,13 +174,23 @@ const MovieDetail = () => {
                             viewport={{ once: true }}>
                             <p className='mt-6 lg:w-full max-w-4xl leading-8'>{movieDetail.overview}</p>
                         </motion.div>
-                        <div className='mt-6'>
+                        <motion.div
+                            className='mt-6'
+                            initial="hidden"
+                            whileInView="visible"
+                            variants={variants}
+                            viewport={{ once: true }}>
                             <p><span className='text-slate-300 font-medium'>Starring:</span>  {characters.map(character => character.name).join(" , ")}</p>
-                        </div>
+                        </motion.div>
 
-                        <div className='mt-2'>
+                        <motion.div
+                            className='mt-2'
+                            initial="hidden"
+                            whileInView="visible"
+                            variants={variants}
+                            viewport={{ once: true }}>
                             <p><span className='text-slate-300 font-medium'>Director:</span> {directors.name}</p>
-                        </div>
+                        </motion.div>
 
                         <div className='flex gap-3 mt-6'>
                             <button className='btn btn-secondary' onClick={handleTrailerModalOpen}>

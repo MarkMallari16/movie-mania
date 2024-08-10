@@ -9,7 +9,7 @@ const useFetch = (url) => {
         if (!url) return;
         setLoading(true);
         const API_KEY = "24ce4eec248652f741c228a1d8a1a21c";
-        
+
         try {
             const response = await fetch(`${url}?api_key=${API_KEY}`);
             if (!response.ok) {
