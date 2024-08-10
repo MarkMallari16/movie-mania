@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 const MovieMediumCard = ({ movieId, poster_path, title, vote_average }) => {
     return (
         <Link to={`/movie/${movieId}`}  >
-            <div className="card bg-base-100 w-60 overflow-hidden rounded-3xl" >
+            <div className="card bg-base-100 w-60 overflow-hidden rounded-xl" >
                 <figure>
                     <img
                         src={`https://image.tmdb.org/t/p/w500${poster_path}`}

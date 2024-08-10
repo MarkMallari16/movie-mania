@@ -5,12 +5,12 @@ const MovieCarousel = ({ movieData }) => {
     return (
         <div className='carousel carousel-center flex gap-5  rounded-lg mt-10'>
             {movieData.results.map(movie => (
-                <div className='carousel-item ' key={movie?.id}>
+                <div className='carousel-item overflow-hidden rounded-lg' key={movie?.id}>
                     <Link to={`/movie/${movie?.id}`} className='relative'>
-                        <img src={`https://image.tmdb.org/t/p/w500${movie?.backdrop_path}`} alt={movie?.title} className='rounded-lg opacity-75' />
+                        <img src={`https://image.tmdb.org/t/p/w500${movie?.backdrop_path}`} alt={movie?.title} className=' opacity-75 hover:opacity-50 hover:scale-110 transition-all ease-in' />
                         <div>
                             <div>
-                                <p className='absolute bottom-4 start-3 text-white text-xl'>{movie?.title}</p>
+                                <p className='font-medium absolute bottom-4 start-3 text-white text-xl'>{movie?.title}</p>
                             </div>
                             <div className='absolute bottom-4 end-3 flex gap-1'>
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-5 text-yellow-500">

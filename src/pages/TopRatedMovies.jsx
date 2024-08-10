@@ -3,6 +3,7 @@ import MovieCarousel from '../components/MovieCarousel'
 import MovieMediumCard from '../components/MovieMediumCard'
 import useSortOrder from '../hooks/useSortOrder'
 import SortDropDown from '../components/SortDropDown'
+import MovieList from '../components/MovieList'
 
 const TopRatedMovies = ({ topRated }) => {
     const { sort, handleSort } = useSortOrder();
@@ -17,9 +18,7 @@ const TopRatedMovies = ({ topRated }) => {
                 <SortDropDown onSorted={handleSort} currentSort={sort} />
             </div>
             <div className='rounded-box flex justify-center flex-wrap gap-10'>
-                {sortedMovies.map(topRatedMovie => (
-                    <MovieMediumCard key={topRatedMovie.id} movieId={topRatedMovie?.id} poster_path={topRatedMovie.poster_path} title={topRatedMovie.title} vote_average={topRatedMovie.vote_average} />
-                ))}
+                <MovieList movies={sortedMovies} />
             </div>
         </div>
     )
