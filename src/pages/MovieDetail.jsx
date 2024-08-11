@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import useFetch from '../hooks/useFetch';
 import ReactPlayer from 'react-player';
 import CharacterComponent from '../components/CharacterComponent';
@@ -134,7 +134,7 @@ const MovieDetail = () => {
                         </motion.div>
 
                         <motion.h1
-                            className='text-5xl lg:text-7xl font-bold'
+                            className='text-5xl lg:text-7xl font-black'
                             initial="hidden"
                             whileInView="visible"
                             variants={variants}
