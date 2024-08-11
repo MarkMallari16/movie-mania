@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import DefaultImagePoster from './DefaultImagePoster'
 
 const MovieSmallCard = ({ id, poster, rate, releaseDate, title, type }) => {
     const roundedRate = rate.toFixed(1)
@@ -8,7 +9,7 @@ const MovieSmallCard = ({ id, poster, rate, releaseDate, title, type }) => {
         <Link to={`/movie/${id}`}>
             <div>
                 <div className='w-full overflow-hidden rounded-xl'>
-                    <img src={`https://image.tmdb.org/t/p/w200${poster}`} alt={title} className='hover:scale-110  hover:opacity-70 bg-slate-900 transition-all ease-in-out duration-200' />
+                    {poster ? <img src={`https://image.tmdb.org/t/p/w200${poster}`} alt={title} className='hover:scale-110  hover:opacity-70 bg-slate-900 transition-all ease-in-out duration-200' /> : <DefaultImagePoster />}
                 </div>
                 <div className='mt-3 flex justify-between'>
                     <div className='flex gap-1'>
