@@ -217,7 +217,6 @@ const MovieDetail = () => {
             <div className='mx-10'>
                 {videos.length > 0 && <div>
                     <h1 className='mt-10 text-xl text-white font-bold'>Trailers & Clips</h1>
-
                     <TrailerAndClipsComponent videos={videos} />
                 </div>}
 
