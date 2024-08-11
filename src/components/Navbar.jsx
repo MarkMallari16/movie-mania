@@ -64,7 +64,7 @@ const Navbar = () => {
     const handleSearchEnter = (e) => {
         if (e.key === "Enter") {
             if (query) {
-                navigate(`/search?query=${encodeURIComponent(query)}`, { state: { searchResults} });
+                navigate(`/search?query=${encodeURIComponent(query)}`, { state: { searchResults, query } });
             }
         }
     }

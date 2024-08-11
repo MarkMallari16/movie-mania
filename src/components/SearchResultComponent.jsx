@@ -1,17 +1,22 @@
-import React, { Suspense } from 'react';
+import React, { Suspense, lazy } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import SearchNotFound from '../assets/searchNotFound.svg';
 import LazyLoadingCard from './LazyLoadingCard';
 
-const MovieSmallCard = React.lazy(() => import("../components/MovieSmallCard"));
+const MovieSmallCard = lazy(() => import("../components/MovieSmallCard"));
 
 const SearchResultComponent = () => {
     const location = useLocation();
     const { searchResults } = location.state || { searchResults: [] }
 
+
+
+    const query = new URLSearchParams(location.search).get("query");
+
+    console.log(query)
     return (
         <div className='mt-28 mx-20'>
-            <h1 className='mt-6 text-2xl'>Search Result</h1>
+            <h1 className='mt-6 text-2xl'>Search Result for {query}</h1>
             {searchResults.length > 0 ?
 
                 <div className='mt-6 grid grid-cols-1 lg:grid-cols-6 gap-10'>
