@@ -22,7 +22,7 @@ const SearchResultComponent = () => {
                 <div className='mt-6 grid grid-cols-1 lg:grid-cols-6 gap-10'>
                     {searchResults.map(result => (
                         <Suspense fallback={<LazyLoadingCard />}>
-                            <MovieSmallCard id={result.id} poster={result.poster_path} rate={result.vote_average} releaseDate={new Date(result.release_date).getFullYear()} title={result.title} />
+                            <MovieSmallCard id={result?.id} poster={result.poster_path} rate={result.vote_average} releaseDate={new Date(result.release_date).getFullYear()} title={result.title} />
                         </Suspense>
                     ))}
                 </div>
