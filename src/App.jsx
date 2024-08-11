@@ -5,7 +5,7 @@ import './App.css'
 import useFetch from './hooks/useFetch'
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Home from './pages/Home';
-import MovieDetail from './pages/MovieDetail';
+import MoviePage from './pages/MoviePage';
 import PopularMovies from './pages/PopularMovies';
 import Navbar from './components/Navbar';
 import TopRatedMovies from './pages/TopRatedMovies';
@@ -47,7 +47,7 @@ function App() {
             <Route path="/movies/toprated" element={<TopRatedMovies topRated={topRated} />} />
             <Route path="/movies/upcoming" element={<UpcomingMovies upcoming={upcomingMovie} />} />
             <Route path="/profile" element={<Profile />} />
-            <Route path="/movie/:id" element={<MovieDetail />} />
+            <Route path="/movie/:id" element={<MoviePage />} />
             <Route path='/search' element={<SearchResultComponent />} />
             <Route path="*" element={<Navigate to="/" />} />
           </Routes>
