@@ -16,7 +16,7 @@ const SearchResultComponent = () => {
     console.log(query)
     return (
         <div className='mt-28 mx-20'>
-            <h1 className='mt-6 text-2xl'>Search Result for {query}</h1>
+            <h1 className='mt-6 text-3xl font-bold'>Search Result for {query}</h1>
             {searchResults.length > 0 ?
 
                 <div className='mt-6 grid grid-cols-1 lg:grid-cols-6 gap-10'>
