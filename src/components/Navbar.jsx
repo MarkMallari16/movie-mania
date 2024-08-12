@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import Logo from '../assets/logo1.png'
-import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import Profile from '../assets/profile.jpg'
+import useScroll from '../hooks/useScroll';
 export const NAV_LINKS = [
     /*
     {
@@ -37,23 +38,13 @@ export const NAV_LINKS = [
     },
 ]
 
-
 const Navbar = () => {
     const [query, setQuery] = useState("");
     const [searchResults, setSearchResults] = useState([]);
-    const [isScrolling, setIsScrolling] = useState(false);
 
+    const isScrolling = useScroll();
     const navigate = useNavigate();
 
-    useEffect(() => {
-        const handleScroll = () => {
-            setIsScrolling(window.scrollY > 0);
-        };
-
-        window.addEventListener("scroll", handleScroll)
-
-        return () => window.removeEventListener("scroll", handleScroll);
-    })
     const handleQueryChange = (e) => {
         setQuery(e.target.value);
     }
