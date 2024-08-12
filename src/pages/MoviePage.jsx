@@ -86,7 +86,6 @@ const MovieDetail = () => {
                         muted
                         width="100%"
                         height="100vh"
-
                         onEnded={() => setIsTeaserEnded(true)}
                         className='absolute top-0 left-0  h-full z-0' />
                 )}
@@ -168,7 +167,7 @@ const MovieDetail = () => {
                             whileInView="visible"
                             variants={variants}
                             viewport={{ once: true }}>
-                            <p className='mt-6 lg:w-full max-w-4xl leading-8'>{movieDetail.overview}</p>
+                            <p className='mt-6 lg:w-full max-w-4xl tracking-wide leading-8'>{movieDetail.overview}</p>
                         </motion.div>
                         <motion.div
                             className='mt-6'
@@ -176,7 +175,10 @@ const MovieDetail = () => {
                             whileInView="visible"
                             variants={variants}
                             viewport={{ once: true }}>
-                            <p><span className='text-slate-300 font-medium'>Starring:</span>  {characters.map(character => character.name).join(" , ")}</p>
+                            <p>
+                                <span className='text-slate-300 font-medium'>Starring:</span>
+                                {characters.map(character => character.name).join(" , ")}
+                            </p>
                         </motion.div>
 
                         <motion.div
@@ -211,15 +213,16 @@ const MovieDetail = () => {
             </div>
 
             <div className='mx-10'>
-                {videos.length > 0 && <div>
-                    <h1 className='mt-10 text-xl text-white font-bold'>Trailers & Clips</h1>
-                    <TrailerAndClipsComponent videos={videos} />
-                </div>}
-
+                {videos.length > 0 &&
+                    <section>
+                        <h1 className='mt-10 text-xl text-white font-bold'>Trailers & Clips</h1>
+                        <TrailerAndClipsComponent videos={videos} />
+                    </section>
+                }
                 {/** <h1 className='my-10 text-xl text-white font-bold'>Casts</h1>
-                <div className='flex flex-wrap justify-center gap-4'>
+                <section className='flex flex-wrap justify-center gap-4'>
                     <CharacterComponent characters={characters} />
-                </div> */}
+                </section> */}
 
                 {similarMovies.results.length > 0 && (
                     <>

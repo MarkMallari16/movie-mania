@@ -138,10 +138,9 @@ const Navbar = () => {
 
 
                         <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-50 w-52 p-2 shadow">
-                            <li><Link to="/favorite">Favorite Movie</Link></li>
-                            <li><Link to="/profile">View Profile</Link></li>
-                            <li><Link to="/settings">Settings</Link></li>
-                            <li><Link to="/logout">Logout</Link></li>
+                            <li><NavLink to="/movie/favorite" className={({ isActive }) => isActive ? "active" : ""}>Favorite Movie</NavLink></li>
+                            <li><NavLink to="/profile">View Profile</NavLink></li>
+                            <li><NavLink to="/logout">Logout</NavLink></li>
                         </ul>
                     </div>
                 </div>
