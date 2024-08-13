@@ -52,8 +52,8 @@ const MovieDetail = () => {
     const videoTrailerUrl = videoTrailer ? `https://www.youtube.com/watch?v=${videoTrailer.key}` : null
     const backdropUrl = `https://image.tmdb.org/t/p/original${movieDetail.backdrop_path}`;
     const directors = credits.crew.find(person => person.job === "Director");
-    const allCharacters = credits.cast.slice(0,10);
-    const mainCharacters = credits.cast.slice(0,6);
+    const allCharacters = credits.cast.slice(0, 10);
+    const mainCharacters = credits.cast.slice(0, 6);
 
     const handleTrailerModalOpen = () => {
         if (trailerModalRef.current) {
@@ -225,7 +225,7 @@ const MovieDetail = () => {
 
                 {videos.length > 0 &&
                     <section>
-                        <h1 className='mt-10 text-xl text-white font-bold'>Trailers & Clips</h1>
+                        <h1 className='mt-6 text-xl text-white font-bold'>Trailers & Clips</h1>
                         <TrailerAndClipsComponent videos={videos} />
                     </section>
                 }

@@ -45,6 +45,7 @@ const Navbar = () => {
         if (e.key === "Enter") {
             if (query) {
                 navigate(`/search?query=${encodeURIComponent(query)}`, { state: { searchResults, query } });
+                clearQuery()
             }
         }
     }
@@ -106,46 +107,46 @@ const Navbar = () => {
                                         onClick={() => {
                                             navigate(`/movie/${movie.id}`);
                                             clearQuery();
-                                        }}    
+                                        }}
                                     >
-                            {movie.title}
-                        </div>
+                                        {movie.title}
+                                    </div>
 
-                    ))
-                    ) : (
-                    <div className='p-4'>No results found</div>
+                                ))
+                            ) : (
+                                <div className='p-4'>No results found</div>
                             )}
-                </div>
-                    )}
-            </div>
-
-            <div className='flex items-center gap-5'>
-                <ul className="menu menu-horizontal flex gap-2 px-2 text-white uppercase font-medium">
-                    {NAV_LINKS.map(link => (
-                        <li key={link}>
-                            <NavLink className={({ isActive }) => isActive ? "active" : ""} to={`/movies/${link.path}`}>
-                                {link.icon}{link.title}</NavLink>
-                        </li>
-                    ))}
-                </ul>
-
-                <div className="dropdown dropdown-end">
-
-                    <div tabIndex={0} role="button" className="avatar online">
-                        <div className="w-12 rounded-full object-cover">
-                            <img src={Profile} alt='Profile' />
                         </div>
-                    </div>
+                    )}
+                </div>
 
-
-                    <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-50 w-52 p-2 shadow">
-                        <li><NavLink to="/movie/favorite" className={({ isActive }) => isActive ? "active" : ""}>Favorite Movie</NavLink></li>
-                        <li><NavLink to="/profile">View Profile</NavLink></li>
-                        <li><NavLink to="/logout">Logout</NavLink></li>
+                <div className='flex items-center gap-5'>
+                    <ul className="menu menu-horizontal flex gap-2 px-2 text-white uppercase font-medium">
+                        {NAV_LINKS.map(link => (
+                            <li key={link}>
+                                <NavLink className={({ isActive }) => isActive ? "active" : ""} to={`/movies/${link.path}`}>
+                                    {link.icon}{link.title}</NavLink>
+                            </li>
+                        ))}
                     </ul>
+
+                    <div className="dropdown dropdown-end">
+
+                        <div tabIndex={0} role="button" className="avatar online">
+                            <div className="w-12 rounded-full object-cover">
+                                <img src={Profile} alt='Profile' />
+                            </div>
+                        </div>
+
+
+                        <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-50 w-52 p-2 shadow">
+                            <li><NavLink to="/movie/favorite" className={({ isActive }) => isActive ? "active" : ""}>Favorite Movie</NavLink></li>
+                            <li><NavLink to="/profile">View Profile</NavLink></li>
+                            <li><NavLink to="/logout">Logout</NavLink></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </div>
         </div >
     )
 }
