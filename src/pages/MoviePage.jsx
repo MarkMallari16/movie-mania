@@ -52,7 +52,7 @@ const MovieDetail = () => {
     const videoTrailerUrl = videoTrailer ? `https://www.youtube.com/watch?v=${videoTrailer.key}` : null
     const backdropUrl = `https://image.tmdb.org/t/p/original${movieDetail.backdrop_path}`;
     const directors = credits.crew.find(person => person.job === "Director");
-    const allCharacters = credits.cast.slice(0, 10);
+    const allCharacters = credits.cast.slice(0, 16);
     const mainCharacters = credits.cast.slice(0, 6);
 
     const handleTrailerModalOpen = () => {
@@ -219,9 +219,7 @@ const MovieDetail = () => {
             </div>
             <div className='mx-10'>
                 <h1 className='my-10 text-xl text-white font-bold'>Casts of {movieDetail.title}</h1>
-                <section className='flex flex-wrap justify-center gap-4'>
-                    <CharacterComponent characters={allCharacters} />
-                </section>
+                <CharacterComponent characters={allCharacters} />
 
                 {videos.length > 0 &&
                     <section>
