@@ -32,10 +32,10 @@ const MovieDetail = () => {
     }, [])
 
     useEffect(() => {
-        refetchMovie();
-        refetchCredits();
-        refetchVideos();
-        refetchSimilarMovies();
+        const fetchAllData = async () => {
+            return await Promise.all([refetchMovie(), refetchCredits(), refetchVideos(), refetchSimilarMovies()]);
+        }
+        fetchAllData();
     }, [id, refetchMovie, refetchCredits, refetchVideos, refetchSimilarMovies])
 
     if (movieLoading || videoLoading || creditsLoading || loadingSimilarMovies)
@@ -71,7 +71,7 @@ const MovieDetail = () => {
         visible: { opacity: 1 },
         hidden: { opacity: 0 }
     }
-
+    console.log(mainCharacters)
     return (
         <>
             <div className={`min-h-screen w-full text-white relative transition-all ease-in-out`}>
