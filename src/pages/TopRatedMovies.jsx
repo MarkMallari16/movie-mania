@@ -4,11 +4,12 @@ import MovieMediumCard from '../components/MovieMediumCard'
 import useSortOrder from '../hooks/useSortOrder'
 import SortDropDown from '../components/SortDropDown'
 import MovieList from '../components/MovieList'
+import { sortingUtils } from '../utils/sortingUtils'
 
 const TopRatedMovies = ({ topRated }) => {
     const { sort, handleSort } = useSortOrder();
 
-    const sortedMovies = sort === "highest" ? [...topRated.results].sort((a, b) => b.vote_average - a.vote_average) : [...topRated.results].sort((a, b) => a.vote_average - b.vote_average);
+    const sortedMovies = sortingUtils(topRated.results, sort);
 
     return (
         <div className='mx-10 lg:mx-20 lg:mt-28'>

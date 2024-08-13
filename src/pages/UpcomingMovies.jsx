@@ -6,11 +6,13 @@ import MovieMediumCard from '../components/MovieMediumCard'
 import useSortOrder from '../hooks/useSortOrder'
 import SortDropDown from '../components/SortDropDown'
 import MovieList from '../components/MovieList'
+import { sortingUtils } from '../utils/sortingUtils'
 
 const UpcomingMovies = ({ upcoming }) => {
     const { sort, handleSort } = useSortOrder();
 
-    const sortedMovies = sort === "highest" ? [...upcoming.results].sort((a, b) => b.vote_average - a.vote_average) : [...upcoming.results].sort((a, b) => a.vote_average - b.vote_average);
+    const sortedMovies = sortingUtils(upcoming.results, sort);
+
     return (
         <div className='mx-10 lg:mx-20 lg:mt-28'>
             <MovieCarousel movieData={upcoming} />

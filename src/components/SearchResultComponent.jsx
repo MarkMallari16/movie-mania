@@ -9,11 +9,8 @@ const SearchResultComponent = () => {
     const location = useLocation();
     const { searchResults } = location.state || { searchResults: [] }
 
-
-
     const query = new URLSearchParams(location.search).get("query");
 
-    console.log(query)
     return (
         <div className='mt-28 mx-20'>
             <h1 className='mt-6 text-3xl font-bold'>Search Result for {query}</h1>

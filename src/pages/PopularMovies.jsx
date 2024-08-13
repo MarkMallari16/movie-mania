@@ -6,11 +6,13 @@ import SortDropDown from '../components/SortDropDown';
 import useSortOrder from '../hooks/useSortOrder';
 
 import MovieList from '../components/MovieList';
+import { sortingUtils } from '../utils/sortingUtils';
 
 const PopularMovies = ({ popular }) => {
     const { sort, handleSort } = useSortOrder();
 
-    const sortedMovies = sort === "highest" ? [...popular.results].sort((a, b) => b.vote_average - a.vote_average) : [...popular.results].sort((a, b) => a.vote_average - b.vote_average);
+    const sortedMovies = sortingUtils(popular.results, sort);
+
     return (
         <div className='mx-10 lg:mx-20 lg:mt-28'>
             <MovieCarousel movieData={popular} />

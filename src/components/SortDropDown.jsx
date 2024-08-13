@@ -17,6 +17,12 @@ const SortDropDown = ({ onSorted, currentSort }) => {
                 <li onClick={() => onSorted('lowest')} className={currentSort === 'lowest' ? 'bg-base-300 rounded-lg' : ''}>
                     <p>Lowest Stars</p>
                 </li>
+                <li onClick={() => onSorted('newest')} className={currentSort === 'newest' ? 'bg-base-300 rounded-lg' : ''}>
+                    <p>Newest</p>
+                </li>
+                <li onClick={() => onSorted('oldest')} className={currentSort === 'oldest' ? 'bg-base-300 rounded-lg' : ''}>
+                    <p>Oldest</p>
+                </li>
             </ul>
         </div>
     )

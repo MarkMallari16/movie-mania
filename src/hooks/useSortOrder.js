@@ -7,7 +7,6 @@ const useSortOrder = () => {
         setSort(sortOrder);
     }
 
-    
     return { sort, handleSort };
 }
 
