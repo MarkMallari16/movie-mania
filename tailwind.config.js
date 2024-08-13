@@ -5,7 +5,15 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   daisyui: {
-    themes: ["night"]
+    themes: [
+      {
+        mytheme: {
+          "primary": "#3B82F6",
+         
+        }
+      },
+      "night" // Predefined theme
+    ]
   },
   theme: {
     extend: {},

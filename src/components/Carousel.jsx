@@ -4,9 +4,17 @@ import MovieSmallCard from './MovieSmallCard';
 const Carousel = ({ carouselTitle, icon, datas, type }) => {
     return (
         <>
-            <h1 className='mt-10 mb-6 text-2xl text-white font-medium flex items-center gap-2'>
-                {icon}{carouselTitle}
-            </h1>
+            <section className='mt-10 mb-6 flex items-center justify-between'>
+                <h1 className='text-2xl text-white font-medium flex items-center gap-2'>
+                    {icon}{carouselTitle}
+                </h1>
+                <div className='flex gap-5'>
+                    <button className='btn'>Popularity</button>
+                    <button className='btn'>Popularity</button>
+                    <button className='btn'>Popularity</button>
+                    <button className='btn'>Popularity</button>
+                </div>
+            </section>
             <div className="gap-6 flex carousel carousel-end rounded-box w-full [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-200px),transparent_100%)]">
                 <div className="carousel-item space-x-5 ">
 
