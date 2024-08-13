@@ -52,7 +52,8 @@ const MovieDetail = () => {
     const videoTrailerUrl = videoTrailer ? `https://www.youtube.com/watch?v=${videoTrailer.key}` : null
     const backdropUrl = `https://image.tmdb.org/t/p/original${movieDetail.backdrop_path}`;
     const directors = credits.crew.find(person => person.job === "Director");
-    const characters = credits.cast.slice(0, 6);
+    const allCharacters = credits.cast.slice(0,10);
+    const mainCharacters = credits.cast.slice(0,6);
 
     const handleTrailerModalOpen = () => {
         if (trailerModalRef.current) {
@@ -179,7 +180,7 @@ const MovieDetail = () => {
                                 viewport={{ once: true }}>
                                 <p>
                                     <span className='text-slate-300 font-medium'>Starring:</span>
-                                    {characters.map(character => character.name).join(" , ")}
+                                    {mainCharacters.map(character => character.name).join(" , ")}
                                 </p>
                             </motion.div>
 
@@ -216,18 +217,18 @@ const MovieDetail = () => {
                 </div>
 
             </div>
-
             <div className='mx-10'>
+                <h1 className='my-10 text-xl text-white font-bold'>Casts of {movieDetail.title}</h1>
+                <section className='flex flex-wrap justify-center gap-4'>
+                    <CharacterComponent characters={allCharacters} />
+                </section>
+
                 {videos.length > 0 &&
                     <section>
                         <h1 className='mt-10 text-xl text-white font-bold'>Trailers & Clips</h1>
                         <TrailerAndClipsComponent videos={videos} />
                     </section>
                 }
-                {/** <h1 className='my-10 text-xl text-white font-bold'>Casts</h1>
-                <section className='flex flex-wrap justify-center gap-4'>
-                    <CharacterComponent characters={characters} />
-                </section> */}
 
                 {similarMovies.results.length > 0 && (
                     <>
