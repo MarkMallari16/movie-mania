@@ -11,18 +11,19 @@ const SortDropDown = ({ onSorted, currentSort }) => {
                 Sort by
             </div>
             <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
-                <li onClick={() => onSorted('highest')} className={currentSort === 'highest' ? 'bg-base-300 rounded-lg' : ''}>
-                    <p>Highest Stars</p>
-                </li>
-                <li onClick={() => onSorted('lowest')} className={currentSort === 'lowest' ? 'bg-base-300 rounded-lg' : ''}>
-                    <p>Lowest Stars</p>
-                </li>
                 <li onClick={() => onSorted('newest')} className={currentSort === 'newest' ? 'bg-base-300 rounded-lg' : ''}>
                     <p>Newest</p>
                 </li>
                 <li onClick={() => onSorted('oldest')} className={currentSort === 'oldest' ? 'bg-base-300 rounded-lg' : ''}>
                     <p>Oldest</p>
                 </li>
+                <li onClick={() => onSorted('highest')} className={currentSort === 'highest' ? 'bg-base-300 rounded-lg' : ''}>
+                    <p>Highest Stars</p>
+                </li>
+                <li onClick={() => onSorted('lowest')} className={currentSort === 'lowest' ? 'bg-base-300 rounded-lg' : ''}>
+                    <p>Lowest Stars</p>
+                </li>
+
             </ul>
         </div>
     )

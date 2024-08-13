@@ -8,6 +8,7 @@ import useSortOrder from '../hooks/useSortOrder';
 import MovieList from '../components/MovieList';
 import { sortingUtils } from '../utils/sortingUtils';
 
+
 const PopularMovies = ({ popular }) => {
     const { sort, handleSort } = useSortOrder();
 
@@ -22,11 +23,8 @@ const PopularMovies = ({ popular }) => {
             </div>
             <div className='rounded-box flex justify-center flex-wrap gap-10'>
                 <MovieList movies={sortedMovies} />
-            </div>
-
-
+            </div> 
         </div>
-
     )
 }
 

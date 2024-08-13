@@ -8,7 +8,7 @@ const Carousel = ({ carouselTitle, icon, movieData, type, link }) => {
             <header className='mt-10 mb-6 flex items-center justify-between'>
                 <Link to={link}>
                     <div className='flex items-center gap-2 hover:text-secondary transition-all ease-in-out'>
-                        <h1 className='text-2xl font-medium flex items-center gap-2'>
+                        <h1 className='text-2xl font-semibold flex items-center gap-2'>
                             {icon}{carouselTitle}
                         </h1>
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-6">

@@ -56,7 +56,7 @@ const Home = ({ allMovies, nowPlaying, popular, topRated, upcoming }) => {
     return (
         <>
             <div className='lg:mt-28 mx-10 '>
-                <h1 className='mt-10 mb-3 text-2xl text-white font-medium flex items-center gap-2'>
+                <h1 className='mt-10 mb-3 text-2xl font-semibold flex items-center gap-2'>
                     Recommend for you
                 </h1>
             </div>
