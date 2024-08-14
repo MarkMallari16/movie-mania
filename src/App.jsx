@@ -15,6 +15,7 @@ import Footer from './components/Footer';
 import BottomNav from './components/BottomNav';
 import Profile from './pages/Profile';
 import SearchResultComponent from './components/SearchResultComponent';
+import Terms from './pages/Terms';
 
 function App() {
 
@@ -51,6 +52,7 @@ function App() {
             <Route path="/movie/:id" element={<MoviePage />} />
             <Route path="/movie/favorite" element={<FavoriteMovie />} />
             <Route path='/search' element={<SearchResultComponent />} />
+            <Route path='/terms' element={<Terms />} />
             <Route path="*" element={<Navigate to="/" />} />
           </Routes>
         </div>
