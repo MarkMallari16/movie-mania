@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { Suspense, useEffect, useRef, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import useFetch from '../hooks/useFetch';
 import ReactPlayer from 'react-player';
@@ -45,11 +45,11 @@ const MovieDetail = () => {
 
     const teaser = videoData?.results?.find(video => video.type === "Teaser" && video.site === "YouTube");
     const teaserUrl = teaser ? `https://www.youtube.com/watch?v=${teaser.key}` : null;
-
+    const trailer = videoData?.results?.find(video => video.type === "Trailer" && video.site === "YouTube");
+    const trailerUrl = trailer ? `https://www.youtube.com/watch?v=${trailer.key}` : null
 
     const videos = videoData.results.filter(video => video.site === "YouTube" && video.type === 'Teaser' || video.type === "Trailer").slice(0, 8);
-    const videoTrailer = videoData?.results?.find(video => video.type === "Trailer" && video.site === "YouTube");
-    const videoTrailerUrl = videoTrailer ? `https://www.youtube.com/watch?v=${videoTrailer.key}` : null
+
     const backdropUrl = `https://image.tmdb.org/t/p/original${movieDetail.backdrop_path}`;
     const directors = credits.crew.find(person => person.job === "Director");
     const allCharacters = credits.cast.slice(0, 16);
@@ -83,6 +83,7 @@ const MovieDetail = () => {
                 }}>
 
                     {(!isDelayed && !isTeaserEnded) && (
+
                         <ReactPlayer
                             url={teaserUrl}
                             playing
@@ -91,6 +92,7 @@ const MovieDetail = () => {
                             height="100vh"
                             onEnded={() => setIsTeaserEnded(true)}
                             className='absolute top-0 left-0  h-full z-0' />
+
                     )}
 
                     <div className='absolute z-20 left-10 top-8  lg:top-20'>
@@ -259,7 +261,7 @@ const MovieDetail = () => {
                     </div>
                     <div className='overflow-hidden rounded-lg'>
                         <ReactPlayer
-                            url={videoTrailerUrl}
+                            url={trailerUrl}
                             playing={isTrailerPlaying}
                             muted
                             controls
