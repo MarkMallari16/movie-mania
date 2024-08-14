@@ -42,12 +42,14 @@ const Navbar = () => {
     }
 
     const handleSearchEnter = (e) => {
+
         if (e.key === "Enter") {
-            if (query) {
+            if (query && searchResults.length > 0) {
                 navigate(`/search?query=${encodeURIComponent(query)}`, { state: { searchResults, query } });
                 clearQuery()
             }
         }
+
     }
 
     useEffect(() => {

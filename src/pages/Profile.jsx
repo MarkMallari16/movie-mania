@@ -16,6 +16,7 @@ const Profile = () => {
           <li>Thriller</li>
           <li>Science Fiction</li>
           <li>Action</li>
+          <li>Comedy</li>
         </ul>
       </div>
       <div className='mt-10'>
@@ -25,10 +26,6 @@ const Profile = () => {
           <li>Reviewed "The Matrix"</li>
           <li>Added "Blade Runner 2049" to Watchlist</li>
         </ul>
-      </div>
-      <div className='mt-10'>
-        <h2 className='font-semibold text-xl'>Profile Settings</h2>
-        <button className='btn btn-secondary mt-2'>Edit Profile</button>
       </div>
     </div>
   )
