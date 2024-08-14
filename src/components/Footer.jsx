@@ -3,7 +3,7 @@ import Logo from '../assets/logo1.png'
 import { Link } from 'react-router-dom'
 const Footer = () => {
     return (
-        <footer className="mt-20 footer p-10 text-white border-t-2 border-slate-800">
+        <footer className="mt-32 footer p-10 text-white border-t-2 border-slate-800">
             <aside>
                 <img src={Logo} alt="MovieMania" />
                 <p >
