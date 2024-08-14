@@ -1,7 +1,36 @@
-import React from 'react'
-import { Link, NavLink } from 'react-router-dom'
+import React, { useRef } from 'react'
+import { NavLink, useNavigate } from 'react-router-dom'
+import useFetchSearch from '../hooks/useFetchSearch';
 
 const BottomNav = () => {
+    const searchModal = useRef(null);
+    const { query, setQuery, searchResults } = useFetchSearch();
+    const navigate = useNavigate();
+
+    const handleSearchModalOpen = () => {
+        if (searchModal.current) {
+            searchModal.current.showModal()
+        }
+    }
+    const handleSearchModalClose = () => {
+        if (searchModal.current) {
+            searchModal.current.close();
+        }
+    }
+    const clearQuery = () => {
+        setQuery("")
+    }
+    const handleSearchEnter = (e) => {
+
+        if (e.key === "Enter") {
+            if (query && searchResults.length > 0) {
+                navigate(`/search?query=${encodeURIComponent(query)}`, { state: { searchResults, query } });
+                clearQuery();
+                searchModal.current.close();
+            }
+        }
+
+    }
     return (
         <>
             <div className="lg:hidden btm-nav bg-base-200 z-50">
@@ -31,12 +60,12 @@ const BottomNav = () => {
                 </NavLink>
 
 
-                <NavLink to='/aasd' className="text-base-content">
+                <div className="text-base-content" onClick={handleSearchModalOpen}>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-6">
                         <path fillRule="evenodd" d="M10.5 3.75a6.75 6.75 0 1 0 0 13.5 6.75 6.75 0 0 0 0-13.5ZM2.25 10.5a8.25 8.25 0 1 1 14.59 5.28l4.69 4.69a.75.75 0 1 1-1.06 1.06l-4.69-4.69A8.25 8.25 0 0 1 2.25 10.5Z" clipRule="evenodd" />
                     </svg>
 
-                </NavLink>
+                </div>
 
                 <NavLink to='/profile' className="text-base-content">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-6">
@@ -45,7 +74,15 @@ const BottomNav = () => {
                 </NavLink>
             </div>
 
-
+            <dialog className="modal" ref={searchModal}>
+                <div className="modal-box w-11/12 max-w-7xl">
+                    <h3>Search</h3>
+                    <div className="modal-action">
+                        <input type="text" className='input input-bordered w-full' placeholder='Search movies here' onChange={(e) => setQuery(e.target.value)} onKeyDown={handleSearchEnter} />
+                    </div>
+                    <button className='mt-4 btn btn-error' onClick={handleSearchModalClose}>Close</button>
+                </div>
+            </dialog>
         </>
     )
 }

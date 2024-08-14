@@ -12,7 +12,7 @@ const SearchResultComponent = () => {
     const query = new URLSearchParams(location.search).get("query");
 
     return (
-        <div className='mt-28 mx-20'>
+        <div className='lg:mt-28 mx-20'>
             <h1 className='mt-6 text-3xl font-bold'>Search Result for {query}</h1>
             <div className='mt-6 grid grid-cols-1 lg:grid-cols-6 gap-10'>
                 {searchResults.map(result => (
