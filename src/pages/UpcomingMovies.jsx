@@ -21,7 +21,7 @@ const UpcomingMovies = ({ upcoming }) => {
                 <SortDropDown onSorted={handleSort} currentSort={sort} />
             </div>
 
-            <div className='rounded-box flex justify-center flex-wrap gap-10'>
+            <div className='rounded-box grid grid-cols-1 justify-center lg:grid-cols-5 gap-8'>
                 <MovieList movies={sortedMovies} />
             </div>
         </div>
