@@ -13,17 +13,21 @@ const BottomNav = () => {
             searchModal.current.showModal()
         }
     }
+    
     const handleSearchModalClose = () => {
         if (searchModal.current) {
             searchModal.current.close();
         }
     }
+
     const clearQuery = () => {
         setQuery("")
     }
+
     const handleQueryChange = (e) => {
         setQuery(e.target.value);
     }
+
     const handleSearchEnter = (e) => {
 
         if (e.key === "Enter") {
