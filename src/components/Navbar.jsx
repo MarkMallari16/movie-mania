@@ -105,13 +105,13 @@ const Navbar = () => {
                                 searchResults.map(movie => (
                                     <div
                                         key={movie.id}
-                                        className='flex gap-5 p-4 hover:bg-slate-700 cursor-pointer rounded-xl'
+                                        className='flex gap-5 p-4 hover:bg-slate-700 transition-colors ease-out cursor-pointer rounded-xl'
                                         onClick={() => {
                                             navigate(`/movie/${movie.id}`);
                                             clearQuery();
                                         }}
                                     >
-                                        <img src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`} alt={movie.title} className='max-w-12 rounded-xl' />
+                                        {!movie.poster_path ? <div className='w-25'>Poster not available</div> : <img src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`} alt={movie.title} className='max-w-12 rounded-xl' />}
                                         <div>
                                             <p>{movie.title}</p>
                                             <span className='text-slate-400'>{new Date(movie.release_date).getFullYear()}</span>

@@ -18,7 +18,7 @@ const Carousel = ({ carouselTitle, icon, movieData, type, link }) => {
                     </div>
                 </Link>
             </header>
-            <div className="gap-6 flex carousel carousel-end rounded-box w-full [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-200px),transparent_100%)]">
+            <div className="gap-6 flex carousel carousel-end rounded-box w-full [mask-image:_linear-gradient(to_right,transparent_0,_black_30px,_black_calc(100%-30px),transparent_100%)]">
                 <div className="carousel-item space-x-5 ">
 
                     {movieData && movieData.results.slice(0, 16).map((data, _) => (
