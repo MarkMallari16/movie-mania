@@ -1,6 +1,5 @@
 import React from 'react'
 import MovieCarousel from '../components/MovieCarousel'
-import MovieMediumCard from '../components/MovieMediumCard'
 import useSortOrder from '../hooks/useSortOrder'
 import SortDropDown from '../components/SortDropDown'
 import MovieList from '../components/MovieList'
@@ -18,7 +17,7 @@ const TopRatedMovies = ({ topRated }) => {
                 <h1 className='my-8 text-2xl text-white font-medium'>Top Rated  Movies</h1>
                 <SortDropDown onSorted={handleSort} currentSort={sort} />
             </div>
-            
+
             <div className='rounded-box grid grid-cols-1 justify-center lg:grid-cols-5 gap-8'>
                 <MovieList movies={sortedMovies} />
             </div>

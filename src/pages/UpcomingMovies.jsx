@@ -1,8 +1,5 @@
 import React from 'react'
-
-
 import MovieCarousel from '../components/MovieCarousel'
-import MovieMediumCard from '../components/MovieMediumCard'
 import useSortOrder from '../hooks/useSortOrder'
 import SortDropDown from '../components/SortDropDown'
 import MovieList from '../components/MovieList'
