@@ -1,6 +1,7 @@
 import React, { useRef } from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
 import useFetchSearch from '../hooks/useFetchSearch';
+import SearchInput from './SearchInput';
 
 const BottomNav = () => {
     const searchModal = useRef(null);
@@ -20,6 +21,9 @@ const BottomNav = () => {
     const clearQuery = () => {
         setQuery("")
     }
+    const handleQueryChange = (e) => {
+        setQuery(e.target.value);
+    }
     const handleSearchEnter = (e) => {
 
         if (e.key === "Enter") {
@@ -31,6 +35,7 @@ const BottomNav = () => {
         }
 
     }
+
     return (
         <>
             <div className="lg:hidden btm-nav bg-base-200 z-50">
@@ -78,7 +83,7 @@ const BottomNav = () => {
                 <div className="modal-box w-11/12 max-w-7xl">
                     <h3>Search</h3>
                     <div className="modal-action">
-                        <input type="text" className='input input-bordered w-full' placeholder='Search movies here' onChange={(e) => setQuery(e.target.value)} onKeyDown={handleSearchEnter} />
+                        <SearchInput currentQuery={query} onHandleQueryChange={handleQueryChange} onHandleSearchEnter={handleSearchEnter} onClearQuery={clearQuery} />
                     </div>
                     <button className='mt-4 btn btn-error' onClick={handleSearchModalClose}>Close</button>
                 </div>
