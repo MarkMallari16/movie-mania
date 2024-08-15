@@ -71,7 +71,7 @@ const MovieDetail = () => {
         visible: { opacity: 1 },
         hidden: { opacity: 0 }
     }
-    console.log(mainCharacters)
+    console.log(allCharacters)
     return (
         <>
             <div className={`min-h-screen w-full text-white relative transition-all ease-in-out`}>

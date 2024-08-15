@@ -20,7 +20,8 @@ const CharacterComponent = ({ characters }) => {
 
                                         </div>
                                     )}
-                                    <p className='mt-2 text-white w-52'>{char.character}</p>
+                                    <p className='mt-2 text-white w-52 font-medium'>{char.name}</p>
+                                    <span>{char.character}</span>
                                 </div>
                             </div>
                         ))
