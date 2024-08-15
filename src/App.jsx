@@ -16,6 +16,7 @@ import BottomNav from './components/BottomNav';
 import Profile from './pages/Profile';
 import SearchResultComponent from './components/SearchResultComponent';
 import Terms from './pages/Terms';
+import PersonPage from './pages/PersonPage';
 
 function App() {
 
@@ -53,6 +54,7 @@ function App() {
             <Route path="/movie/favorite" element={<FavoriteMovie />} />
             <Route path='/search' element={<SearchResultComponent />} />
             <Route path='/terms' element={<Terms />} />
+            <Route path='/person/:id' element={<PersonPage />} />
             <Route path="*" element={<Navigate to="/" />} />
           </Routes>
         </div>

@@ -15,7 +15,7 @@ const PopularMovies = ({ popular }) => {
         <div className='mx-10 lg:mx-20 lg:mt-28'>
             <MovieCarousel movieData={popular} />
             <div className='flex justify-between items-center'>
-                <h1 className='my-8 text-2xl text-white font-medium'>Popular Movies</h1>
+                <h1 className='my-8 text-2xl text-white font-semibold'>Popular Movies</h1>
                 <SortDropDown onSorted={handleSort} currentSort={sort} />
             </div>
 
