@@ -7,10 +7,12 @@ const PersonPage = () => {
 
   const { data: personData, loading: personLoading } = useFetch(`https://api.themoviedb.org/3/person/${id}`);
 
-  console.log(personData)
+  if (personLoading){
+    return <div>Loading...</div>
+  }
   return (
     <div className='lg:mt-28 mx-12'>
-      sample text
+      {personData.name}
     </div>
   )
 }
