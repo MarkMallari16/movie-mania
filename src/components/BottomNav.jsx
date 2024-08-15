@@ -87,7 +87,7 @@ const BottomNav = () => {
                 <div className="modal-box w-11/12 max-w-7xl">
                     <h3>Search</h3>
                     <div className="modal-action">
-                        <SearchInput currentQuery={query} onHandleQueryChange={handleQueryChange} onHandleSearchEnter={handleSearchEnter} onClearQuery={clearQuery} />
+                        <input className='input input-bordered w-full' value={query} onChange={handleQueryChange} onKeyDown={handleSearchEnter} placeholder='Search movie here...' />
                     </div>
                     <button className='mt-4 btn btn-error' onClick={handleSearchModalClose}>Close</button>
                 </div>
