@@ -23,6 +23,10 @@ const PersonPage = () => {
             <h2 className='text-xl font-medium mt-4'>Biography</h2>
             <p className='mt-2 tracking-wide'>{personData.biography}</p>
           </div>
+          <div>
+            <h2 className='text-xl font-medium mt-4'>Known For</h2>
+            <p className='mt-2 tracking-wide'>{personData.known_for_department}</p>
+          </div>
         </div>
 
 
