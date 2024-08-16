@@ -17,6 +17,7 @@ import Profile from './pages/Profile';
 import SearchResultComponent from './components/SearchResultComponent';
 import Terms from './pages/Terms';
 import PersonPage from './pages/PersonPage';
+import LoadingComponent from './components/LoadingComponent';
 
 function App() {
 
@@ -33,9 +34,7 @@ function App() {
   const isLoading = loadingAllMovies || loadingPopular || loadingNowPlaying || loadingTopRated || loadingUpcomingMovie;
 
   if (isLoading) {
-    return <div className='min-h-screen grid place-items-center bg-slate-900'>
-      <span className="loading loading-dots loading-lg text-white"></span>
-    </div>
+    return <LoadingComponent/>
 
   }
 

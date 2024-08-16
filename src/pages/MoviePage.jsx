@@ -6,6 +6,7 @@ import CharacterComponent from '../components/CharacterComponent';
 import MovieSmallCard from '../components/MovieSmallCard';
 import TrailerAndClipsComponent from '../components/TrailerAndClipsComponent';
 import { motion } from 'framer-motion';
+import BackButton from '../components/BackButton';
 
 const MovieDetail = () => {
     const { id } = useParams();
@@ -95,14 +96,7 @@ const MovieDetail = () => {
 
                     )}
 
-                    <div className='absolute z-20 left-10 top-8  lg:top-20'>
-                        <button onClick={() => navigate(-1)} className='btn btn-ghost'>
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-6">
-                                <path fillRule="evenodd" d="M11.03 3.97a.75.75 0 0 1 0 1.06l-6.22 6.22H21a.75.75 0 0 1 0 1.5H4.81l6.22 6.22a.75.75 0 1 1-1.06 1.06l-7.5-7.5a.75.75 0 0 1 0-1.06l7.5-7.5a.75.75 0 0 1 1.06 0Z" clipRule="evenodd" />
-                            </svg>
-                        </button>
-                    </div>
-
+                    <BackButton className='absolute z-20 left-10 top-8  lg:top-20' />
                     <div className='bg-slate-900 bg-opacity-75 min-h-screen flex items-center p-10 lg:p-20 relative z-10 '
                     >
                         <div className='mt-10'>

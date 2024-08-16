@@ -4,19 +4,19 @@ import useFetchSearch from '../hooks/useFetchSearch';
 import SearchInput from './SearchInput';
 
 const BottomNav = () => {
-    const searchModal = useRef(null);
+    const searchModalRef = useRef(null);
     const { query, setQuery, searchResults } = useFetchSearch();
     const navigate = useNavigate();
 
     const handleSearchModalOpen = () => {
-        if (searchModal.current) {
-            searchModal.current.showModal()
+        if (searchModalRef.current) {
+            searchModalRef.current.showModal()
         }
     }
-    
+
     const handleSearchModalClose = () => {
-        if (searchModal.current) {
-            searchModal.current.close();
+        if (searchModalRef.current) {
+            searchModalRef.current.close();
         }
     }
 
@@ -34,7 +34,7 @@ const BottomNav = () => {
             if (query && searchResults.length > 0) {
                 navigate(`/search?query=${encodeURIComponent(query)}`, { state: { searchResults, query } });
                 clearQuery();
-                searchModal.current.close();
+                searchModalRef.current.close();
             }
         }
 
@@ -68,12 +68,10 @@ const BottomNav = () => {
                     </svg>
                 </NavLink>
 
-
                 <div className="text-base-content" onClick={handleSearchModalOpen}>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-6">
                         <path fillRule="evenodd" d="M10.5 3.75a6.75 6.75 0 1 0 0 13.5 6.75 6.75 0 0 0 0-13.5ZM2.25 10.5a8.25 8.25 0 1 1 14.59 5.28l4.69 4.69a.75.75 0 1 1-1.06 1.06l-4.69-4.69A8.25 8.25 0 0 1 2.25 10.5Z" clipRule="evenodd" />
                     </svg>
-
                 </div>
 
                 <NavLink to='/profile' className="text-base-content">
@@ -83,11 +81,21 @@ const BottomNav = () => {
                 </NavLink>
             </div>
 
-            <dialog className="modal" ref={searchModal}>
+            {/*Modal*/}
+            <dialog className="modal" ref={searchModalRef}>
                 <div className="modal-box w-11/12 max-w-7xl">
                     <h3>Search</h3>
-                    <div className="modal-action">
-                        <input className='input input-bordered w-full' value={query} onChange={handleQueryChange} onKeyDown={handleSearchEnter} placeholder='Search movie here...' />
+                    <div className="modal-action relative">
+
+                        <input className='input input-bordered w-full pl-14' value={query} onChange={handleQueryChange} onKeyDown={handleSearchEnter} placeholder='Search movie here...' />
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="absolute inset-3 size-6">
+                            <path fillRule="evenodd" d="M10.5 3.75a6.75 6.75 0 1 0 0 13.5 6.75 6.75 0 0 0 0-13.5ZM2.25 10.5a8.25 8.25 0 1 1 14.59 5.28l4.69 4.69a.75.75 0 1 1-1.06 1.06l-4.69-4.69A8.25 8.25 0 0 1 2.25 10.5Z" clipRule="evenodd" />
+                        </svg>
+                        {query && (
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className=" absolute size-6 top-3 end-4 cursor-pointer bg-base-300 rounded-lg p-1 hover:bg-base-200 transition-colors ease-in-out" onClick={clearQuery} data-tip="clear">
+                                <path fillRule="evenodd" d="M5.47 5.47a.75.75 0 0 1 1.06 0L12 10.94l5.47-5.47a.75.75 0 1 1 1.06 1.06L13.06 12l5.47 5.47a.75.75 0 1 1-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 0 1-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 0 1 0-1.06Z" clipRule="evenodd" />
+                            </svg>
+                        )}
                     </div>
                     <button className='mt-4 btn btn-error' onClick={handleSearchModalClose}>Close</button>
                 </div>
