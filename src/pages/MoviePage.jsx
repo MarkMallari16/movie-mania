@@ -7,6 +7,7 @@ import MovieSmallCard from '../components/MovieSmallCard';
 import TrailerAndClipsComponent from '../components/TrailerAndClipsComponent';
 import { motion } from 'framer-motion';
 import BackButton from '../components/BackButton';
+import { getTeaserUrl, getTrailerUrl, getVideos } from '../utils/videoUtils';
 
 const MovieDetail = () => {
     const { id } = useParams();
@@ -15,8 +16,6 @@ const MovieDetail = () => {
     const { data: videoData, loading: videoLoading, refetch: refetchVideos } = useFetch(`https://api.themoviedb.org/3/movie/${id}/videos`);
 
     const { data: similarMovies, loading: loadingSimilarMovies, refetch: refetchSimilarMovies } = useFetch(`https://api.themoviedb.org/3/movie/${id}/similar`);
-
-    const navigate = useNavigate();
 
     const trailerModalRef = useRef(null);
 
@@ -44,17 +43,14 @@ const MovieDetail = () => {
             <span className="loading loading-dots loading-lg text-white"></span>
         </div>;
 
-    const teaser = videoData?.results?.find(video => video.type === "Teaser" && video.site === "YouTube");
-    const teaserUrl = teaser ? `https://www.youtube.com/watch?v=${teaser.key}` : null;
-    const trailer = videoData?.results?.find(video => video.type === "Trailer" && video.site === "YouTube");
-    const trailerUrl = trailer ? `https://www.youtube.com/watch?v=${trailer.key}` : null
 
-    const videos = videoData.results.filter(video => video.site === "YouTube" && video.type === 'Teaser' || video.type === "Trailer").slice(0, 8);
+    const teaserUrl = getTeaserUrl(videoData);
+    const trailerUrl = getTrailerUrl(videoData);
+    const videos = getVideos(videoData);
 
     const backdropUrl = `https://image.tmdb.org/t/p/original${movieDetail.backdrop_path}`;
     const directors = credits.crew.find(person => person.job === "Director");
     const allCharacters = credits.cast.slice(0, 16);
-    const mainCharacters = credits.cast.slice(0, 6);
 
     const handleTrailerModalOpen = () => {
         if (trailerModalRef.current) {
@@ -161,6 +157,7 @@ const MovieDetail = () => {
                                     <p>{movieDetail.runtime} min</p>
                                 </div>
                             </motion.div>
+
                             <motion.div
                                 initial="hidden"
                                 whileInView="visible"
@@ -168,17 +165,7 @@ const MovieDetail = () => {
                                 viewport={{ once: true }}>
                                 <p className='mt-6 lg:w-full max-w-4xl tracking-wide leading-8'>{movieDetail.overview}</p>
                             </motion.div>
-                            <motion.div
-                                className='mt-6'
-                                initial="hidden"
-                                whileInView="visible"
-                                variants={variants}
-                                viewport={{ once: true }}>
-                                <p>
-                                    <span className='text-slate-300 font-medium'>Starring:</span>
-                                    {mainCharacters.map(character => character.name).join(" , ")}
-                                </p>
-                            </motion.div>
+
 
                             <motion.div
                                 className='mt-2'
