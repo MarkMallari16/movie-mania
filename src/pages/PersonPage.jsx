@@ -44,7 +44,6 @@ const PersonPage = () => {
                 className=' cursor-pointer text-secondary font-medium'
               >
                 {isShowFullText ? 'See Less' : 'See More'}
-                
               </span>
             )}
           </div>
