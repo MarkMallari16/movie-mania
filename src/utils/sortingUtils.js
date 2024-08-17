@@ -1,5 +1,3 @@
-import React from 'react'
-
 export const sortingUtils = (movies, sort) => {
     return [...movies].sort((a, b) => {
         switch (sort) {
