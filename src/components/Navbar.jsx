@@ -4,6 +4,7 @@ import { Link, NavLink, useNavigate } from 'react-router-dom';
 import Profile from '../assets/profile.jpg'
 import useScroll from '../hooks/useScroll';
 import SearchInput from './SearchInput';
+import SearchInputDropDown from './SearchInputDropDown';
 export const NAV_LINKS = [
     {
         icon: <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-6">
@@ -74,6 +75,10 @@ const Navbar = () => {
         }
     }, [query])
 
+    const handleMovieClick = (movie) => {
+        navigate(`/movie/${movie.id}`);
+        clearQuery();
+    }
     return (
         <div className={`lg:fixed ${isScrolling && 'backdrop-blur-sm'} transition-all ease-in-out top-0 hidden sm:block navbar py-4 z-50`} >
             <div className='flex justify-between w-full px-10'>
@@ -93,31 +98,7 @@ const Navbar = () => {
 
                     <SearchInput currentQuery={query} onHandleQueryChange={handleQueryChange} onHandleSearchEnter={handleSearchEnter} onClearQuery={clearQuery} />
 
-                    {query && (
-                        <div className='absolute mt-2 w-full max-h-60 bg-slate-900 overflow-y-auto  rounded-xl'>
-                            {searchResults.length > 0 ? (
-                                searchResults.map(movie => (
-                                    <div
-                                        key={movie.id}
-                                        className='flex gap-5 p-4 hover:bg-slate-700 transition-colors ease-out cursor-pointer rounded-xl'
-                                        onClick={() => {
-                                            navigate(`/movie/${movie.id}`);
-                                            clearQuery();
-                                        }}
-                                    >
-                                        {!movie.poster_path ? <div className='w-25'>Poster not available</div> : <img src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`} alt={movie.title} className='max-w-12 rounded-xl' />}
-                                        <div>
-                                            <p>{movie.title}</p>
-                                            <span className='text-slate-400'>{new Date(movie.release_date).getFullYear()}</span>
-                                        </div>
-                                    </div>
-
-                                ))
-                            ) : (
-                                <div className='p-4'>No results found</div>
-                            )}
-                        </div>
-                    )}
+                    <SearchInputDropDown currentQuery={query} currentSearchResults={searchResults} onHandleMovieClick={handleMovieClick} />
                 </div>
 
                 <div className='flex items-center gap-5'>
@@ -140,7 +121,7 @@ const Navbar = () => {
 
 
                         <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-50 w-52 p-2 shadow">
-                            
+
                             <li><NavLink to="/profile">View Profile</NavLink></li>
                             <li><NavLink to="/logout">Logout</NavLink></li>
                         </ul>
