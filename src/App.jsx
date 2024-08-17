@@ -10,7 +10,6 @@ import PopularMovies from './pages/PopularMovies';
 import Navbar from './components/Navbar';
 import TopRatedMovies from './pages/TopRatedMovies';
 import UpcomingMovies from './pages/UpcomingMovies';
-import FavoriteMovie from './pages/FavoriteMovie';
 import Footer from './components/Footer';
 import BottomNav from './components/BottomNav';
 import Profile from './pages/Profile';
