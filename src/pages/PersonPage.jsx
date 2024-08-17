@@ -3,6 +3,7 @@ import { Link, useParams } from 'react-router-dom'
 import useFetch from '../hooks/useFetch';
 import BackButton from '../components/BackButton';
 import { formattedDate } from '../utils/dateFormatUtils';
+import LoadingComponent from '../components/LoadingComponent';
 
 const PersonPage = () => {
   const [isShowFullText, setIsShowFullText] = useState(false);
@@ -12,8 +13,9 @@ const PersonPage = () => {
   const { data: personData, loading: personLoading } = useFetch(`https://api.themoviedb.org/3/person/${id}`);
 
   if (personLoading) {
-    return <div>Loading...</div>
+    return <LoadingComponent />
   }
+
   const truncatedBiographyText = personData.biography.slice(0, 300);
   const shouldShowFullText = personData.biography.length > truncatedBiographyText.length;
 
@@ -29,6 +31,7 @@ const PersonPage = () => {
     : <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-5">
       <path fillRule="evenodd" d="M12.53 16.28a.75.75 0 0 1-1.06 0l-7.5-7.5a.75.75 0 0 1 1.06-1.06L12 14.69l6.97-6.97a.75.75 0 1 1 1.06 1.06l-7.5 7.5Z" clipRule="evenodd" />
     </svg>
+
   return (
     <div className='lg:mt-28 mx-12'>
       <BackButton className='mb-5' />
