@@ -21,7 +21,14 @@ const PersonPage = () => {
     setIsShowFullText(!isShowFullText);
   }
   const personBirthDate = formattedDate(personData.birthday);
-  console.log(personData)
+
+  const iconToShow = isShowFullText ?
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-5">
+      <path fillRule="evenodd" d="M11.47 7.72a.75.75 0 0 1 1.06 0l7.5 7.5a.75.75 0 1 1-1.06 1.06L12 9.31l-6.97 6.97a.75.75 0 0 1-1.06-1.06l7.5-7.5Z" clipRule="evenodd" />
+    </svg>
+    : <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-5">
+      <path fillRule="evenodd" d="M12.53 16.28a.75.75 0 0 1-1.06 0l-7.5-7.5a.75.75 0 0 1 1.06-1.06L12 14.69l6.97-6.97a.75.75 0 1 1 1.06 1.06l-7.5 7.5Z" clipRule="evenodd" />
+    </svg>
   return (
     <div className='lg:mt-28 mx-12'>
       <BackButton className='mb-5' />
@@ -47,23 +54,22 @@ const PersonPage = () => {
                 <>
                   <h2 className='text-xl font-medium mt-4'>Biography</h2>
                   <p className='mt-2 tracking-wide '>
-
-
                     {isShowFullText ? personData.biography : `${truncatedBiographyText}...`}
+                  </p>
+                  <p className='w-30'>
+                    {shouldShowFullText && (
+                      <span
+                        onClick={handleToggleText}
+                        className='flex gap-1 cursor-pointer text-secondary font-medium'
+                      >
+                        {isShowFullText ? 'See Less' : 'See More'}
+                        {iconToShow}
+                      </span>
+                    )}
                   </p>
                 </>
               )
             }
-
-            {shouldShowFullText && (
-              <span
-                onClick={handleToggleText}
-                className=' cursor-pointer text-secondary font-medium'
-              >
-                {isShowFullText ? 'See Less' : 'See More'}
-              </span>
-            )}
-
           </div>
         </div>
       </div>
