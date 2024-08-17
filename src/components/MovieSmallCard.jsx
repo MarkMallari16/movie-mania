@@ -8,8 +8,11 @@ const MovieSmallCard = ({ id, poster, rate, releaseDate, title, type }) => {
     return (
         <Link to={`/movie/${id}`}>
             <div>
-                <div className='w-full overflow-hidden rounded-xl'>
+                <div className='relative w-full overflow-hidden rounded-xl'>
                     {poster ? <img src={`https://image.tmdb.org/t/p/w200${poster}`} alt={title} className='hover:scale-110  hover:opacity-70 bg-slate-900 transition-all ease-in-out duration-200 w-full' /> : <DefaultImagePoster />}
+                    {poster && <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className=" size-20 absolute z-50 right-1/4 top-1/3">
+                        <path fillRule="evenodd" d="M4.5 5.653c0-1.427 1.529-2.33 2.779-1.643l11.54 6.347c1.295.712 1.295 2.573 0 3.286L7.28 19.99c-1.25.687-2.779-.217-2.779-1.643V5.653Z" clipRule="evenodd" />
+                    </svg>}
                 </div>
                 <div className='mt-2'>
                     <p className='text-white font-semibold'>{title.length > 20 ? `${title.slice(0, 16)}...` : title}</p>
