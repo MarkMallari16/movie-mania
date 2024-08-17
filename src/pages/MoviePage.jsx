@@ -7,7 +7,8 @@ import MovieSmallCard from '../components/MovieSmallCard';
 import TrailerAndClipsComponent from '../components/TrailerAndClipsComponent';
 import { motion } from 'framer-motion';
 import BackButton from '../components/BackButton';
-import { getTeaserUrl, getTrailerUrl, getVideos } from '../utils/videoUtils';
+import LoadingComponent from '../components/LoadingComponent';
+import { getBackdropUrl, getTeaserUrl, getTrailerUrl, getVideos } from '../utils/videoUtils';
 
 const MovieDetail = () => {
     const { id } = useParams();
@@ -24,6 +25,7 @@ const MovieDetail = () => {
     const [isTeaserEnded, setIsTeaserEnded] = useState(false);
     const [isHeartFill, setIsHeartFill] = useState(false);
 
+
     useEffect(() => {
         const timer = setTimeout(() => {
             setIsDelayed(false);
@@ -39,16 +41,13 @@ const MovieDetail = () => {
     }, [id, refetchMovie, refetchCredits, refetchVideos, refetchSimilarMovies])
 
     if (movieLoading || videoLoading || creditsLoading || loadingSimilarMovies)
-        return <div className='min-h-screen grid place-items-center bg-slate-900'>
-            <span className="loading loading-dots loading-lg text-white"></span>
-        </div>;
-
+        return <LoadingComponent />;
 
     const teaserUrl = getTeaserUrl(videoData);
     const trailerUrl = getTrailerUrl(videoData);
     const videos = getVideos(videoData);
 
-    const backdropUrl = `https://image.tmdb.org/t/p/original${movieDetail.backdrop_path}`;
+    const backdropUrl = getBackdropUrl(movieDetail.backdrop_path);
     const directors = credits.crew.find(person => person.job === "Director");
     const allCharacters = credits.cast.slice(0, 16);
 
@@ -68,7 +67,8 @@ const MovieDetail = () => {
         visible: { opacity: 1 },
         hidden: { opacity: 0 }
     }
-    console.log(allCharacters)
+
+
     return (
         <>
             <div className={`min-h-screen w-full text-white relative transition-all ease-in-out`}>
