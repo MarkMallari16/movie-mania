@@ -50,7 +50,7 @@ function App() {
             <Route path="/movies/upcoming" element={<UpcomingMovies upcoming={upcomingMovie} />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/movie/:id" element={<MoviePage />} />
-            <Route path="/movie/favorite" element={<FavoriteMovie />} />
+
             <Route path='/search' element={<SearchResultComponent />} />
             <Route path='/terms' element={<Terms />} />
             <Route path='/person/:id' element={<PersonPage />} />

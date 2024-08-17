@@ -25,7 +25,7 @@ const PersonPage = () => {
   return (
     <div className='lg:mt-28 mx-12'>
       <BackButton className='mb-5' />
-      <div className='flex flex-wrap lg:flex-nowrap gap-8 '>
+      <div className='flex flex-wrap lg:flex-nowrap gap-16 '>
 
         <img src={`https://image.tmdb.org/t/p/w500${personData.profile_path}`} alt={personData.name} className='rounded-lg w-full lg:w-auto lg:h-96' />
         <div>
