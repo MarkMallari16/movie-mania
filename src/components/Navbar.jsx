@@ -6,7 +6,8 @@ import useScroll from '../hooks/useScroll';
 import SearchInput from './SearchInput';
 import SearchInputDropDown from './SearchInputDropDown';
 import useFetchSearch from '../hooks/useFetchSearch';
-import BackButton from './BackButton';
+import { motion } from 'framer-motion';
+
 export const NAV_LINKS = [
     {
         icon: <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-6">
@@ -60,9 +61,9 @@ const Navbar = () => {
         clearQuery();
     }
     return (
-        <div className={`lg:fixed ${isScrolling && 'backdrop-blur-sm'} transition-all ease-in-out top-0 hidden sm:block navbar py-4 z-50`} >
+        <motion.div  className={`lg:fixed ${isScrolling && 'backdrop-blur-sm'} transition-all ease-in-out top-0 hidden sm:block navbar py-4 z-50`} >
             <div className='flex justify-between w-full px-10'>
-              
+
                 <div>
                     <Link to='/'>
                         <div>
@@ -109,7 +110,7 @@ const Navbar = () => {
                     </div>
                 </div>
             </div>
-        </div >
+        </motion.div >
     )
 }
 
