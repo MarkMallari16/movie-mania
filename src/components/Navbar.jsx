@@ -5,6 +5,8 @@ import Profile from '../assets/profile.jpg'
 import useScroll from '../hooks/useScroll';
 import SearchInput from './SearchInput';
 import SearchInputDropDown from './SearchInputDropDown';
+import useFetchSearch from '../hooks/useFetchSearch';
+import BackButton from './BackButton';
 export const NAV_LINKS = [
     {
         icon: <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-6">
@@ -30,8 +32,7 @@ export const NAV_LINKS = [
 ]
 
 const Navbar = () => {
-    const [query, setQuery] = useState("");
-    const [searchResults, setSearchResults] = useState([]);
+    const { query, setQuery, searchResults } = useFetchSearch()
 
     const isScrolling = useScroll();
     const navigate = useNavigate();
@@ -54,27 +55,6 @@ const Navbar = () => {
 
     }
 
-    useEffect(() => {
-        if (query) {
-            const API_KEY = "24ce4eec248652f741c228a1d8a1a21c";
-            const URL = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${encodeURIComponent(query)}`;
-            const fetchSearchResults = async () => {
-                try {
-                    const response = await fetch(URL);
-                    const searchData = await response.json();
-
-                    setSearchResults(searchData.results);
-
-                } catch (error) {
-                    console.error("Error fetching search results: ", error)
-                }
-            }
-            fetchSearchResults();
-        } else {
-            setSearchResults([])
-        }
-    }, [query])
-
     const handleMovieClick = (movie) => {
         navigate(`/movie/${movie.id}`);
         clearQuery();
@@ -82,6 +62,7 @@ const Navbar = () => {
     return (
         <div className={`lg:fixed ${isScrolling && 'backdrop-blur-sm'} transition-all ease-in-out top-0 hidden sm:block navbar py-4 z-50`} >
             <div className='flex justify-between w-full px-10'>
+              
                 <div>
                     <Link to='/'>
                         <div>
