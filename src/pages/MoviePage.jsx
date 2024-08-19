@@ -9,6 +9,7 @@ import { motion } from 'framer-motion';
 import BackButton from '../components/BackButton';
 import LoadingComponent from '../components/LoadingComponent';
 import { getBackdropUrl, getTeaserUrl, getTrailerUrl, getVideos } from '../utils/videoUtils';
+import CarouselContainer from '../components/CarouselContainer';
 
 const MovieDetail = () => {
     const { id } = useParams();
@@ -214,21 +215,7 @@ const MovieDetail = () => {
                 {(similarMovies.results.length > 0 && similarMovies.results) && (
                     <>
                         <h1 className='mt-20 mb-10 text-xl text-white font-bold'>Similar Movies</h1>
-                        <div className="gap-6 flex carousel carousel-end rounded-box w-full [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-200px),transparent_100%)]">
-                            <div className="carousel-item space-x-5">
-                                {similarMovies.results.map(similar => (
-                                    <MovieSmallCard
-                                        key={similar.id}
-                                        id={similar.id}
-                                        poster={similar.poster_path}
-                                        rate={similar.vote_average}
-                                        releaseDate={new Date(similar.release_date).getFullYear()}
-                                        title={similar.title}
-                                        type="movie"
-                                    />
-                                ))}
-                            </div>
-                        </div>
+                        <CarouselContainer movieData={similarMovies}/>
                     </>
                 )}
             </div>

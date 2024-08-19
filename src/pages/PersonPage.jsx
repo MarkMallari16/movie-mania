@@ -5,6 +5,7 @@ import BackButton from '../components/BackButton';
 import { formattedAge, formattedDate } from '../utils/dateFormatUtils';
 import LoadingComponent from '../components/LoadingComponent';
 import { motion } from 'framer-motion';
+import MovieSmallCard from '../components/MovieSmallCard';
 
 const PersonPage = () => {
   const [isShowFullText, setIsShowFullText] = useState(false);
@@ -12,11 +13,12 @@ const PersonPage = () => {
   const { id } = useParams();
 
   const { data: personData, loading: personLoading } = useFetch(`https://api.themoviedb.org/3/person/${id}`);
-
-  if (personLoading) {
+  const { data: movieCreditsData, loading: movieCreditsLoading } = useFetch(`https://api.themoviedb.org/3/person/${id}/movie_credits`);
+  if (personLoading || movieCreditsLoading) {
     return <LoadingComponent />
   }
 
+  console.log(movieCreditsData);
   const truncatedBiographyText = personData.biography.slice(0, 300);
   const shouldShowFullText = personData.biography.length > truncatedBiographyText.length;
 
@@ -37,7 +39,7 @@ const PersonPage = () => {
 
         <img src={`https://image.tmdb.org/t/p/w500${personData.profile_path}`} alt={personData.name} className='rounded-lg w-full lg:w-auto lg:h-96' />
         <div>
-          <h1 className='text-6xl font-semibold'>{personData.name}</h1>
+          <h1 className='text-5xl lg:text-6xl font-semibold'>{personData.name}</h1>
           <div>
             <div>
               <p className='mt-2 tracking-wide'>Known for {personData.known_for_department}</p>
@@ -74,6 +76,26 @@ const PersonPage = () => {
                 </>
               )
             }
+          </div>
+        </div>
+
+      </div>
+      <div className='mt-12'>
+        <h2 className='text-2xl font-semibold'>Known For</h2>
+
+        <div className="mt-8 gap-6 flex carousel carousel-end rounded-box w-full [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-200px),transparent_100%)]">
+          <div className="carousel-item space-x-5">
+            {movieCreditsData.cast.map(movie => (
+              <MovieSmallCard
+                key={movie.id}
+                id={movie.id}
+                poster={movie.poster_path}
+                rate={movie.vote_average}
+                releaseDate={new Date(movie.release_date).getFullYear()}
+                title={movie.title}
+                type="movie"
+              />
+            ))}
           </div>
         </div>
       </div>

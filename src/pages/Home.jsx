@@ -1,11 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Carousel from '../components/Carousel'
+import MovieListSection from '../components/MovieListSection'
 
 import { Link } from 'react-router-dom'
 
 const Home = ({ allMovies, nowPlaying, popular, topRated, upcoming }) => {
-    const CarouselsData = [
+    const MovieListSectionData = [
 
         {
             title: "Now Playing",
@@ -123,8 +123,8 @@ const Home = ({ allMovies, nowPlaying, popular, topRated, upcoming }) => {
                 ))}
             </div>
             <div className='mx-10'>
-                {CarouselsData.map((carouselData, index) => (
-                    <Carousel key={index} carouselTitle={carouselData.title} icon={carouselData.icon} movieData={carouselData.movieData} type={carouselData.type} link={carouselData.link} />
+                {MovieListSectionData.map((movieListData, index) => (
+                    <MovieListSection key={index} carouselTitle={movieListData.title} icon={movieListData.icon} movieData={movieListData.movieData} type={movieListData.type} link={movieListData.link} />
                 ))}
             </div>
         </>

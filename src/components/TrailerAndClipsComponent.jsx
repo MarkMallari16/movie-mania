@@ -1,5 +1,4 @@
 import React, { lazy, Suspense } from 'react'
-import LazyLoadingVideo from './LazyLoadingVideo';
 const ReactPlayer = lazy(() => import("react-player"));
 const TrailerAndClipsComponent = ({ videos }) => {
 
@@ -16,15 +15,13 @@ const TrailerAndClipsComponent = ({ videos }) => {
                     }}
                     className='carousel-item'
                 >
-                    <Suspense fallback={<LazyLoadingVideo />}>
-                        <ReactPlayer
-                            url={`https://www.youtube.com/watch?v=${video.key}`}
-                            muted
-                            controls
-                            width="100%"
-                            height="100%"
-                        />
-                    </Suspense>
+                    <ReactPlayer
+                        url={`https://www.youtube.com/watch?v=${video.key}`}
+                        muted
+                        controls
+                        width="100%"
+                        height="100%"
+                    />
                 </div>
             ))}
 
