@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import Logo from '../assets/logo1.png'
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import Profile from '../assets/profile.jpg'
@@ -61,9 +61,8 @@ const Navbar = () => {
         clearQuery();
     }
     return (
-        <motion.div  className={`lg:fixed ${isScrolling && 'backdrop-blur-sm'} transition-all ease-in-out top-0 hidden sm:block navbar py-4 z-50`} >
+        <motion.div className={`lg:fixed ${isScrolling && 'backdrop-blur-sm'} transition-all ease-in-out top-0 hidden sm:block navbar py-4 z-50`} >
             <div className='flex justify-between w-full px-10'>
-
                 <div>
                     <Link to='/'>
                         <div>
