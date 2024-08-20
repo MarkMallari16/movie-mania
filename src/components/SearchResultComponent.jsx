@@ -15,9 +15,9 @@ const SearchResultComponent = () => {
     const { sort, handleSort } = useSortOrder();
     const sortedSearchResultMovies = sortingUtils(searchResults, sort);
     return (
-        <div className='lg:mt-28 mx-20'>
-            <div className='flex justify-between items-center'>
-                <h1 className='mt-6 text-3xl font-bold'>Search Result for {query}</h1>
+        <div className='lg:mt-28 mx-10'>
+            <div className='mt-6 flex justify-between items-center'>
+                <h1 className='text-2xl lg:text-3xl font-bold'>Search Result for {query}</h1>
                 <SortDropDown onSorted={handleSort} currentSort={sort} />
             </div>
             <div className='mt-6 grid grid-cols-1 lg:grid-cols-6 gap-10'>
