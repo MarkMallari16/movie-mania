@@ -39,6 +39,33 @@ const PersonPage = () => {
     rotated: { rotate: isShowFullText ? -180 : 0 }
   }
 
+  const SOCIAL_MEDIA_LINKS = [
+    {
+      id: externalIdsData.imdb_id,
+      linkPath: `https://www.imdb.com/name/${externalIdsData?.imdb_id}`,
+      icon: <FaImdb />,
+      tooltip: "Visit IMDB ID"
+    },
+    {
+      id: externalIdsData.twitter_id,
+      linkPath: `https://twitter.com/${externalIdsData.twitter_id}`,
+      icon: <RiTwitterXLine />,
+      tooltip: "Visit X"
+    },
+    {
+      id: externalIdsData.instagram_id,
+      linkPath: `https://www.instagram.com/${externalIdsData.instagram_id}`,
+      icon: <FaInstagram />,
+      tooltip: "Visit Instagram"
+    },
+    {
+      id: externalIdsData.facebook_id,
+      linkPath: `https://www.facebook.com/${externalIdsData.facebook_id}`,
+      icon: <FaFacebookSquare />,
+      tooltip: "Visit Facebook"
+    },
+  ]
+  const filteredSocialMedia = SOCIAL_MEDIA_LINKS.filter(socialMedia => socialMedia.id);
   return (
     <div className='lg:mt-32 mx-12'>
 
@@ -86,26 +113,14 @@ const PersonPage = () => {
               <div className='mt-4'>
                 <h2 className='text-xl font-medium'>Social Links</h2>
                 <div className='flex items-center gap-4 mt-2'>
-                  {externalIdsData.imdb_id && (
-                    <a href={`https://www.imdb.com/name/${externalIdsData.imdb_id}`} target='_blank' rel='noopener noreferrer'>
-                      <FaImdb className='size-6' />
+                  {filteredSocialMedia.map((socialMedia, _) => (
+                    <a key={socialMedia.id} href={socialMedia.linkPath} target='_blank' rel='noopener noreferrer' className='tooltip' data-tip={socialMedia.tooltip}>
+                      <span className='text-2xl'>
+                        {socialMedia.icon}
+                      </span>
                     </a>
-                  )}
-                  {externalIdsData.twitter_id && (
-                    <a href={`https://twitter.com/${externalIdsData.twitter_id}`} target='_blank' rel='noopener noreferrer'>
-                      <RiTwitterXLine className='size-6' />
-                    </a>
-                  )}
-                  {externalIdsData.instagram_id && (
-                    <a href={`https://www.instagram.com/${externalIdsData.instagram_id}`} target='_blank' rel='noopener noreferrer'>
-                      <FaInstagram className='size-6' />
-                    </a>
-                  )}
-                  {externalIdsData.facebook_id && (
-                    <a href={`https://www.facebook.com/${externalIdsData.facebook_id}`} target='_blank' rel='noopener noreferrer'>
-                      <FaFacebookSquare className='size-6' />
-                    </a>
-                  )}
+                  ))
+                  }
                 </div>
               </div>
             )}
