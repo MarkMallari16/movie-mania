@@ -6,6 +6,10 @@ import { formattedAge, formattedDate } from '../utils/dateFormatUtils';
 import LoadingComponent from '../components/LoadingComponent';
 import { motion } from 'framer-motion';
 import MovieSmallCard from '../components/MovieSmallCard';
+import { FaImdb, FaFacebookSquare, FaInstagram } from "react-icons/fa";
+import { RiTwitterXLine } from "react-icons/ri";
+import { FaSquareInstagram } from "react-icons/fa6";
+
 
 const PersonPage = () => {
   const [isShowFullText, setIsShowFullText] = useState(false);
@@ -14,11 +18,13 @@ const PersonPage = () => {
 
   const { data: personData, loading: personLoading } = useFetch(`https://api.themoviedb.org/3/person/${id}`);
   const { data: movieCreditsData, loading: movieCreditsLoading } = useFetch(`https://api.themoviedb.org/3/person/${id}/movie_credits`);
+  const { data: externalIdsData } = useFetch(`https://api.themoviedb.org/3/person/${id}/external_ids`);
+
   if (personLoading || movieCreditsLoading) {
     return <LoadingComponent />
   }
 
-  console.log(movieCreditsData);
+  console.log(externalIdsData);
   const truncatedBiographyText = personData.biography.slice(0, 300);
   const shouldShowFullText = personData.biography.length > truncatedBiographyText.length;
 
@@ -32,11 +38,11 @@ const PersonPage = () => {
     unrotated: { rotate: 0 },
     rotated: { rotate: isShowFullText ? -180 : 0 }
   }
-  return (
-    <div className='lg:mt-28 mx-12'>
-      <BackButton className='mb-5' />
-      <div className='flex flex-wrap lg:flex-nowrap gap-16 '>
 
+  return (
+    <div className='lg:mt-32 mx-12'>
+
+      <div className='flex flex-wrap lg:flex-nowrap gap-16 '>
         <img src={`https://image.tmdb.org/t/p/w500${personData.profile_path}`} alt={personData.name} className='rounded-lg w-full lg:w-auto lg:h-96' />
         <div>
           <h1 className='text-5xl lg:text-6xl font-semibold'>{personData.name}</h1>
@@ -65,7 +71,7 @@ const PersonPage = () => {
                           initial="unrotated"
                           animate={isShowFullText ? "rotated" : "unrotated"}
                           variants={rotatedChevron}
-                          transition={{ ease: 'easeOut'}}
+                          transition={{ ease: 'easeOut' }}
                           xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-5">
                           <path fillRule="evenodd" d="M12.53 16.28a.75.75 0 0 1-1.06 0l-7.5-7.5a.75.75 0 0 1 1.06-1.06L12 14.69l6.97-6.97a.75.75 0 1 1 1.06 1.06l-7.5 7.5Z" clipRule="evenodd" />
                         </motion.svg>
@@ -76,6 +82,33 @@ const PersonPage = () => {
                 </>
               )
             }
+            {externalIdsData && (
+              <div className='mt-4'>
+                <h2 className='text-xl font-medium'>Social Links</h2>
+                <div className='flex items-center gap-4 mt-2'>
+                  {externalIdsData.imdb_id && (
+                    <a href={`https://www.imdb.com/name/${externalIdsData.imdb_id}`} target='_blank' rel='noopener noreferrer'>
+                      <FaImdb className='size-6' />
+                    </a>
+                  )}
+                  {externalIdsData.twitter_id && (
+                    <a href={`https://twitter.com/${externalIdsData.twitter_id}`} target='_blank' rel='noopener noreferrer'>
+                      <RiTwitterXLine className='size-6' />
+                    </a>
+                  )}
+                  {externalIdsData.instagram_id && (
+                    <a href={`https://www.instagram.com/${externalIdsData.instagram_id}`} target='_blank' rel='noopener noreferrer'>
+                      <FaInstagram className='size-6' />
+                    </a>
+                  )}
+                  {externalIdsData.facebook_id && (
+                    <a href={`https://www.facebook.com/${externalIdsData.facebook_id}`} target='_blank' rel='noopener noreferrer'>
+                      <FaFacebookSquare className='size-6' />
+                    </a>
+                  )}
+                </div>
+              </div>
+            )}
           </div>
         </div>
 
