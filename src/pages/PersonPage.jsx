@@ -114,7 +114,7 @@ const PersonPage = () => {
                 <h2 className='text-xl font-medium'>Social Links</h2>
                 <div className='flex items-center gap-4 mt-2'>
                   {filteredSocialMedia.map((socialMedia, _) => (
-                    <a key={socialMedia.id} href={socialMedia?.linkPath} target='_blank' rel='noopener noreferrer' className='tooltip' data-tip={socialMedia.tooltip}>
+                    <a key={socialMedia?.id} href={socialMedia?.linkPath} target='_blank' rel='noopener noreferrer' className='tooltip' data-tip={socialMedia.tooltip}>
                       <span className='text-2xl'>
                         {socialMedia.icon}
                       </span>
