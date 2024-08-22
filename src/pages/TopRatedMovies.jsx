@@ -3,6 +3,7 @@ import useSortOrder from '../hooks/useSortOrder'
 import SortDropDown from '../components/SortDropDown'
 import MovieList from '../components/MovieList'
 import { sortingUtils } from '../utils/sortingUtils'
+import LazyLoadingComponent from '../components/LazyLoadingComponent'
 
 const MovieCarousel = lazy(() => import('../components/MovieCarousel'))
 
