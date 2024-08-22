@@ -12,14 +12,14 @@ const Profile = () => {
       </div>
       <div className='mt-10'>
         <h2 className='font-semibold text-xl'>Favorite Genres</h2>
-        <ul className='list-disc list-inside'>
+        <ul className='mt-2 list-disc list-inside'>
           <li>Thriller</li>
           <li>Science Fiction</li>
           <li>Action</li>
           <li>Comedy</li>
         </ul>
       </div>
-      <div className='mt-10'>
+      <div className='mt-4'>
         <h2 className='font-semibold text-xl'>Recent Activity</h2>
         <ul className='list-disc list-inside'>
           <li>Watched "Inception" - Rated 5 stars</li>

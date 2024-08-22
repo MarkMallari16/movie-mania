@@ -66,6 +66,7 @@ const PersonPage = () => {
     },
   ]
   const filteredSocialMedia = SOCIAL_MEDIA_LINKS.filter(socialMedia => socialMedia?.id);
+
   return (
     <div className='lg:mt-32 mx-12'>
 
@@ -91,7 +92,7 @@ const PersonPage = () => {
                     {shouldShowFullText && (
                       <span
                         onClick={handleToggleText}
-                        className='flex gap-1 cursor-pointer text-secondary font-medium'
+                        className='flex gap-1 cursor-pointer text-secondary text-blue-500 font-medium'
                       >
                         {isShowFullText ? 'See Less' : 'See More'}
                         <motion.svg
