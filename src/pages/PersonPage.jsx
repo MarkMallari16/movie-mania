@@ -18,9 +18,9 @@ const PersonPage = () => {
 
   const { data: personData, loading: personLoading } = useFetch(`https://api.themoviedb.org/3/person/${id}`);
   const { data: movieCreditsData, loading: movieCreditsLoading } = useFetch(`https://api.themoviedb.org/3/person/${id}/movie_credits`);
-  const { data: externalIdsData } = useFetch(`https://api.themoviedb.org/3/person/${id}/external_ids`);
+  const { data: externalIdsData, loading: externalIdsLoading } = useFetch(`https://api.themoviedb.org/3/person/${id}/external_ids`);
 
-  if (personLoading || movieCreditsLoading) {
+  if (personLoading || movieCreditsLoading || externalIdsLoading) {
     return <LoadingComponent />
   }
 
