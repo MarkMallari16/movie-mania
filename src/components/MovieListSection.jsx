@@ -1,9 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types';
-import MovieSmallCard from './MovieSmallCard';
 import { Link } from 'react-router-dom';
 import CarouselContainer from './CarouselContainer';
-const MovieListSection = ({ carouselTitle, icon, movieData,  link }) => {
+
+const MovieListSection = ({ carouselTitle, icon, movieData, link }) => {
     return (
         <>
             <header className='mt-10 mb-6 flex items-center justify-between'>
