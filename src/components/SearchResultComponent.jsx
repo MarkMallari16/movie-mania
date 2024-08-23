@@ -14,6 +14,7 @@ const SearchResultComponent = () => {
     const query = new URLSearchParams(location.search).get("query");
     const { sort, handleSort } = useSortOrder();
     const sortedSearchResultMovies = sortingUtils(searchResults, sort);
+    
     return (
         <div className='lg:mt-28 mx-10'>
             <div className='mt-6  flex justify-between flex-wrap items-center gap-5 lg:gap-0'>
