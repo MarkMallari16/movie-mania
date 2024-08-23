@@ -17,8 +17,8 @@ const UpcomingMovies = ({ upcoming }) => {
             <Suspense fallback={<LazyLoadingComponent className='w-full h-60' />}>
                 <MovieCarousel movieData={upcoming} />
             </Suspense>
-            <div className='flex justify-between items-center'>
-                <h1 className='my-8 text-2xl text-white font-semibold'>Upcoming Movies</h1>
+            <div className='mt-10 mb-8 flex justify-between items-center'>
+                <h1 className='text-2xl text-white font-semibold'>Upcoming Movies</h1>
                 <SortDropDown onSorted={handleSort} currentSort={sort} />
             </div>
 
