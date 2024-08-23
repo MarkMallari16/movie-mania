@@ -11,7 +11,7 @@ const MovieSmallCard = ({ id, poster, rate, releaseDate, title, type }) => {
                 <div className='relative w-full overflow-hidden rounded-xl'>
 
                     {poster ?
-                        <img src={`https://image.tmdb.org/t/p/w200${poster}`} alt={title} className='group-hover:scale-110  group-hover:opacity-70 bg-slate-900 transition-all ease-in-out duration-300 w-full' />
+                        <img src={`https://image.tmdb.org/t/p/w500${poster}`} alt={title} className='group-hover:scale-110  group-hover:opacity-70 bg-slate-900 transition-all ease-in-out duration-300 w-full' />
                         :
                         <DefaultImagePoster />}
                     {poster &&
