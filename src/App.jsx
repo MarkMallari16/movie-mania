@@ -37,7 +37,7 @@ function App() {
 
   }
 
-  const recentWatchMovies = popular.results.slice(0, 4);
+  const recentWatchMovies = popular.results.slice(0, 6);
   return (
     <Router>
       <Navbar />
