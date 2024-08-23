@@ -1,7 +1,7 @@
 import React, { Suspense, lazy } from 'react';
 import { useLocation } from 'react-router-dom';
 import LazyLoadingCard from './LazyLoadingCard';
-import SortDropDown from './SortDropDown';
+import SortDropDown from './SortButtons';
 import useSortOrder from '../hooks/useSortOrder';
 import { sortingUtils } from '../utils/sortingUtils';
 
@@ -16,7 +16,7 @@ const SearchResultComponent = () => {
     const sortedSearchResultMovies = sortingUtils(searchResults, sort);
     return (
         <div className='lg:mt-28 mx-10'>
-            <div className='mt-6 flex justify-between items-center'>
+            <div className='mt-6  flex justify-between flex-wrap items-center gap-5 lg:gap-0'>
                 <h1 className='text-2xl lg:text-3xl font-bold'>Search Result for {query}</h1>
                 <SortDropDown onSorted={handleSort} currentSort={sort} />
             </div>

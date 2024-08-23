@@ -1,6 +1,6 @@
 import React from 'react'
 
-const SortDropDown = ({ onSorted, currentSort }) => {
+const SortButtons = ({ onSorted, currentSort }) => {
     return (
         <ul className='flex gap-5'>
             <li onClick={() => onSorted('newest')} className={`btn rounded-3xl btn-outline  font-normal ${currentSort === 'newest' && 'btn btn-secondary'}`}>Newest</li>
@@ -11,4 +11,4 @@ const SortDropDown = ({ onSorted, currentSort }) => {
     )
 }
 
-export default SortDropDown
+export default SortButtons

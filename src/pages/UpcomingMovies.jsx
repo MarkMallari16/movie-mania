@@ -1,6 +1,6 @@
 import React, { lazy, Suspense } from 'react'
 import useSortOrder from '../hooks/useSortOrder'
-import SortDropDown from '../components/SortDropDown'
+import SortButtons from '../components/SortButtons'
 import MovieList from '../components/MovieList'
 import { sortingUtils } from '../utils/sortingUtils'
 import LazyLoadingComponent from '../components/LazyLoadingComponent'
@@ -17,9 +17,9 @@ const UpcomingMovies = ({ upcoming }) => {
             <Suspense fallback={<LazyLoadingComponent className='w-full h-60' />}>
                 <MovieCarousel movieData={upcoming} />
             </Suspense>
-            <div className='mt-10 mb-8 flex justify-between items-center'>
+            <div className='mt-10 mb-8 flex flex-wrap justify-between items-center gap-5 lg:gap-0'>
                 <h1 className='text-2xl text-white font-semibold'>Upcoming Movies</h1>
-                <SortDropDown onSorted={handleSort} currentSort={sort} />
+                <SortButtons onSorted={handleSort} currentSort={sort} />
             </div>
 
             <div className='rounded-box grid grid-cols-1 justify-center lg:grid-cols-5 gap-8'>
