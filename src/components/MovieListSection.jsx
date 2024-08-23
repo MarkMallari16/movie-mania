@@ -20,6 +20,7 @@ const MovieListSection = ({ carouselTitle, icon, movieData, link }) => {
                 </Link>
             </header>
             <CarouselContainer movieData={movieData} />
+
         </>
     )
 }

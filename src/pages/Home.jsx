@@ -60,6 +60,7 @@ const Home = ({ allMovies, nowPlaying, popular, topRated, upcoming }) => {
                     Recommend for you
                 </h1>
             </div>
+
             <div className='grid grid-cols-1 lg:grid-cols-10 grid-rows-1  lg:grid-rows-3 gap-5 mx-10 mt-6'>
                 {allMovies.results?.[0] && (
                     <div key={allMovies.results[0].id} className='relative bg-slate-900 col-span-6 row-span-4  transition-all ease-in-out'>
@@ -123,6 +124,7 @@ const Home = ({ allMovies, nowPlaying, popular, topRated, upcoming }) => {
                     </div>
                 ))}
             </div>
+            
             <div className='mx-10'>
                 {MovieListSectionData.map((movieListData, index) => (
                     <MovieListSection key={index} carouselTitle={movieListData.title} icon={movieListData.icon} movieData={movieListData.movieData} type={movieListData.type} link={movieListData.link} />
