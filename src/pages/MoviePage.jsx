@@ -174,7 +174,10 @@ const MovieDetail = () => {
                                 whileInView="visible"
                                 variants={variants}
                                 viewport={{ once: true }}>
-                                <p><span className='text-slate-300 font-medium'>Director:</span> {directors.name}</p>
+                                <p>
+                                    <span className='text-slate-300 font-medium'>Director:</span>
+                                    {directors.name}
+                                </p>
                             </motion.div>
 
                             <div className='flex gap-3 mt-6'>
@@ -234,7 +237,7 @@ const MovieDetail = () => {
                             url={trailerUrl}
                             playing={isTrailerPlaying}
                             muted
-                         
+
                             width="100%"
                             height="70vh"
                         />

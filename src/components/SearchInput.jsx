@@ -3,7 +3,7 @@ import React from 'react'
 const SearchInput = ({ currentQuery, onHandleQueryChange, onHandleSearchEnter, onClearQuery }) => {
     return (
         <>
-            <input type="text" value={currentQuery} onChange={onHandleQueryChange} onKeyDown={onHandleSearchEnter} className='input input-ghost bg-none w-full pl-12' placeholder='Search movies here...' />
+            <input type="text" value={currentQuery} onChange={onHandleQueryChange} onKeyDown={onHandleSearchEnter} className='input input-bordered bg-none w-full pl-12' placeholder='Search movies here...' />
             {
                 currentQuery &&
 

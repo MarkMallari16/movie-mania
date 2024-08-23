@@ -8,7 +8,7 @@ const MovieListSection = ({ carouselTitle, icon, movieData, link }) => {
         <>
             <header className='mt-10 mb-6 flex items-center justify-between'>
                 <Link to={link}>
-                    <div className='flex items-center gap-2 hover:text-secondary transition-all ease-in-out'>
+                    <div className='flex items-center gap-2 hover:text-blue-500 transition-all ease-in-out'>
                         <h1 className='text-2xl font-semibold flex items-center gap-2'>
                             {icon}{carouselTitle}
                         </h1>
