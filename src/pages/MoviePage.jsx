@@ -1,9 +1,8 @@
-import React, { Suspense, useEffect, useRef, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import React, { useEffect, useRef, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import useFetch from '../hooks/useFetch';
 import ReactPlayer from 'react-player';
 import CharacterComponent from '../components/CharacterComponent';
-import MovieSmallCard from '../components/MovieSmallCard';
 import TrailerAndClipsComponent from '../components/TrailerAndClipsComponent';
 import { motion } from 'framer-motion';
 import BackButton from '../components/BackButton';
@@ -68,7 +67,6 @@ const MovieDetail = () => {
         visible: { opacity: 1 },
         hidden: { opacity: 0 }
     }
-
 
     return (
         <>
@@ -164,7 +162,9 @@ const MovieDetail = () => {
                                 whileInView="visible"
                                 variants={variants}
                                 viewport={{ once: true }}>
-                                <p className='mt-6 lg:w-full max-w-4xl tracking-wide leading-8'>{movieDetail.overview}</p>
+                                <p className='mt-6 lg:w-full max-w-4xl tracking-wide leading-8'>
+                                    {movieDetail.overview}
+                                </p>
                             </motion.div>
 
 

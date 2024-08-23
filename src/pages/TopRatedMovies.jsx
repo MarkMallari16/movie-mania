@@ -17,6 +17,7 @@ const TopRatedMovies = ({ topRated }) => {
             <Suspense fallback={<LazyLoadingComponent className='w-full h-60' />}>
                 <MovieCarousel movieData={topRated} />
             </Suspense>
+
             <div className='mt-10 mb-8 flex justify-between items-center  flex-wrap'>
                 <h1 className='text-2xl text-white gap-5  font-semibold'>Top Rated  Movies</h1>
                 <SortButtons onSorted={handleSort} currentSort={sort} />

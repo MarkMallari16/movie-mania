@@ -46,14 +46,12 @@ const Navbar = () => {
     }
 
     const handleSearchEnter = (e) => {
-
         if (e.key === "Enter") {
             if (query && searchResults.length > 0) {
                 navigate(`/search?query=${encodeURIComponent(query)}`, { state: { searchResults, query } });
                 clearQuery()
             }
         }
-
     }
 
     const handleMovieClick = (movie) => {
