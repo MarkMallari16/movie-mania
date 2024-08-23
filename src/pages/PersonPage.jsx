@@ -92,7 +92,7 @@ const PersonPage = () => {
                     {shouldShowFullText && (
                       <span
                         onClick={handleToggleText}
-                        className='flex gap-1 cursor-pointer text-secondary text-blue-500 font-medium'
+                        className='flex gap-1 cursor-pointer  text-blue-500 font-medium'
                       >
                         {isShowFullText ? 'See Less' : 'See More'}
                         <motion.svg
