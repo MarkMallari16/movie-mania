@@ -33,10 +33,11 @@ function App() {
   const isLoading = loadingAllMovies || loadingPopular || loadingNowPlaying || loadingTopRated || loadingUpcomingMovie;
 
   if (isLoading) {
-    return <LoadingComponent/>
+    return <LoadingComponent />
 
   }
 
+  const recentWatchMovies = popular.results.slice(0, 4);
   return (
     <Router>
       <Navbar />
@@ -47,7 +48,7 @@ function App() {
             <Route path="/movies/popular" element={<PopularMovies popular={popular} />} />
             <Route path="/movies/toprated" element={<TopRatedMovies topRated={topRated} />} />
             <Route path="/movies/upcoming" element={<UpcomingMovies upcoming={upcomingMovie} />} />
-            <Route path="/profile" element={<Profile />} />
+            <Route path="/profile" element={<Profile recentWatchMovies={recentWatchMovies} />} />
             <Route path="/movie/:id" element={<MoviePage />} />
 
             <Route path='/search' element={<SearchResultComponent />} />
