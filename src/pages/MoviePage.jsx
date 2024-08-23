@@ -215,17 +215,21 @@ const MovieDetail = () => {
                 {(similarMovies.results.length > 0 && similarMovies.results) && (
                     <>
                         <h1 className='mt-20 mb-10 text-xl text-white font-bold'>Similar Movies</h1>
-                        <CarouselContainer movieData={similarMovies}/>
+                        <CarouselContainer movieData={similarMovies} />
                     </>
                 )}
             </div>
             {/*Modal*/}
             <dialog className="modal" ref={trailerModalRef}>
                 <div className="modal-box relative max-w-7xl p-0">
-                    <div className='absolute top-2 end-2 hover:bg-secondary rounded-lg transition-colors ease-in-out'>
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-8 cursor-pointer" onClick={handleTrailerModalClose}>
-                            <path fillRule="evenodd" d="M5.47 5.47a.75.75 0 0 1 1.06 0L12 10.94l5.47-5.47a.75.75 0 1 1 1.06 1.06L13.06 12l5.47 5.47a.75.75 0 1 1-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 0 1-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 0 1 0-1.06Z" clipRule="evenodd" />
-                        </svg>
+                    <div className='absolute top-2 end-2'>
+
+                        <div className='btn btn-secondary bg-blue-500 border-blue-400 hover:bg-blue-400 hover:border-blue-500 w-14' onClick={handleTrailerModalClose}>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-5 cursor-pointer" >
+                                <path fillRule="evenodd" d="M5.47 5.47a.75.75 0 0 1 1.06 0L12 10.94l5.47-5.47a.75.75 0 1 1 1.06 1.06L13.06 12l5.47 5.47a.75.75 0 1 1-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 0 1-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 0 1 0-1.06Z" clipRule="evenodd" />
+                            </svg>
+                        </div>
+
                     </div>
                     <div className='overflow-hidden rounded-lg'>
                         <ReactPlayer
