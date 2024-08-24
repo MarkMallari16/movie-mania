@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import DefaultImagePoster from './DefaultImagePoster'
 
 const MovieSmallCard = ({ id, poster, rate, releaseDate, title, type }) => {
-    const roundedRate = rate.toFixed(1)
+    const roundedRate = rate?.toFixed(1)
 
     return (
         <Link to={`/movie/${id}`}>
@@ -27,13 +27,13 @@ const MovieSmallCard = ({ id, poster, rate, releaseDate, title, type }) => {
                     <p className='text-white font-semibold'>{title.length > 20 ? `${title.slice(0, 16)}...` : title}</p>
                 </div>
                 <div className='mt-2 flex justify-between'>
-                    <div className='flex gap-1'>
+                    {rate && <div className='flex gap-1'>
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-5 text-yellow-500">
                             <path fillRule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clipRule="evenodd" />
                         </svg>
 
                         <p className=''>{roundedRate}</p>
-                    </div>
+                    </div>}
 
                     <div>
                         <p className=''>{releaseDate}</p>

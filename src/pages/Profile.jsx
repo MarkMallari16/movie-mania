@@ -1,5 +1,6 @@
 import React from 'react'
 import ProfilePicture from '../assets/profile.jpg'
+import MovieSmallCard from '../components/MovieSmallCard'
 const Profile = ({ recentWatchMovies }) => {
   return (
     <div className='mx-8 lg:mx-20 mt-10 lg:mt-28 bg-base-200 p-10 rounded-lg'>
@@ -27,10 +28,7 @@ const Profile = ({ recentWatchMovies }) => {
         <h2 className='font-semibold text-xl'>Recent Watched Movie</h2>
         <ul className='mt-5 list-disc list-inside flex justify-center flex-wrap lg:justify-start gap-5'>
           {recentWatchMovies.map(movie => (
-            <div>
-              <img src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`} alt={movie.title} className='rounded-xl w-full' />
-              <p className='mt-2'>{movie.title}</p>
-            </div>
+            <MovieSmallCard id={movie.id}  poster={movie.poster_path} title={movie.title}/>
           ))}
         </ul>
       </div>
