@@ -5,7 +5,7 @@ const MovieSmallCard = lazy(() => import('./MovieSmallCard'))
 
 const CarouselContainer = ({ movieData }) => {
     return (
-        <div className="flex carousel rounded-box w-full">
+        <div className="flex carousel rounded-box w-full max-h-full">
             <div className="carousel-item flex gap-6">
                 {movieData && movieData.results.slice(0, 20).map((data, _) => (
                     <Suspense fallback={<LazyLoadingCard />}>
