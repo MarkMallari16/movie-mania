@@ -96,7 +96,7 @@ const MovieDetail = () => {
                     >
                         <div className='mt-10'>
                             <motion.div
-                                className='mb-2 flex items-center gap-3'
+                                className='mb-2 flex flex-wrap items-center gap-3'
                                 initial="hidden"
                                 whileInView="visible"
                                 variants={variants}
@@ -161,7 +161,8 @@ const MovieDetail = () => {
                                 initial="hidden"
                                 whileInView="visible"
                                 variants={variants}
-                                viewport={{ once: true }}>
+                                viewport={{ once: true }}
+                                >
                                 <p className='mt-6 lg:w-full max-w-4xl tracking-wide leading-8'>
                                     {movieDetail.overview}
                                 </p>
@@ -175,7 +176,7 @@ const MovieDetail = () => {
                                 variants={variants}
                                 viewport={{ once: true }}>
                                 <p>
-                                    <span className='text-slate-300 font-medium'>Director:</span>
+                                    <span className='text-slate-300 font-medium'>Director: </span>
                                     {directors.name}
                                 </p>
                             </motion.div>
