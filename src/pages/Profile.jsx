@@ -2,6 +2,8 @@ import React from 'react'
 import ProfilePicture from '../assets/profile.jpg'
 import MovieSmallCard from '../components/MovieSmallCard'
 const Profile = ({ recentWatchMovies }) => {
+  const listStyle = "bg-base-300 px-3 py-2 rounded-xl mb-2";
+
   return (
     <div className='mx-8 lg:mx-20 mt-10 lg:mt-28 bg-base-200 p-10 rounded-lg'>
       <div className='flex flex-col lg:flex-row items-center gap-8'>
@@ -16,11 +18,11 @@ const Profile = ({ recentWatchMovies }) => {
 
       <div className='mt-10'>
         <h2 className='font-semibold text-xl'>Favorite Genres</h2>
-        <ul className='mt-2 list-disc list-inside'>
-          <li>Thriller</li>
-          <li>Science Fiction</li>
-          <li>Action</li>
-          <li>Comedy</li>
+        <ul className='mt-2 list list-inside flex flex-wrap gap-4'>
+          <li className={listStyle}>Thriller</li>
+          <li className={listStyle}>Science Fiction</li>
+          <li className={listStyle}>Action</li>
+          <li className={listStyle}>Comedy</li>
         </ul>
       </div>
 
@@ -28,7 +30,7 @@ const Profile = ({ recentWatchMovies }) => {
         <h2 className='font-semibold text-xl'>Recent Watched Movie</h2>
         <ul className='mt-5 list-disc list-inside flex justify-center flex-wrap lg:justify-start gap-5'>
           {recentWatchMovies.map(movie => (
-            <MovieSmallCard id={movie.id}  poster={movie.poster_path} title={movie.title}/>
+            <MovieSmallCard id={movie.id} poster={movie.poster_path} title={movie.title} />
           ))}
         </ul>
       </div>

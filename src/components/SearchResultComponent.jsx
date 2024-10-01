@@ -17,14 +17,14 @@ const SearchResultComponent = () => {
     
     return (
         <div className='lg:mt-28 mx-10'>
-            <div className='mt-6  flex justify-between flex-wrap items-center gap-5 lg:gap-0'>
+            <div className='mt-6 mb-10 flex justify-between flex-wrap items-center gap-5 lg:gap-0'>
                 <h1 className='text-2xl lg:text-3xl font-bold'>Search Result for {query}</h1>
                 <SortDropDown onSorted={handleSort} currentSort={sort} />
             </div>
             <div className='mt-6 grid grid-cols-1 lg:grid-cols-6 gap-10'>
                 {sortedSearchResultMovies.map(result => (
                     <Suspense fallback={<LazyLoadingCard />}>
-                        <MovieSmallCard id={result?.id} poster={result.poster_path} rate={result.vote_average} releaseDate={new Date(result.release_date).getFullYear()} title={result.title} />
+                        <MovieSmallCard id={result?.id} poster={result?.poster_path} rate={result?.vote_average} releaseDate={new Date(result?.release_date).getFullYear()} title={result?.title} />
                     </Suspense>
                 ))}
             </div>

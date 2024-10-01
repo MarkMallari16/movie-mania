@@ -6,9 +6,8 @@ const SortButtons = ({ onSorted, currentSort }) => {
     const getClassNames = sortType => {
         return `${buttonClasses} ${currentSort === sortType ? 'bg-blue-600 border-blue-600' : ''}`;
     }
-    
     return (
-        <ul className='flex gap-5'>
+        <ul className='flex flex-wrap gap-5'>
             <li onClick={() => onSorted('newest')} className={getClassNames('newest')}>Newest</li>
             <li onClick={() => onSorted('oldest')} className={getClassNames('oldest')}>Oldest</li>
             <li onClick={() => onSorted('highest')} className={getClassNames('highest')}>Highest</li>
