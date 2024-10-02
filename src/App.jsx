@@ -17,6 +17,7 @@ import SearchResultComponent from './components/SearchResultComponent';
 import Terms from './pages/Terms';
 import PersonPage from './pages/PersonPage';
 import LoadingComponent from './components/LoadingComponent';
+import Login from './pages/Login';
 
 function App() {
 
@@ -38,7 +39,7 @@ function App() {
   }
 
   const recentWatchMovies = popular.results.slice(0, 6);
-  
+
   return (
     <Router>
       <Navbar />
@@ -55,9 +56,12 @@ function App() {
             <Route path='/search' element={<SearchResultComponent />} />
             <Route path='/terms' element={<Terms />} />
             <Route path='/person/:id' element={<PersonPage />} />
+            <Route path='/login' element={<Login />} />
+
             <Route path="*" element={<Navigate to="/" />} />
           </Routes>
         </div>
+    
       </div>
       <BottomNav />
       <Footer />
