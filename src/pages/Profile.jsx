@@ -10,7 +10,7 @@ const Profile = ({ recentWatchMovies }) => {
         <img src={ProfilePicture} alt="profile" className='w-52 rounded-full' />
         <div>
           <h1 className='font-bold text-2xl'>Mark Christian Mallari</h1>
-          <p className='mt-2 max-w-2xl'>
+          <p className='mt-2 max-w-3xl '>
             Hello! I'm Mark Christian Mallari, an avid movie enthusiast. I enjoy exploring various genres and discussing films with fellow movie buffs. Whether it's a thrilling action-packed adventure or a thought-provoking drama, I'm always up for a good watch. Feel free to browse my recent movie picks below!
           </p>
         </div>
