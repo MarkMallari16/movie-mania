@@ -1,7 +1,7 @@
 import React from 'react'
 
 const SortButtons = ({ onSorted, currentSort }) => {
-    const buttonClasses = `btn rounded-3xl btn-outline font-medium`
+    const buttonClasses = `btn rounded-xl btn-outline font-medium`
 
     const getClassNames = sortType => {
         return `${buttonClasses} ${currentSort === sortType ? 'bg-blue-600 border-blue-600' : ''}`;
