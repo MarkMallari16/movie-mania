@@ -1,5 +1,6 @@
-import React, { lazy, Suspense } from 'react'
+import React, { lazy } from 'react'
 const ReactPlayer = lazy(() => import("react-player"));
+
 const TrailerAndClipsComponent = ({ videos }) => {
 
     return (
