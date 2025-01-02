@@ -10,6 +10,7 @@ const MovieMediumCard = ({ movieId, poster, title, voteAverage, releaseDate }) =
                         src={`https://image.tmdb.org/t/p/w500${poster}`}
                         alt={title} className='group-hover:scale-110 group-hover:opacity-75 transition-all ease-in-out duration-200 ' />
                 </figure>
+
                 {poster &&
                     <span className='absolute z-50 right-1/3 top-1/3 opacity-0 group-hover:opacity-100 transition-opacity ease-in-out duration-300'>
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className=" size-20 ">
@@ -17,6 +18,7 @@ const MovieMediumCard = ({ movieId, poster, title, voteAverage, releaseDate }) =
                         </svg>
                     </span>
                 }
+                
                 <div >
                     <div className="mt-2">
                         <h2 className="card-title ">{title.length > 20 ? `${title.slice(0, 16)}...` : title}</h2>
