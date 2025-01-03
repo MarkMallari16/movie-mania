@@ -15,6 +15,7 @@ export const formattedDate = (birthDate) => {
         "November",
         "December"
     ]
+
     const month = monthNames[date.getMonth()];
     const day = date.getDate();
     const year = date.getFullYear();
@@ -22,6 +23,7 @@ export const formattedDate = (birthDate) => {
 
     return `${month} ${day}, ${year}`;
 }
+
 export const formattedAge = (birthDate) => {
     const birthYear = new Date(birthDate).getFullYear();
     const currentYear = new Date().getFullYear();
