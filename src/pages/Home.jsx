@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import MovieListSection from '../components/MovieListSection'
 
@@ -92,10 +92,10 @@ const Home = ({ allMovies, nowPlaying, popular, topRated, upcoming }) => {
                                         <p className='text-white'>Popularity: {allMovies.results[0].popularity.toFixed(1)}</p>
                                     </div>
                                     <Link to={`movie/${allMovies.results[0].id}`} className='hidden lg:inline-flex btn btn-secondary bg-blue-500 border-blue-500 hover:bg-blue-400 hover:border-blue-400 mt-2'>
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-6">
-                                            <path d="M19.5 6h-15v9h15V6Z" />
-                                            <path fillRule="evenodd" d="M3.375 3C2.339 3 1.5 3.84 1.5 4.875v11.25C1.5 17.16 2.34 18 3.375 18H9.75v1.5H6A.75.75 0 0 0 6 21h12a.75.75 0 0 0 0-1.5h-3.75V18h6.375c1.035 0 1.875-.84 1.875-1.875V4.875C22.5 3.839 21.66 3 20.625 3H3.375Zm0 13.5h17.25a.375.375 0 0 0 .375-.375V4.875a.375.375 0 0 0-.375-.375H3.375A.375.375 0 0 0 3 4.875v11.25c0 .207.168.375.375.375Z" clipRule="evenodd" />
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+                                            <path fill-rule="evenodd" d="M4.5 5.653c0-1.427 1.529-2.33 2.779-1.643l11.54 6.347c1.295.712 1.295 2.573 0 3.286L7.28 19.99c-1.25.687-2.779-.217-2.779-1.643V5.653Z" clip-rule="evenodd" />
                                         </svg>
+
                                         Watch Now
                                     </Link>
                                 </div>
@@ -124,7 +124,7 @@ const Home = ({ allMovies, nowPlaying, popular, topRated, upcoming }) => {
                     </div>
                 ))}
             </div>
-            
+
             <div className='mx-10'>
                 {MovieListSectionData.map((movieListData, index) => (
                     <MovieListSection key={index} carouselTitle={movieListData.title} icon={movieListData.icon} movieData={movieListData.movieData} type={movieListData.type} link={movieListData.link} />
