@@ -3,7 +3,7 @@
 
 import './App.css'
 import useFetch from './hooks/useFetch'
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import Home from './pages/Home';
 import MoviePage from './pages/MoviePage';
 import PopularMovies from './pages/PopularMovies';
@@ -20,7 +20,6 @@ import LoadingComponent from './components/LoadingComponent';
 import Login from './pages/Login';
 
 function App() {
-
   const { data: allMovies, loading: loadingAllMovies } = useFetch("https://api.themoviedb.org/3/discover/movie")
 
   const { data: topRated, loading: loadingTopRated } = useFetch("https://api.themoviedb.org/3/movie/top_rated");
@@ -32,6 +31,14 @@ function App() {
   const { data: nowPlaying, loading: loadingNowPlaying } = useFetch("https://api.themoviedb.org/3/movie/now_playing");
 
   const isLoading = loadingAllMovies || loadingPopular || loadingNowPlaying || loadingTopRated || loadingUpcomingMovie;
+
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0, {
+      behavior: 'smooth'
+    });
+  }, [pathname])
 
   if (isLoading) {
     return <LoadingComponent />
@@ -61,7 +68,7 @@ function App() {
             <Route path="*" element={<Navigate to="/" />} />
           </Routes>
         </div>
-    
+
       </div>
       <BottomNav />
       <Footer />
