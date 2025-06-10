@@ -3,7 +3,7 @@
 
 import './App.css'
 import useFetch from './hooks/useFetch'
-import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Home from './pages/Home';
 import MoviePage from './pages/MoviePage';
 import PopularMovies from './pages/PopularMovies';
@@ -18,6 +18,7 @@ import Terms from './pages/Terms';
 import PersonPage from './pages/PersonPage';
 import LoadingComponent from './components/LoadingComponent';
 import Login from './pages/Login';
+import ScrollToTop from './components/ScrollToTop';
 
 function App() {
   const { data: allMovies, loading: loadingAllMovies } = useFetch("https://api.themoviedb.org/3/discover/movie")
@@ -32,14 +33,6 @@ function App() {
 
   const isLoading = loadingAllMovies || loadingPopular || loadingNowPlaying || loadingTopRated || loadingUpcomingMovie;
 
-  const { pathname } = useLocation();
-
-  useEffect(() => {
-    window.scrollTo(0, 0, {
-      behavior: 'smooth'
-    });
-  }, [pathname])
-
   if (isLoading) {
     return <LoadingComponent />
 
@@ -50,6 +43,8 @@ function App() {
   return (
     <Router>
       <Navbar />
+      // The ScrollToTop component is used to scroll to the top of the page when navigating between routes
+      <ScrollToTop />
       <div className='min-h-screen bg-slate-900'>
         <div>
           <Routes>
