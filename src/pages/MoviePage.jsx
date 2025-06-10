@@ -25,7 +25,6 @@ const MovieDetail = () => {
     const [isTeaserEnded, setIsTeaserEnded] = useState(false);
     const [isHeartFill, setIsHeartFill] = useState(false);
 
-
     useEffect(() => {
         const timer = setTimeout(() => {
             setIsDelayed(false);
@@ -162,7 +161,7 @@ const MovieDetail = () => {
                                 whileInView="visible"
                                 variants={variants}
                                 viewport={{ once: true }}
-                                >
+                            >
                                 <p className='mt-6 lg:w-full max-w-4xl tracking-wide leading-8'>
                                     {movieDetail.overview}
                                 </p>
