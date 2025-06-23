@@ -43,7 +43,6 @@ function App() {
   return (
     <Router>
       <Navbar />
-      // The ScrollToTop component is used to scroll to the top of the page when navigating between routes
       <ScrollToTop />
       <div className='min-h-screen bg-slate-900'>
         <div>
