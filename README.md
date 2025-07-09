@@ -33,11 +33,9 @@ Clone the repository:
 
 git clone https://github.com/MarkMallari16/movie-mania.git
 
-
 Go to the project directory:
 
 cd movie-mania
-
 
 Install dependencies:
 
@@ -45,10 +43,33 @@ npm install
 # OR
 yarn install
 
-
 API Key Configuration
 Get a TMDB API key from The Movie Database (TMDB) website.
 
 Add your API key to a .env file (e.g., REACT_APP_TMDB_API_KEY=YOUR_API_KEY_HERE) or directly in your JavaScript code (e.g., const API_KEY = 'YOUR_API_KEY_HERE';).
 
 🏃 Usage
+Open the project:
+
+For static HTML/CSS/JS: Open index.html in your browser.
+
+For projects with a development server: Run npm start or yarn start.
+
+🤝 Contributing
+Feel free to contribute!
+
+Fork the repository.
+
+Create a new branch.
+
+Make your changes.
+
+Commit and push your changes.
+
+Open a Pull Request.
+
+📄 License
+This project is licensed under the MIT License. See the LICENSE file for details.
+
+📧 Contact
+Contact Mark Mallari via his GitHub profile for questions.
