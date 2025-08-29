@@ -6,7 +6,7 @@ const Terms = () => {
     return (
         <div className='mt-28 mx-16'>
             <div>
-                <h1 className='text-4xl'>Terms of Use</h1>
+                <h1 className='font-bold text-4xl'>Terms of Use</h1>
 
                 <section>
                     <SectionHeader title="Last Updated: August 20, 2024" />

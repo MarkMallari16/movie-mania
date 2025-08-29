@@ -59,7 +59,7 @@ const Navbar = () => {
         clearQuery();
     }
     return (
-        <motion.div className={`lg:fixed ${isScrolling && 'backdrop-blur-sm'} transition-all ease-in-out top-0 hidden sm:block navbar py-4 z-50`} >
+        <motion.div className={`lg:fixed ${isScrolling && 'backdrop-blur-sm'} transition-all ease-in-out top-0 hidden lg:block navbar py-4 z-50`} >
             <div className='flex justify-between w-full px-10'>
                 <div>
                     <Link to='/'>
@@ -90,7 +90,7 @@ const Navbar = () => {
                         ))}
                     </ul>
 
-                    <div className="dropdown dropdown-end">
+                    {/* <div className="dropdown dropdown-end">
 
                         <div tabIndex={0} role="button" className="avatar online">
                             <div className="w-12 rounded-full object-cover">
@@ -104,7 +104,7 @@ const Navbar = () => {
                             <li><NavLink to="/profile">View Profile</NavLink></li>
                             <li><NavLink to="/login">Logout</NavLink></li>
                         </ul>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </motion.div >
